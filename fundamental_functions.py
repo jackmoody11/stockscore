@@ -1,14 +1,17 @@
 import requests
+iex_url_base = "https://api.iextrading.com/1.0/"
 
-def suite(batch_symbols, iex_url_base, stock_scores):
+def suite(batch_symbols, stock_scores, api_url_base = iex_url_base):
 
-    stock_scores += dividend_test(batch_symbols, iex_url_base, stock_scores)
-    stock_scores += net_income_test(batch_symbols, iex_url_base, stock_scores)
+    stock_scores += dividend_test(batch_symbols, api_url_base, stock_scores)
+    stock_scores += net_income_test(batch_symbols, api_url_base, stock_scores)
     return stock_scores
 
 
-def dividend_test(batch_tickers, api_url_base, scores):
+def dividend_test(batch_tickers, scores, api_url_base = iex_url_base):
+    """Adds 1 point to all stocks that have paid dividends the past four years.
 
+    Must already have stock_scores dictionary. To add this test, run stock_scores += ff.dividend_test(...)."""
     for i in batch_tickers:
         div_batch_url = api_url_base + "stock/market/batch?symbols=" + batch_tickers[i] + "&types=dividends&range=5y"
         div_json = requests.get(div_batch_url).json()
@@ -19,10 +22,10 @@ def dividend_test(batch_tickers, api_url_base, scores):
     return scores
 
 
-def net_income_test(batch_symbols, iex_url_base, stock_scores):
-	
+def net_income_test(batch_symbols, stock_scores, api_url_base = iex_url_base):
+
     for i in batch_symbols:
-        batch_url = iex_url_base + "stock/market/batch?symbols=" + batch_symbols[i] + "&types=financials&range=5y"
+        batch_url = api_url_base + "stock/market/batch?symbols=" + batch_symbols[i] + "&types=financials&range=5y"
         result = requests.get(batch_url).json()
         for symbol in result:
         	if(result[symbol.upper()].get('financials')):
