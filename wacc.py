@@ -7,13 +7,13 @@ in_user = "142352fdbd085ec046873f47748139e3"
 in_pass = "1289904d544b7fe0cc14e21d6622e24c"
 
 
-def get_beta(symbol): 
-	json = requests.get(iex_url_base + "/stock/" + symbol + "/stats").json()
+def get_beta(symbol):
+	json = requests.get(iex_url_base + "/stock/" + symbol.lower() + "/stats").json()
 	beta = float(json['beta'])
 	return beta
 
 def get_debt_to_equity(symbol):
-	json = requests.get(iex_url_base + "stock/" + symbol + "/financials").json()
+	json = requests.get(iex_url_base + "stock/" + symbol.lower() + "/financials").json()
 	total_debt = int(json['financials'][0]['totalDebt'])
 	total_equity = int(json['financials'][0]['shareholderEquity'])
 	return total_debt/total_equity
@@ -25,7 +25,7 @@ def get_rf():
 	return rf_rate/100
 
 def get_tax_rate_iex(symbol):
-	json = requests.get(iex_url_base + "stock/" + symbol + "/financials").json()
+	json = requests.get(iex_url_base + "stock/" + symbol.lower() + "/financials").json()
 	tax_rates = []
 	for i in range(0,4):
 		operating_income = int(json['financials'][i]['operatingIncome'])
