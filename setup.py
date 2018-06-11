@@ -5,7 +5,7 @@ import requests
 iex_url_base = "https://api.iextrading.com/1.0/"
 
 def get_symbols(iex_url_base):
-
+	"""Gets all symbols from IEX API (uppercase). """
 	symbols_json = requests.get(iex_url_base + "ref-data/symbols").json()
 	symbols = []
 	for i in range(len(symbols_json)):
@@ -15,16 +15,18 @@ def get_symbols(iex_url_base):
 
 
 def init_stock_scores(symbols):
-
+	"""Set all stock scores to zero. """
 	stock_scores = {}
 	for symbol in symbols:
 	    stock_scores[symbol] = 0
 	return stock_scores
 
 
-# Calculate number of batches to GET
 def set_batches(symbols):
+	"""Calculate number of batches to send for GET request.
 
+	Creates batches of 100 tickers to limit number of GET requests sent to IEX.
+	"""
 	num_batches = int(len(symbols) / 100 + round(len(symbols) % 100))
 	x = 0
 	batch_symbols = {}
@@ -39,7 +41,10 @@ def set_batches(symbols):
 
 
 def soup_it(url):
+	"""Returns html from specified url using Beautiful Soup.
 
-    page = requests.get(url).text.encode("utf-8").decode('ascii', 'ignore')
-    soup = BeautifulSoup(page, 'html.parser')
-    return soup
+	Must further strip to meaningfully use the returned html result.
+	"""
+	page = requests.get(url).text.encode("utf-8").decode('ascii', 'ignore')
+	soup = BeautifulSoup(page, 'html.parser')
+	return soup
