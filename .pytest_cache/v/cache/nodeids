@@ -1,4 +1,6 @@
 [
-  "test_setup.py::test_numbers_3_4",
-  "test_setup.py::test_strings_a_3"
+  "test_setup.py::test_get_symbols",
+  "test_setup.py::test_init_stock_scores",
+  "test_setup.py::test_set_batches",
+  "test_setup.py::test_soup_it"
 ]
