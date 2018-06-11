@@ -39,6 +39,11 @@ def set_batches(symbols):
 	    x = (i + 1) * 100 + 1
 	return batch_symbols
 
+def total_setup(api_url_base = iex_url_base):
+	symbols = get_symbols(api_url_base)
+	stock_scores = init_stock_scores(symbols)
+	batch_symbols = set_batches(symbols)
+	return symbols, stock_scores, batch_symbols
 
 def soup_it(url):
 	"""Returns html from specified url using Beautiful Soup.
