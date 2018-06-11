@@ -4,6 +4,7 @@
   "test_setup.py::test_get_symbols",
   "test_setup.py::test_init_stock_scores",
   "test_setup.py::test_set_batches",
+  "test_setup.py::test_total_setup",
   "test_setup.py::test_soup_it",
   "test_technical_functions.py::test_moving_avg",
   "test_wacc.py::test_get_beta"
