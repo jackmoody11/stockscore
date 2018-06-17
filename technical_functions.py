@@ -4,7 +4,7 @@ iex_url_base = "https://api.iextrading.com/1.0/"
 
 def suite(batch_symbols, stock_scores, api_url_base = iex_url_base):
 
-    stock_scores += moving_avg_test(batch_symbols, api_url_base, stock_scores)
+    stock_scores = moving_avg_test(batch_symbols, stock_scores)
     return stock_scores
 
 def moving_avg_test(batch_symbols, stock_scores, api_url_base = iex_url_base):

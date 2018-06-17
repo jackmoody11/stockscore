@@ -1,3 +1,4 @@
 {
+  "test_fundamental_functions.py::test_dividend_test_shows_apple_paying_dividend": true,
   "tests/test_setup.py": true
 }

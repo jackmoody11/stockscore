@@ -11,12 +11,11 @@ import technical_functions as tf
 import statistical_functions as sf
 import fundamental_functions as ff
 
-
-iex_url_base = "https://api.iextrading.com/1.0/"
 symbols, stock_scores, batch_symbols = setup.total_setup()
 
 
-stock_scores = ff.suite(batch_symbols, iex_url_base, stock_scores)
-stock_scores = sf.suite(batch_symbols, iex_url_base, stock_scores)
-stock_scores = tf.suite(batch_symbols, iex_url_base, stock_scores)
-print(stock_scores)
+stock_scores = ff.suite(batch_symbols, stock_scores)
+stock_scores = sf.suite(batch_symbols, stock_scores)
+stock_scores = tf.suite(batch_symbols, stock_scores)
+
+top_20 = setup.return_top(stock_scores, 20)
