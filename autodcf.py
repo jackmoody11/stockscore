@@ -45,5 +45,3 @@ good_picks = []
 # find EV by DCF
 # if EV > MV, add stock name to goodPicks
 # and calculate percent upside for stock and add that to goodPicksPercentUpside
-     
-		
