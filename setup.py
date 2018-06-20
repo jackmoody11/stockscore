@@ -1,7 +1,5 @@
 from bs4 import BeautifulSoup
 import requests
-import openpyxl
-import datetime
 
 iex_url_base = "https://api.iextrading.com/1.0/"
 
@@ -71,6 +69,4 @@ def return_top(dict, x = None):
 		x = len(dict)
 	sorted_array = sorted(dict.items(), key=lambda x: x[1], reverse = True)
 	return sorted_array[0:x]
-
-
 
