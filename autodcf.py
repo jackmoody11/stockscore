@@ -3,7 +3,6 @@ import wacc
 
 # Set important variables here
 av_api_key = os.environ.get('av_api_key')
-bc_api_key = os.environ.get('bc_api_key')
 in_user = os.environ.get('in_user')
 in_pass = os.environ.get('in_pass')
 iex_url_base = "https://api.iextrading.com/1.0/"
