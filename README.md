@@ -6,4 +6,4 @@ Similar to how one might rank the best options when they are deciding where to g
 ## Getting Started
 To clone this, run the following:
 
-`git clone https://github.com/jackmoody11/stockScores`
+```git clone https://github.com/jackmoody11/stockScores```
