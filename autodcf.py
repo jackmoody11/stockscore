@@ -2,13 +2,13 @@ import setup
 import wacc
 
 # Set important variables here
-av_api_key = "JTBR8VME8PSBE082"
-bc_api_key = "278e177562c14354971664e88577f41a"
+av_api_key = os.environ.get('av_api_key')
+bc_api_key = os.environ.get('bc_api_key')
+in_user = os.environ.get('in_user')
+in_pass = os.environ.get('in_pass')
 iex_url_base = "https://api.iextrading.com/1.0/"
 in_url_base = "https://api.intrinio.com"
 market_risk_premium = .045
-in_user = "142352fdbd085ec046873f47748139e3"
-in_pass = "1289904d544b7fe0cc14e21d6622e24c"
 
 
 symbols = setup.get_symbols(iex_url_base)
