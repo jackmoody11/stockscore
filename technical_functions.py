@@ -25,4 +25,5 @@ def moving_avg_test(batch_symbols, stock_scores, api_url_base = iex_url_base):
                 elif(2 < per_diff < 5):
                     stock_scores[symbol] += round(5/score)
                     print(symbol + " score went up by " + str(round(5/score)) + " -- SMA 200 under SMA 50 by " + str(per_diff) + "%")
+
     return stock_scores

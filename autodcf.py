@@ -1,10 +1,12 @@
 import setup
 import wacc
 
-# Set important variables here
+# Env Vars
 av_api_key = os.environ.get('av_api_key')
 in_user = os.environ.get('in_user')
 in_pass = os.environ.get('in_pass')
+
+#Base Vars
 iex_url_base = "https://api.iextrading.com/1.0/"
 in_url_base = "https://api.intrinio.com"
 market_risk_premium = .045

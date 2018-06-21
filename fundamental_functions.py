@@ -20,6 +20,7 @@ def dividend_test(batch_symbols, stock_scores, api_url_base = iex_url_base):
             if(div_json[symbol.upper()].get('dividends') and len(div_json[symbol.upper()]['dividends']) >= 16):
                 stock_scores[symbol] += 1
                 print(symbol + " score went up by 1 -- good dividends")
+
     return stock_scores
 
 
@@ -38,6 +39,7 @@ def net_income_test(batch_symbols, stock_scores, api_url_base = iex_url_base):
         		elif(base[0]['netIncome']):
         			stock_scores[symbol] += 1
         			print(symbol + " score went up by 1 -- positive net income last year")
+
     return stock_scores
 
 
