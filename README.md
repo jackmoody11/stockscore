@@ -34,3 +34,8 @@ Similarly, visit [here](https://www.alphavantage.co) to sign up for
 Alpha Vantage. After signing up and getting your API key, you will
 need to set `av_api_key` as an environment variable on your local
 machine.
+
+For Mac users, open up terminal and type `open .bash_profile`. A text
+editor should open and then you will be able to export your variables
+by using `export in_user = *your_username_here*`,
+`export in_pass = *password here*`, etc.
