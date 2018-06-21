@@ -25,4 +25,5 @@ def p_to_b_test(batch_symbols, stock_scores, api_url_base = iex_url_base):
 					elif(1 < base['priceToBook'] <= 2):
 						stock_scores[symbol] += score
 						print(symbol + " score went up by " + str(score) + "-- price to book between 1 and 2")
+
 	return stock_scores
