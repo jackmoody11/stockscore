@@ -27,3 +27,18 @@ def p_to_b_test(batch_symbols, stock_scores, api_url_base = iex_url_base):
 						print(symbol + " score went up by " + str(score) + "-- price to book between 1 and 2")
 
 	return stock_scores
+
+def get_stats(batch_symbols, api_url_base = iex_url_base):
+	stock_stats = {}
+
+	for i in range(len(batch_symbols)):
+		batch_url = api_url_base + "stock/market/batch?symbols=" + batch_symbols[i] + "&types=stats"
+		result = requests.get(batch_url).json()
+		for symbol in result:
+			if(result[symbol.upper()].get('stats')):
+				stock_stats[symbol] = result[symbol]['stats']
+
+	return stock_stats
+
+
+print(get_stats(['AAPL', 'MSFT', 'AMD']))
