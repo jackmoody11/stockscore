@@ -109,19 +109,7 @@ def xl_update_stats(manual = False):
         last_updated = datetime.datetime.now()
         symbols = get_symbols()
         batch_symbols = set_batches(symbols)
-        result = get_stats(batch_symbols)
 
-        for symbol in result:
-            if(result[symbol.upper()].get('stats')):
-                base = result[symbol]['stats']
-                # Price to book test -- Want a lower price to book
-                if(base['priceToBook']):
-                    score = round(5 / (base['priceToBook'] + 0.8))
-                    if(0 < base['priceToBook'] <= 1):
-                        stock_scores[symbol] += score
-                        print(symbol + " score went up by " + str(score) + "-- price to book between 0 and 1")
-                    elif(1 < base['priceToBook'] <= 2):
-                        stock_scores[symbol] += score
-                        print(symbol + " score went up by " + str(score) + "-- price to book between 1 and 2")
+
 
 
