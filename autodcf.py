@@ -12,7 +12,7 @@ in_url_base = "https://api.intrinio.com"
 market_risk_premium = .045
 
 
-symbols = setup.get_symbols(iex_url_base)
+symbols = setup.get_symbols()
 
 # Calculate WACC
 wacc = wacc.get_wacc('amd', market_risk_premium)
