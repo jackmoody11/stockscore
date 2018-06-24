@@ -46,6 +46,15 @@ def xl_update_symbols():
 
 def xl_get_symbols():
 
-    for i in
+    file = 'stock_score_data.xlsx'
+    wb = xl.load_workbook(file)
+    ws = wb['Data']
+    symbols = []
 
-xl_update_symbols()
+    for i in range(4,6000):
+        if ws['A%s'%i].value != None:
+            symbols.append(ws['A%s'%i].value)
+    return symbols
+
+symbols = xl_get_symbols()
+print(symbols)
