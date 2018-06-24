@@ -2,24 +2,6 @@ from bs4 import BeautifulSoup
 import requests
 import data_read as dr
 
-iex_url_base = "https://api.iextrading.com/1.0/"
-
-
-def get_symbols(iex_url_base = iex_url_base):
-
-	"""Gets all symbols from IEX API (uppercase) or Excel
-	if saved within last day. """
-	# if Excel has tickers:
-	# symbols = dr.get_xl_symbols()
-	# else
-	symbols_json = requests.get(iex_url_base + "ref-data/symbols").json()
-	symbols = []
-	for i in range(len(symbols_json)):
-	    if symbols_json[i]['type'] == 'cs':
-	        symbols.append(symbols_json[i]['symbol'])
-
-	return symbols
-
 
 def init_stock_scores(symbols):
 

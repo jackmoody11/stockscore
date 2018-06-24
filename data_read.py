@@ -1,28 +1,51 @@
 import openpyxl as xl
 import pandas as pd
 import datetime
+import requests
 
-# file = 'stock_score_data.xlsx'
-# wb = xl.load_workbook(file)
-# ws = wb['Data']
-
-# last_updated = ws['B1'].value
-# time_now = datetime.datetime.now()
-# time_diff = time_now - last_updated
-
-# if (last_updated == None or time_diff > datetime.timedelta(days=1)):
-#     last_updated = datetime.datetime.now()
-#     wb.save(file)
-# print("The new last updated time is " + str(last_updated))
+iex_url_base = "https://api.iextrading.com/1.0/"
 
 
-# def check_for_xl_symbols():
-#     # Check to see if Excel has symbols
-#     # if Excel has symbols:
-#     # return true
-#     # else
-#     # return false
+def get_symbols(iex_url_base = iex_url_base):
 
-# def get_xl_symbols():
-#     # return array of symbols from Excel
-#     # Note - should only be used if symbols are in Excel
+    """Gets all symbols from IEX API (uppercase) or Excel
+    if saved within last day. """
+    # if Excel has tickers:
+    # symbols = dr.get_xl_symbols()
+    # else
+    symbols_json = requests.get(iex_url_base + "ref-data/symbols").json()
+    symbols = []
+    for i in range(len(symbols_json)):
+        if symbols_json[i]['type'] == 'cs':
+            symbols.append(symbols_json[i]['symbol'])
+
+    return symbols
+
+
+def xl_update_symbols():
+
+    file = 'stock_score_data.xlsx'
+    wb = xl.load_workbook(file)
+    ws = wb['Data']
+
+    last_updated = ws['B1'].value
+    time_now = datetime.datetime.now()
+    time_diff = time_now - last_updated
+
+    if (last_updated == None or time_diff > datetime.timedelta(days=5)):
+        ws['B1'].value = datetime.datetime.now()
+        last_updated = datetime.datetime.now()
+        symbols = get_symbols()
+        for i in range(4,len(symbols)+4):
+            ws['A%s'%i] = symbols[i - 4]
+
+    wb.save(file)
+    # print("The new last updated time is " + str(last_updated))
+    # print(ws['A10'].value)
+
+
+def xl_get_symbols():
+
+    for i in
+
+xl_update_symbols()
