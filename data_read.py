@@ -4,7 +4,13 @@ import datetime
 import requests
 
 iex_url_base = "https://api.iextrading.com/1.0/"
+file = 'stock_score_data.xlsx'
+wb = xl.load_workbook(file)
+ws = wb['Data']
 
+last_updated = ws['B1'].value
+time_now = datetime.datetime.now()
+time_diff = time_now - last_updated
 
 def get_symbols(iex_url_base = iex_url_base):
 
@@ -13,11 +19,17 @@ def get_symbols(iex_url_base = iex_url_base):
     # if Excel has tickers:
     # symbols = dr.get_xl_symbols()
     # else
-    symbols_json = requests.get(iex_url_base + "ref-data/symbols").json()
-    symbols = []
-    for i in range(len(symbols_json)):
-        if symbols_json[i]['type'] == 'cs':
-            symbols.append(symbols_json[i]['symbol'])
+    if time_diff > datetime.timedelta(days=5):
+
+        symbols_json = requests.get(iex_url_base + "ref-data/symbols").json()
+        symbols = []
+        for i in range(len(symbols_json)):
+            if symbols_json[i]['type'] == 'cs':
+                symbols.append(symbols_json[i]['symbol'])
+
+    else:
+
+        symbols = xl_get_symbols()
 
     return symbols
 
@@ -56,5 +68,3 @@ def xl_get_symbols():
             symbols.append(ws['A%s'%i].value)
     return symbols
 
-symbols = xl_get_symbols()
-print(symbols)
