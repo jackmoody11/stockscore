@@ -1,11 +1,10 @@
 import setup
-
-iex_url_base = "https://api.iextrading.com/1.0/"
+import data_read as dr
 
 
 def test_get_symbols():
 
-    assert setup.get_symbols()
+    assert dr.get_symbols()
 
 
 def test_init_stock_scores():

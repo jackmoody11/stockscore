@@ -1,5 +1,5 @@
-import setup
 import wacc
+import data_read as dr
 
 # Env Vars
 av_api_key = os.environ.get('av_api_key')
@@ -12,7 +12,7 @@ in_url_base = "https://api.intrinio.com"
 market_risk_premium = .045
 
 
-symbols = setup.get_symbols()
+symbols = dr.get_symbols()
 
 # Calculate WACC
 wacc = wacc.get_wacc('amd', market_risk_premium)
