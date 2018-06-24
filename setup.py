@@ -5,7 +5,7 @@ import data_read as dr
 iex_url_base = "https://api.iextrading.com/1.0/"
 
 
-def get_symbols(iex_url_base):
+def get_symbols(iex_url_base = iex_url_base):
 
 	"""Gets all symbols from IEX API (uppercase) or Excel
 	if saved within last day. """
@@ -50,9 +50,9 @@ def set_batches(symbols):
 	return batch_symbols
 
 
-def total_setup(api_url_base = iex_url_base):
+def total_setup():
 
-	symbols = get_symbols(api_url_base)
+	symbols = get_symbols()
 	stock_scores = init_stock_scores(symbols)
 	batch_symbols = set_batches(symbols)
 

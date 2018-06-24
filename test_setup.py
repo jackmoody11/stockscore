@@ -5,19 +5,19 @@ iex_url_base = "https://api.iextrading.com/1.0/"
 
 def test_get_symbols():
 
-    assert setup.get_symbols(iex_url_base)
+    assert setup.get_symbols()
 
 
 def test_init_stock_scores():
 
-    symbols = setup.get_symbols(iex_url_base)
+    symbols = setup.get_symbols()
     stock_scores = setup.init_stock_scores(symbols)
     assert all(scores == 0 for scores in stock_scores.values())
 
 
 def test_set_batches():
 
-    symbols = setup.get_symbols(iex_url_base)
+    symbols = setup.get_symbols()
     assert setup.set_batches(symbols)
 
 

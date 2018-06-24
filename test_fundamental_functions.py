@@ -2,7 +2,7 @@ import fundamental_functions as ff
 import setup
 
 iex_url_base = "https://api.iextrading.com/1.0/"
-symbols = setup.get_symbols(iex_url_base)
+symbols = setup.get_symbols()
 batch_symbols = setup.set_batches(symbols)
 stock_scores = setup.init_stock_scores(symbols)
 
