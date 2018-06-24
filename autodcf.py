@@ -1,5 +1,7 @@
+# Modules
 import wacc
 import data_read as dr
+import os
 
 # Env Vars
 av_api_key = os.environ.get('av_api_key')
@@ -15,8 +17,17 @@ market_risk_premium = .045
 symbols = dr.get_symbols()
 
 # Calculate WACC
-wacc = wacc.get_wacc('amd', market_risk_premium)
-print(wacc)
+def get_waccs(symbols):
+
+    stock_waccs = {}
+    for symbol in symbols:
+        stock_waccs[symbol] = wacc.get_wacc(symbol, market_risk_premium)
+
+    return stock_waccs
+
+
+waccs = get_waccs(symbols)
+print(waccs)
 # Initialize variables
 shareholder_equity, net_income = (0,) * 2
 good_picks = []
