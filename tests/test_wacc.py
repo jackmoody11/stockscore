@@ -1,5 +1,4 @@
-import wacc
-import setup
+import stockScore.wacc as wacc
 
 def test_get_beta():
     iex_url_base = "https://api.iextrading.com/1.0/"

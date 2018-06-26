@@ -1,9 +1,1 @@
-[
-  "test_setup.py::test_get_symbols",
-  "test_setup.py::test_init_stock_scores",
-  "test_setup.py::test_set_batches",
-  "test_setup.py::test_total_setup",
-  "test_setup.py::test_soup_it",
-  "test_setup.py::test_return_top_gives_correct_largest_value",
-  "test_setup.py::test_return_top_assumes_length_of_dictionary_by_default"
-]
+[]

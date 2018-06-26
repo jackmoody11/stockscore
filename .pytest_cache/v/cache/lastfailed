@@ -1,4 +1,11 @@
 {
+  "stockScore/tests/test_fundamental_functions.py": true,
+  "stockScore/tests/test_setup.py": true,
+  "stockScore/tests/test_technical_functions.py": true,
+  "stockScore/tests/test_wacc.py": true,
   "test_fundamental_functions.py::test_dividend_test_shows_apple_paying_dividend": true,
-  "tests/test_setup.py": true
+  "tests/test_fundamental_functions.py": true,
+  "tests/test_setup.py": true,
+  "tests/test_technical_functions.py": true,
+  "tests/test_wacc.py": true
 }

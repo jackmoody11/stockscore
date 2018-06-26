@@ -1,11 +1,11 @@
-import technical_functions as tf
-import data_read as dr
-import setup
+import stockScore.technical_functions as tf
+import stockScore.data_read as dr
+import stockScore.start as start
 
 iex_url_base = "https://api.iextrading.com/1.0/"
 symbols = dr.get_symbols()
-batch_symbols = setup.set_batches(symbols)
-stock_scores = setup.init_stock_scores(symbols)
+batch_symbols = start.set_batches(symbols)
+stock_scores = start.init_stock_scores(symbols)
 
 
 def test_moving_avg():
