@@ -1,6 +1,6 @@
 import numpy as np
 import requests
-import setup
+import start
 iex_url_base = "https://api.iextrading.com/1.0/"
 in_url_base = "https://api.intrinio.com"
 in_user = "142352fdbd085ec046873f47748139e3"
@@ -32,7 +32,7 @@ def get_debt_to_equity(symbol):
 def get_rf():
 
 	rf_url = "https://fred.stlouisfed.org/series/DGS30"
-	rf_soup = setup.soup_it(rf_url)
+	rf_soup = start.soup_it(rf_url)
 	if float(rf_soup.find('span', attrs={'class':'series-meta-observation-value'}).text.strip()):
 		rf_rate = float(rf_soup.find('span', attrs={'class':'series-meta-observation-value'}).text.strip())
 		return rf_rate/100

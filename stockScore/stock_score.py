@@ -6,16 +6,18 @@
 # time
 # numpy
 
-import setup
+import start
 import technical_functions as tf
 import statistical_functions as sf
 import fundamental_functions as ff
 
-symbols, stock_scores, batch_symbols = setup.total_setup()
+symbols, stock_scores, batch_symbols = start.total_setup()
 
 
 stock_scores = ff.suite(batch_symbols, stock_scores)
 stock_scores = sf.suite(batch_symbols, stock_scores)
 stock_scores = tf.suite(batch_symbols, stock_scores)
 
-top_20 = setup.return_top(stock_scores, 20)
+top_20 = start.return_top(stock_scores, 20)
+
+print("The top 20 companies are", top_20)
