@@ -1,2 +1,4 @@
 # Compiled python modules.
 *.pyc
+__pycache__
+.pytest_cache
