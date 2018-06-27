@@ -1,3 +1,5 @@
+# NOTE: NOT CURRENTLY IN USE - FOR FUTURE USE
+
 import requests
 
 class Stock:

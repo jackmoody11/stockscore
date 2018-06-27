@@ -1,6 +1,6 @@
 # Modules
 import wacc
-import data_read as dr
+import start
 import os
 
 # Env Vars
@@ -14,7 +14,7 @@ in_url_base = "https://api.intrinio.com"
 market_risk_premium = .045
 
 
-symbols = dr.get_symbols()
+symbols = start.get_symbols()
 
 # Calculate WACC
 def get_waccs(symbols):
