@@ -73,7 +73,7 @@ def set_batches(symbols):
 file = 'stock_score_data.xlsx'
 wb = xl.load_workbook(file)
 ws = wb['Data']
-symbols = get_symbols()
+symbols = xl_get_symbols()
 batch_symbols = set_batches(symbols)
 stats = {}
 characteristics = ['marketcap', 'beta', 'week52high', 'week52low', \
@@ -104,8 +104,12 @@ if (True):
         for characteristic in characteristics:
             column = xl.utils.cell.get_column_letter(characteristics.index(characteristic) + 2)
             row = symbols.index(symbol) + 4
-            ws[column + str(row)].value = stats[symbol][characteristic]
-            print(column + str(row), "value set to " + str(stats[symbol][characteristic]))
+            if stats[symbol]:
+                ws[column + str(row)].value = stats[symbol][characteristic]
+                print(column + str(row), "value set to " + str(stats[symbol][characteristic]))
+            else:
+                print(symbol, "not included")
+                continue
     wb.save(file)
 
 

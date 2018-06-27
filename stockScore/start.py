@@ -111,7 +111,7 @@ def get_stats(iex_url_base = iex_url_base, manual = False):
 	file = 'stock_score_data.xlsx'
     wb = xl.load_workbook(file)
     ws = wb['Data']
-    symbols = get_symbols()
+    symbols = xl_get_symbols()
     batch_symbols = set_batches(symbols)
     stats = {}
     characteristics = ['marketcap', 'beta', 'week52high', 'week52low', \
@@ -130,14 +130,21 @@ def get_stats(iex_url_base = iex_url_base, manual = False):
     if (last_updated == None or time_diff > datetime.timedelta(days=5) or manual):
 
     	for i in batch_symbols:
-			batch_url = iex_url_base + "stock/market/batch?symbols=" + batch_symbols[i] + "&types=stats"
-			result = requests.get(batch_url).json()
-			for symbol in result:
-				if(result[symbol.upper()].get('stats')):
+	        batch_url = iex_url_base + "stock/market/batch?symbols=" + batch_symbols[i] + "&types=stats"
+	        result = requests.get(batch_url).json()
+	        print(i)
+	        for symbol in result:
+	            if(result[symbol.upper()].get('stats')):
 
-					stats[symbol] = result[symbol]['stats']
+	                stats[symbol] = result[symbol]['stats']
 
-
+	    for symbol in symbols:
+	        for characteristic in characteristics:
+	            column = xl.utils.cell.get_column_letter(characteristics.index(characteristic) + 2)
+	            row = symbols.index(symbol) + 4
+	            ws[column + str(row)].value = stats[symbol][characteristic]
+	            print(column + str(row), "value set to " + str(stats[symbol][characteristic]))
+	    wb.save(file)
 
     else:
 
