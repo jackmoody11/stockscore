@@ -2,6 +2,7 @@
 
 import requests
 
+
 class Stock:
 
     iex_url_base = "https://api.iextrading.com/1.0/"
@@ -16,7 +17,7 @@ class Stock:
         self.sentiment_score = 0
 
         # Initialize different stock attributes
-        self.ticker =''
+        self.ticker = ''
         self.company_name = ''
         self.current_price = None
         self.pe_ratio = None

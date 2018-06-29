@@ -7,8 +7,9 @@ import datetime
 iex_url_base = "https://api.iextrading.com/1.0/"
 
 # Functions
-def init_stock_scores(symbols):
 
+
+def init_stock_scores(symbols):
 	"""Set all stock scores to zero. """
 	stock_scores = {}
 	for symbol in symbols:
