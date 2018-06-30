@@ -1,10 +1,9 @@
-import stockScore.start
-import stockScore.data_read as dr
+import stockScore.start as start
 
 
 def test_get_symbols():
 
-    assert dr.get_symbols()
+    assert start.get_symbols()
 
 
 def test_init_stock_scores():

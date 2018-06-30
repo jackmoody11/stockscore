@@ -1,8 +1,7 @@
 import stockScore.fundamental_functions as ff
-import stockScore.data_read as dr
 import stockScore.start as start
 
-symbols = dr.get_symbols()
+symbols = start.get_symbols()
 batch_symbols = start.set_batches(symbols)
 stock_scores = start.init_stock_scores(symbols)
 
