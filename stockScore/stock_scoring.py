@@ -1,6 +1,6 @@
 # NOTE: NOT CURRENTLY IN USE - FOR FUTURE USE
 
-import requests
+# import requests
 
 
 class Stock:
