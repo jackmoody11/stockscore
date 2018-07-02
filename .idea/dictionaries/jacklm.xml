@@ -5,7 +5,11 @@
       <w>ebitda</w>
       <w>financials</w>
       <w>marketcap</w>
+      <w>pycache</w>
+      <w>pypi</w>
+      <w>pytest</w>
       <w>wacc</w>
+      <w>waccs</w>
       <w>xbrl</w>
       <w>xlsx</w>
     </words>

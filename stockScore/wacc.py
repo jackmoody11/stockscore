@@ -1,10 +1,11 @@
 import numpy as np
+import os
 import requests
-import start
+from stockScore import start
 iex_url_base = "https://api.iextrading.com/1.0/"
 in_url_base = "https://api.intrinio.com"
-in_user = "142352fdbd085ec046873f47748139e3"
-in_pass = "1289904d544b7fe0cc14e21d6622e24c"
+in_user = os.environ.get('in_user')
+in_pass = os.environ.get('in_pass')
 
 
 def get_beta(symbol):

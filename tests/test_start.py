@@ -1,4 +1,4 @@
-import stockScore.start as start
+from stockScore import start
 
 
 def test_get_symbols():
@@ -6,11 +6,17 @@ def test_get_symbols():
     assert start.get_symbols()
 
 
-def test_init_stock_scores():
+def test_init_stock_scores_sets_all_scores_to_zero():
 
     symbols = start.get_symbols()
     stock_scores = start.init_stock_scores(symbols)
     assert all(scores == 0 for scores in stock_scores.values())
+
+
+def test_init_stock_scores_returns_at_least_1000_stocks_to_score():
+    symbols = start.get_symbols()
+    stock_scores = start.init_stock_scores(symbols)
+    assert len(stock_scores) >= 1000, 'At least 1000 stock scores initialized'
 
 
 def test_set_batches():
