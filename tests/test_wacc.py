@@ -1,4 +1,4 @@
-import stockScore.wacc as wacc
+from stockScore import wacc as wacc
 
 
 def test_get_beta():
