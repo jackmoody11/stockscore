@@ -10,6 +10,8 @@
   "tests/test_start.py::test_soup_it",
   "tests/test_start.py::test_return_top_gives_correct_largest_value",
   "tests/test_start.py::test_return_top_assumes_length_of_dictionary_by_default",
+  "tests/test_statistical_functions.py::test_p_to_b_test_gets_at_least_1000_scores",
+  "tests/test_statistical_functions.py::test_p_to_b_not_all_zero",
   "tests/test_technical_functions.py::test_moving_avg",
   "tests/test_wacc.py::test_get_beta"
 ]
