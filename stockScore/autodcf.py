@@ -19,11 +19,11 @@ symbols = start.get_symbols()
 # Calculate WACC
 
 
-def get_waccs(symbols):
+def get_waccs(tickers):
 
     stock_waccs = {}
-    for symbol in symbols:
-        stock_waccs[symbol] = wacc.get_wacc(symbol, market_risk_premium)
+    for ticker in tickers:
+        stock_waccs[ticker] = wacc.get_wacc(ticker, market_risk_premium)
 
     return stock_waccs
 
