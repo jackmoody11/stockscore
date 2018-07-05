@@ -6,10 +6,10 @@
 # time
 # numpy
 
-import start
-import technical_functions as tf
-import statistical_functions as sf
-import fundamental_functions as ff
+from stockScore import start as start
+from stockScore import technical_functions as tf
+from stockScore import statistical_functions as sf
+from stockScore import fundamental_functions as ff
 
 symbols, stock_scores, batch_symbols = start.total_setup()
 

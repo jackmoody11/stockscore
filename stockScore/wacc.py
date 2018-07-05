@@ -2,6 +2,7 @@ import numpy as np
 import os
 import requests
 from stockScore import start
+
 iex_url_base = "https://api.iextrading.com/1.0/"
 in_url_base = "https://api.intrinio.com"
 in_user = os.environ.get('in_user')
@@ -72,7 +73,7 @@ def get_tax_rate(symbol):
 def get_interest_exp(symbol):
 
     in_json = requests.get(in_url_base + '/financials/reported?identifier=' + symbol.upper() +
-                           '&statement=income_statement&fiscal_year=2015&fiscal_period=FY', auth=(in_user, in_pass)).json()
+                           '&statement=income_statement&fiscal_year=2017&fiscal_period=FY', auth=(in_user, in_pass)).json()
     data = in_json['data']
     int_exp_dict = next((item for item in data if item[
         'xbrl_tag'] == 'InterestExpense'), None)
@@ -99,3 +100,4 @@ def get_wacc(symbol, rp):
     wacc = e_to_v * cost_of_equity + d_to_v * \
         (1 - tax_rate) * get_interest_exp(symbol)  # /getPretaxIncome(symbol)
     return wacc
+
