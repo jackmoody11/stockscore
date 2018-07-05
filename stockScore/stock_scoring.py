@@ -16,13 +16,21 @@ class Stock:
         self.momentum_score = 0
         self.sentiment_score = 0
 
-        # Initialize different stock attributes
+        # Initialize stock info
         self.ticker = ''
         self.company_name = ''
         self.current_price = None
+        self.market_cap = None
+
+        # Value
         self.pe_ratio = None
         self.pb_ratio = None
-        self.market_cap = None
+        self.net_income = {}
+        self.dividends = {}
+
+        # Momentum
+        self.ma_50 = None
+        self.ma_200 = None
 
         # Initialize DCF variables
         self.wacc = None

@@ -1,5 +1,5 @@
-import stockScore.technical_functions as tf
-import stockScore.start as start
+from stockScore import technical_functions as tf
+from stockScore import start as start
 
 iex_url_base = "https://api.iextrading.com/1.0/"
 symbols = start.get_symbols()
