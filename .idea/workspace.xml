@@ -2,23 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="992aa82a-4760-4488-95f7-ed1cba6ef0dc" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/jacklm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/jacklm.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/stockScore.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/stockScore.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" beforeDir="false" afterPath="$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.pytest_cache/v/cache/nodeids" beforeDir="false" afterPath="$PROJECT_DIR$/.pytest_cache/v/cache/nodeids" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stockScore/autodcf.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/autodcf.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stockScore/fundamental_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/fundamental_functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stockScore/oneoff.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/oneoff.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stockScore/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/start.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stockScore/statistical_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/statistical_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stockScore/stock_score.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/stock_score.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stockScore/stock_scoring.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/stock_scoring.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stockScore/wacc.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/wacc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stockScore/technical_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/technical_functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_fundamental_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_fundamental_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_technical_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_technical_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/pip-selfcheck.json" beforeDir="false" afterPath="$PROJECT_DIR$/venv/pip-selfcheck.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,14 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="stock_score.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stockScore/stock_score.py">
+      <file leaf-file-name="technical_functions.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stockScore/technical_functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
-              <folding>
-                <element signature="e#181#218#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="321">
+              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
             </state>
           </provider>
         </entry>
@@ -44,41 +31,17 @@
       <file leaf-file-name="fundamental_functions.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stockScore/fundamental_functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="27" column="86" selection-start-line="27" selection-start-column="86" selection-end-line="27" selection-end-column="114" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="192">
+              <caret line="28" column="34" lean-forward="true" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="start.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stockScore/start.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="75" selection-start-line="75" selection-end-line="75" />
-              <folding>
-                <element signature="e#10#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="oneoff.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="oneoff.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/stockScore/oneoff.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="14" column="55" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LICENSE" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/LICENSE">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+            <state relative-caret-position="60">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
@@ -106,7 +69,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/tests/test_setup.py" />
-        <option value="$PROJECT_DIR$/stockScore/technical_functions.py" />
         <option value="$PROJECT_DIR$/stockScore/__init__.py" />
         <option value="$PROJECT_DIR$/tests/test_start.py" />
         <option value="$PROJECT_DIR$/tests/__init__.py" />
@@ -118,11 +80,12 @@
         <option value="$PROJECT_DIR$/stockScore/stock_score.py" />
         <option value="$PROJECT_DIR$/stockScore/stock_scoring.py" />
         <option value="$PROJECT_DIR$/stockScore/statistical_functions.py" />
-        <option value="$PROJECT_DIR$/tests/test_fundamental_functions.py" />
-        <option value="$PROJECT_DIR$/stockScore/fundamental_functions.py" />
-        <option value="$PROJECT_DIR$/stockScore/start.py" />
-        <option value="$PROJECT_DIR$/stockScore/oneoff.py" />
         <option value="$PROJECT_DIR$/LICENSE" />
+        <option value="$PROJECT_DIR$/stockScore/start.py" />
+        <option value="$PROJECT_DIR$/stockScore/fundamental_functions.py" />
+        <option value="$PROJECT_DIR$/tests/test_fundamental_functions.py" />
+        <option value="$PROJECT_DIR$/stockScore/technical_functions.py" />
+        <option value="$PROJECT_DIR$/stockScore/oneoff.py" />
       </list>
     </option>
   </component>
@@ -148,7 +111,7 @@
             <path>
               <item name="stockScore" type="b2602c69:ProjectViewProjectNode" />
               <item name="stockScore" type="462c0819:PsiDirectoryNode" />
-              <item name=".pytest_cache" type="462c0819:PsiDirectoryNode" />
+              <item name="stockScore" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -246,7 +209,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="test_start" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="test_fundamental_functions" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="stockScore" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -258,7 +221,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_start.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_fundamental_functions.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -284,19 +247,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.start" />
-      <item itemvalue="Python.test_start" />
       <item itemvalue="Python.wacc" />
       <item itemvalue="Python.autodcf" />
       <item itemvalue="Python.stock_score" />
       <item itemvalue="Python.oneoff" />
+      <item itemvalue="Python.test_fundamental_functions" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.oneoff" />
+        <item itemvalue="Python.test_fundamental_functions" />
         <item itemvalue="Python.stock_score" />
         <item itemvalue="Python.autodcf" />
         <item itemvalue="Python.wacc" />
-        <item itemvalue="Python.test_start" />
       </list>
     </recent_temporary>
   </component>
@@ -317,13 +280,13 @@
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25019857" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25019857" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50039715" side_tool="true" weight="0.32863188" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32863188" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32863188" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32863188" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49960285" visible="true" weight="0.32863188" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49960285" visible="true" weight="0.32863188" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32863188" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -341,12 +304,19 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/test_fundamental_functions.py</url>
+          <line>32</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint suspend="NONE" type="python-exception">
           <properties exception="BaseException" />
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="28" />
+      <option name="time" value="31" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -502,13 +472,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_technical_functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_wacc.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -526,13 +489,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stockScore/technical_functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -563,16 +519,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stockScore/stock_score.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="e#181#218#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stockScore/statistical_functions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -587,44 +533,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_fundamental_functions.py">
+    <entry file="file://$PROJECT_DIR$/LICENSE">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="5" column="47" lean-forward="true" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
+        <state relative-caret-position="300">
+          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stockScore/fundamental_functions.py">
+    <entry file="file://$PROJECT_DIR$/tests/test_technical_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="27" column="86" selection-start-line="27" selection-start-column="86" selection-end-line="27" selection-end-column="114" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="15">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_fundamental_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stockScore/start.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="75" selection-start-line="75" selection-end-line="75" />
+        <state relative-caret-position="1350">
+          <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
           <folding>
             <element signature="e#10#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stockScore/oneoff.py">
+    <entry file="file://$PROJECT_DIR$/stockScore/stock_score.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="14" column="55" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
+        <state relative-caret-position="345">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="e#181#218#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LICENSE">
+    <entry file="file://$PROJECT_DIR$/stockScore/fundamental_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+        <state relative-caret-position="192">
+          <caret line="28" column="34" lean-forward="true" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stockScore/technical_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stockScore/oneoff.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>

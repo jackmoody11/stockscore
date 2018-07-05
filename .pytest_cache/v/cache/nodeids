@@ -1,6 +1,7 @@
 [
   "tests/test_fundamental_functions.py::test_dividend_test_returns_scores",
-  "tests/test_fundamental_functions.py::test_net_income_test",
+  "tests/test_fundamental_functions.py::test_net_income_test_returns_dictionary",
+  "tests/test_fundamental_functions.py::test_net_income_test_returns_aapl_with_pos_ni_for_all_years_given",
   "tests/test_start.py::test_get_symbols",
   "tests/test_start.py::test_init_stock_scores_sets_all_scores_to_zero",
   "tests/test_start.py::test_init_stock_scores_returns_at_least_1000_stocks_to_score",
