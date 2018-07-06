@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="992aa82a-4760-4488-95f7-ed1cba6ef0dc" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pytest_cache/v/cache/nodeids" beforeDir="false" afterPath="$PROJECT_DIR$/.pytest_cache/v/cache/nodeids" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stockScore/oneoff.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/oneoff.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stockScore/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/start.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stockScore/statistical_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/statistical_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_technical_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_technical_functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stockScore/stock_score.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/stock_score.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,84 +15,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/stockScore$stock_score.coverage" NAME="stock_score Coverage Results" MODIFIED="1530832019558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stockScore" />
-    <SUITE FILE_PATH="coverage/stockScore$oneoff.coverage" NAME="oneoff Coverage Results" MODIFIED="1530832578893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stockScore" />
+    <SUITE FILE_PATH="coverage/stockScore$start.coverage" NAME="start Coverage Results" MODIFIED="1530833790942" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stockScore" />
+    <SUITE FILE_PATH="coverage/stockScore$stock_score.coverage" NAME="stock_score Coverage Results" MODIFIED="1530841532024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stockScore" />
+    <SUITE FILE_PATH="coverage/stockScore$oneoff.coverage" NAME="oneoff Coverage Results" MODIFIED="1530841394218" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stockScore" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="stockScore" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="technical_functions.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stockScore/technical_functions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" selection-start-line="37" selection-end-line="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fundamental_functions.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stockScore/fundamental_functions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="33" column="38" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="33" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="stock_score.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stockScore/stock_score.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="7" lean-forward="true" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
-              <folding>
-                <element signature="e#181#218#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="oneoff.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stockScore/oneoff.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="statistical_functions.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stockScore/statistical_functions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="34" selection-start-line="34" selection-end-line="48" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_statistical_functions.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tests/test_statistical_functions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-              <folding>
-                <element signature="e#0#48#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_technical_functions.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/test_technical_functions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
-              <folding>
-                <element signature="e#0#48#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -123,17 +53,17 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/stockScore/autodcf.py" />
         <option value="$PROJECT_DIR$/stockScore/wacc.py" />
-        <option value="$PROJECT_DIR$/stockScore/stock_score.py" />
         <option value="$PROJECT_DIR$/stockScore/stock_scoring.py" />
         <option value="$PROJECT_DIR$/LICENSE" />
-        <option value="$PROJECT_DIR$/stockScore/start.py" />
         <option value="$PROJECT_DIR$/stockScore/fundamental_functions.py" />
         <option value="$PROJECT_DIR$/tests/test_fundamental_functions.py" />
         <option value="$PROJECT_DIR$/stockScore/technical_functions.py" />
-        <option value="$PROJECT_DIR$/stockScore/oneoff.py" />
         <option value="$PROJECT_DIR$/tests/test_technical_functions.py" />
-        <option value="$PROJECT_DIR$/stockScore/statistical_functions.py" />
         <option value="$PROJECT_DIR$/tests/test_statistical_functions.py" />
+        <option value="$PROJECT_DIR$/stockScore/stock_score.py" />
+        <option value="$PROJECT_DIR$/stockScore/oneoff.py" />
+        <option value="$PROJECT_DIR$/stockScore/statistical_functions.py" />
+        <option value="$PROJECT_DIR$/stockScore/start.py" />
       </list>
     </option>
   </component>
@@ -165,11 +95,6 @@
               <item name="stockScore" type="b2602c69:ProjectViewProjectNode" />
               <item name="stockScore" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="stockScore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="stockScore" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -194,7 +119,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.oneoff">
+  <component name="RunManager" selected="Python.stock_score">
     <configuration name="autodcf" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="stockScore" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -319,8 +244,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.oneoff" />
         <item itemvalue="Python.stock_score" />
+        <item itemvalue="Python.oneoff" />
         <item itemvalue="Python.test_fundamental_functions" />
         <item itemvalue="Python.autodcf" />
         <item itemvalue="Python.wacc" />
@@ -342,7 +267,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50039715" side_tool="true" weight="0.32863188" />
@@ -350,13 +274,15 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32863188" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32863188" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49960285" visible="true" weight="0.32863188" />
+      <window_info anchor="right" id="Coverage" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32863188" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25444266" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.25444266" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="SciView" weight="0.32956383" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Structure" order="1" sideWeight="0.5021008" side_tool="true" weight="0.25444266" />
+      <window_info anchor="bottom" id="Concurrent Activities Diagram" weight="0.32863188" />
+      <window_info id="Favorites" order="2" sideWeight="0.5021008" side_tool="true" weight="0.25444266" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3977433" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -369,6 +295,32 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -387,7 +339,7 @@
           <properties exception="BaseException" />
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="34" />
+      <option name="time" value="36" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -607,16 +559,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stockScore/start.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1350">
-          <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
-          <folding>
-            <element signature="e#10#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stockScore/fundamental_functions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -624,27 +566,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_statistical_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/stockScore/stock_score.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="7" lean-forward="true" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+        <state relative-caret-position="321">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
           <folding>
             <element signature="e#181#218#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stockScore/technical_functions.py">
+    <entry file="file://$PROJECT_DIR$/stockScore/start.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        <state relative-caret-position="276">
+          <caret line="107" column="48" selection-start-line="107" selection-start-column="48" selection-end-line="107" selection-end-column="48" />
+          <folding>
+            <element signature="e#10#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stockScore/oneoff.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="75">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stockScore/statistical_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="15" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -658,20 +623,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stockScore/statistical_functions.py">
+    <entry file="file://$PROJECT_DIR$/stockScore/technical_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="34" selection-start-line="34" selection-end-line="48" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_statistical_functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="555">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
         </state>
       </provider>
     </entry>

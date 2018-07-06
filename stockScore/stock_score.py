@@ -10,6 +10,9 @@ from stockScore import start as start
 from stockScore import technical_functions as tf
 from stockScore import statistical_functions as sf
 from stockScore import fundamental_functions as ff
+import time
+
+start_time = time.time()
 
 symbols, stock_scores, batch_symbols = start.total_setup()
 
@@ -20,4 +23,6 @@ stock_scores = tf.suite(batch_symbols, stock_scores)
 
 top_20 = start.return_top(stock_scores, 20)
 
+end_time = time.time()
 print("The top 20 companies are", top_20)
+print("That took " + str(end_time - start_time) + " seconds")
