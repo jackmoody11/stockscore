@@ -1,3 +1,11 @@
+To Do
+=====
+Instead of constantly updating a TODO list, this project will
+utilize the *issues* and *projects* tabs in Github to keep track of
+what enhancements are left to do. Below is information that is too long
+for Github issues:
+
+
 APIs for future use
 -------------------
 
