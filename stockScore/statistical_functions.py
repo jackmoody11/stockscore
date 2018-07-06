@@ -1,4 +1,5 @@
 from stockScore import start
+import requests
 iex_url_base = "https://api.iextrading.com/1.0/"
 
 
