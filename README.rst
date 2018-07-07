@@ -18,6 +18,7 @@ Getting Started
 To clone this, run the following:
 
 ::
+
     git clone https://github.com/jackmoody11/stockScores
 
 These instructions will get you a copy of the project up and running on
@@ -133,4 +134,4 @@ Acknowledgments
 .. _CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md
 .. _SemVer: http://semver.org/
 .. _tags on this repository: https://github.com/jackmoody11/stockScores/tags
-.. _LICENSE.md: LICENSE
+.. _LICENSE.md: https://github.com/jackmoody11/stockScores/blob/master/LICENSE
