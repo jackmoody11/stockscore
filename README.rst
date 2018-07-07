@@ -134,4 +134,4 @@ Acknowledgments
 .. _CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md
 .. _SemVer: http://semver.org/
 .. _tags on this repository: https://github.com/jackmoody11/stockScores/tags
-.. _LICENSE.md: https://github.com/jackmoody11/stockScores/blob/master/LICENSE
+.. _LICENSE: https://github.com/jackmoody11/stockScores/blob/master/LICENSE
