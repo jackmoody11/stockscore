@@ -12,8 +12,17 @@ showing which stocks performed best under the given tests.
 
 *Note: This README is a work in progress*
 
-Getting Started
----------------
+Prerequisites
+~~~~~~~~~~~~~
+
+- You can get the latest version of Python 3 here_ (this should come with the latest version of pip)
+- All dependencies are contained in the virtual environment (more on that directly below)
+
+Installing
+~~~~~~~~~~
+
+A step by step series of examples that tell you how to get a development
+env running
 
 To clone this, run the following:
 
@@ -25,26 +34,31 @@ These instructions will get you a copy of the project up and running on
 your local machine for development and testing purposes. See deployment
 for notes on how to deploy the project on a live system.
 
-Prerequisites
-~~~~~~~~~~~~~
-
-- You can get the latest version of Python 3 here_ (this should come with the latest version of pip)
-
-::
-
-   Give examples
-
-Installing
-~~~~~~~~~~
-
-A step by step series of examples that tell you how to get a development
-env running
-
 Make sure you have virtualenv installed
 
 ::
 
    pip install virtualenv
+
+Change your working directory to the main stockScore folder
+
+::
+
+    cd my/path/to/stockScore
+
+Then, in order to activate the virtual environment run the following:
+
+For Mac users:
+
+::
+
+    source venv/bin/activate
+
+For Windows users:
+
+::
+
+    .\venv\Scripts\activate
 
 
 End with an example of getting some data out of the system or using it
