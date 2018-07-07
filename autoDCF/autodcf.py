@@ -1,5 +1,5 @@
 # Modules
-from stockScore import wacc
+from autoDCF import wacc
 from stockScore import start
 import os
 
