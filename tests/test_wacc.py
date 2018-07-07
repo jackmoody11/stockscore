@@ -1,4 +1,4 @@
-from stockScore import wacc as wacc
+from autoDCF import wacc as wacc
 
 
 def test_get_beta():
