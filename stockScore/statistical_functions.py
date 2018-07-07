@@ -9,6 +9,14 @@ def suite(batch_symbols, stock_scores):
 
 def p_to_b_test(batch_data, stock_scores):
 
+    """
+    :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
+    functions to set batch_data
+    :param stock_scores: Dictionary with stock symbols and corresponding scores
+    (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
+    :return: Returns an updated stock_score dictionary. Make sure to set stock_score to the function
+    so that p_to_b_test() can return updated stock scores.
+    """
     stats = start.get_stats(batch_data)
     for symbol in stock_scores:
         if stats.get(symbol):
