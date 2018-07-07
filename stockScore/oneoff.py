@@ -7,4 +7,3 @@
 # Will probably want these for setting up stockScore tests
 # symbols = start.get_symbols()
 # batches = start.set_batches(symbols)
-
