@@ -56,6 +56,30 @@ def net_income_test(batch_data, stock_scores):
     return stock_scores
 
 
+def current_ratio_test(batch_data, stock_scores):
+
+    pool_outputs = start.get_pool_response(batch_data, "&types=financials&range=5y")
+    for first in pool_outputs:
+        for batch in first:
+            for ni_json in batch:
+                for symbol in ni_json:
+                    if ni_json[symbol].get('financials').get('financials') is not None:
+                        base = ni_json[symbol]['financials']['financials']
+                        if base[0]['currentAssets'] and base[0]['currentDebt']:
+                            current_assets = base[0]['currentAssets']
+                            current_debt = base[0]['currentDebt']
+                            if current_debt != 0:
+                                current_ratio = current_assets/current_debt
+                                if current_ratio >= 1.5:
+                                    stock_scores[symbol] += 2
+                                    print(symbol + " score went up by 2 -- current ratio >= 1.5")
+                                elif current_ratio >= 1:
+                                    stock_scores[symbol] += 1
+                                    print(symbol + " score went up by 1 -- current ratio >= 1")
+
+    return stock_scores
+
+
 def suite(batch_data, stock_scores):
 
     """
@@ -69,4 +93,5 @@ def suite(batch_data, stock_scores):
     """
     stock_scores = dividend_test(batch_data, stock_scores)
     stock_scores = net_income_test(batch_data, stock_scores)
+    stock_scores = current_ratio_test(batch_data, stock_scores)
     return stock_scores
