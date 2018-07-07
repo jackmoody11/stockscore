@@ -132,8 +132,7 @@ file for details
 Acknowledgments
 ---------------
 
--  Hat tip to Benjamin Graham's *Intelligent Investor*. If you haven't already,
-read this book!
+-  Hat tip to Benjamin Graham's *Intelligent Investor*. If you haven't already, read this book!
 
 .. _here: https://docs.python.org/3/installing/
 .. _look here: https://pytestguide.readthedocs.io/en/latest/
