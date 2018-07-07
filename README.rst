@@ -28,7 +28,7 @@ for notes on how to deploy the project on a live system.
 Prerequisites
 ~~~~~~~~~~~~~
 
-What things you need to install the software and how to install them
+- You can get the latest version of Python 3 here_ (this should come with the latest version of pip)
 
 ::
 
@@ -40,17 +40,12 @@ Installing
 A step by step series of examples that tell you how to get a development
 env running
 
-Say what the step will be
+Make sure you have virtualenv installed
 
 ::
 
-   Give the example
+   pip install virtualenv
 
-And repeat
-
-::
-
-   until finished
 
 End with an example of getting some data out of the system or using it
 for a little demo
@@ -71,16 +66,16 @@ In order to run a specific test (like test_fundamental_functions.py), run
     py.test tests/test_fundamental_functions.py
 
 
-For more information on how to use py.test, look `here`_ for the official py.test docs.
+For more information on how to use py.test (like how to a select few tests),
+`look here`_ for the official py.test docs.
 
 Break down into end to end tests
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Explain what these tests test and why
+Stock Score tests aim to make sure that the program is able to retrieve data
+from the IEX API and use that data to properly score the stocks based on
+certain numbers relating to the stocks.
 
-::
-
-   Give an example
 
 And coding style tests
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -123,11 +118,11 @@ file for details
 Acknowledgments
 ---------------
 
--  Hat tip to anyone whose code was used
--  Inspiration
--  etc
+-  Hat tip to Benjamin Graham's *Intelligent Investor*. If you haven't already,
+read this book!
 
-.. _here: https://pytestguide.readthedocs.io/en/latest/
+.. _here: https://docs.python.org/3/installing/
+.. _look here: https://pytestguide.readthedocs.io/en/latest/
 .. _Dropwizard: http://www.dropwizard.io/1.0.2/docs/
 .. _Maven: https://maven.apache.org/
 .. _ROME: https://rometools.github.io/rome/
