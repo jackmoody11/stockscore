@@ -108,7 +108,7 @@ Add additional notes about how to deploy this on a live system
 Built With
 ----------
 
-Plain Python and some great third party extensions.
+Python 3 and some great third party modules.
 
 Contributing
 ------------
