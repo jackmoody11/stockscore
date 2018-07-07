@@ -4,10 +4,14 @@ iex_url_base = "https://api.iextrading.com/1.0/"
 
 def dividend_test(batch_data, stock_scores):
 
-    """Adds 1 point to all stocks that have paid dividends the past four years.
-
-    Must already have stock_scores dictionary. To add this test, run stock_scores = ff.dividend_test(...).
-    (Assuming fundamental_functions is imported as ff)"""
+    """
+    :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
+    functions to set batch_data
+    :param stock_scores: Dictionary with stock symbols and corresponding scores
+    (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
+    :return: Returns an updated stock_score dictionary. Make sure to set stock_score to the function
+    so that dividend_test() can return updated stock scores.
+    """
     # Get data through multiprocessing
     pool_outputs = start.get_pool_response(batch_data, "&types=dividends&range=5y")
 
@@ -23,9 +27,14 @@ def dividend_test(batch_data, stock_scores):
 
 def net_income_test(batch_data, stock_scores):
 
-    """Adds 1 point to all stocks that have paid dividends the past four years.
-
-    Must already have stock_scores dictionary. To add this test, run stock_scores = ff.dividend_test(...)."""
+    """
+    :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
+    functions to set batch_data
+    :param stock_scores: Dictionary with stock symbols and corresponding scores
+    (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
+    :return: Returns an updated stock_score dictionary. Make sure to set stock_score to the function
+    so that net_income_test() can return updated stock scores.
+    """
     # Get data through multiprocessing
     pool_outputs = start.get_pool_response(batch_data, "&types=financials&range=5y")
     for first in pool_outputs:
@@ -47,8 +56,17 @@ def net_income_test(batch_data, stock_scores):
     return stock_scores
 
 
-def suite(batch_symbols, stock_scores):
+def suite(batch_data, stock_scores):
 
-    stock_scores = dividend_test(batch_symbols, stock_scores)
-    stock_scores = net_income_test(batch_symbols, stock_scores)
+    """
+    :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
+    functions to set batch_data
+    :param stock_scores: Dictionary with stock symbols and corresponding scores
+    (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
+    :return: Returns an updated stock_score dictionary that runs all functions
+    in fundamental_functions module. Make sure to set stock_score to the function
+    so that suite() can return updated stock scores.
+    """
+    stock_scores = dividend_test(batch_data, stock_scores)
+    stock_scores = net_income_test(batch_data, stock_scores)
     return stock_scores
