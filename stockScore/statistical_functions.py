@@ -1,5 +1,4 @@
 from stockScore import start
-iex_url_base = "https://api.iextrading.com/1.0/"
 
 
 def suite(batch_symbols, stock_scores):
@@ -25,4 +24,3 @@ def p_to_b_test(batch_data, stock_scores):
                           str(pts) + "-- price to book between 1 and 2")
 
     return stock_scores
-
