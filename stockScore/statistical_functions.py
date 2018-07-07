@@ -1,5 +1,4 @@
 from stockScore import start
-import requests
 iex_url_base = "https://api.iextrading.com/1.0/"
 
 
@@ -11,40 +10,19 @@ def suite(batch_symbols, stock_scores):
 
 def p_to_b_test(batch_data, stock_scores):
 
-    pool_outputs = start.get_pool_response(batch_data, "&types=stats")
-    for first in pool_outputs:
-        for batch in first:
-            for fin_json in batch:
-                for symbol in fin_json:
-                    if fin_json[symbol].get('stats'):
-                        base = fin_json[symbol]['stats']
-                        # Price to book test -- Want a lower price to book
-                        if base['priceToBook']:
-                            pts = round(5 / (base['priceToBook'] + 0.8))
-                            if 0 < base['priceToBook'] <= 1:
-                                stock_scores[symbol] += pts
-                                print(symbol + " score went up by " +
-                                      str(pts) + "-- price to book between 0 and 1")
-                            elif 1 < base['priceToBook'] <= 2:
-                                stock_scores[symbol] += pts
-                                print(symbol + " score went up by " +
-                                      str(pts) + "-- price to book between 1 and 2")
+    stats = start.get_stats(batch_data)
+    for symbol in stock_scores:
+        if stats.get(symbol):
+            if stats[symbol].get('stats').get('priceToBook'):
+                pts = round(5 / (stats[symbol]['stats']['priceToBook'] + 0.8))
+                if 0 < stats[symbol]['stats']['priceToBook'] <= 1:
+                    stock_scores[symbol] += pts
+                    print(symbol + " score went up by " +
+                          str(pts) + "-- price to book between 0 and 1")
+                elif 1 < stats[symbol]['stats']['priceToBook'] <= 2:
+                    stock_scores[symbol] += pts
+                    print(symbol + " score went up by " +
+                          str(pts) + "-- price to book between 1 and 2")
 
     return stock_scores
 
-
-def get_stats(batch_symbols, api_url_base=iex_url_base):
-    stock_stats = {}
-
-    for i in batch_symbols:
-
-        batch_url = api_url_base + "stock/market/batch?symbols=" + \
-            batch_symbols[i] + "&types=stats"
-        result = requests.get(batch_url).json()
-        for symbol in result:
-
-            if result[symbol.upper()].get('stats'):
-
-                stock_stats[symbol] = result[symbol]['stats']
-
-    return stock_stats
