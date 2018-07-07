@@ -13,12 +13,24 @@ def test_dividend_test_returns_scores():
         scores) >= 1000, 'At least 1000 dividend scores listed in stock_scores dictionary'
 
 
-def test_net_income_test_returns_dictionary():
+def test_dividend_test_not_all_zero():
+    scores = start.init_stock_scores(symbols)
+    scores = ff.dividend_test(batch_symbols, scores)
+    assert not all(score == 0 for score in scores.values())
+
+
+def test_net_income_test_returns_scores():
 
     scores = start.init_stock_scores(symbols)
     scores = ff.net_income_test(batch_symbols, scores)
     assert len(
         scores) >= 1000, 'At least 1000 net income scores listed in stock_scores dictionary'
+
+
+def test_net_income_test_not_all_zero():
+    scores = start.init_stock_scores(symbols)
+    scores = ff.net_income_test(batch_symbols, scores)
+    assert not all(score == 0 for score in scores.values())
 
 
 def test_net_income_test_returns_aapl_with_pos_ni_for_all_years_given():

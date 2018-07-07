@@ -13,7 +13,7 @@ def test_init_stock_scores_sets_all_scores_to_zero():
     assert all(scores == 0 for scores in stock_scores.values())
 
 
-def test_init_stock_scores_returns_at_least_1000_stocks_to_score():
+def test_init_stock_scores_returns_scores():
     symbols = start.get_symbols()
     stock_scores = start.init_stock_scores(symbols)
     assert len(stock_scores) >= 1000, 'At least 1000 stock scores initialized'
@@ -37,14 +37,14 @@ def test_total_start():
 
 def test_soup_it():
 
-    assert start.soup_it('https://google.com')
+    assert start.soup_it('https://google.com'), 'Able to fetch parsed HTML from Google'
 
 
 def test_return_top_gives_correct_largest_value():
 
     my_family = {'Jack': 20, 'Nat': 14, 'Sam': 17, 'Dad': 49, 'Mom': 48}
     top = start.return_top(my_family, 5)
-    assert top[0][0] == 'Dad'
+    assert top[0][0] == 'Dad', 'return_top() returns greatest value in dictionary'
 
 
 def test_return_top_assumes_length_of_dictionary_by_default():
