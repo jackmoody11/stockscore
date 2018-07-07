@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="992aa82a-4760-4488-95f7-ed1cba6ef0dc" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/jacklm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/jacklm.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/stockScore.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/stockScore.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.rst" beforeDir="false" afterPath="$PROJECT_DIR$/README.rst" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,8 +25,8 @@
       <file leaf-file-name="README.rst" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.rst">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="121" column="15" selection-start-line="121" selection-start-column="15" selection-end-line="121" selection-end-column="15" />
+            <state relative-caret-position="182">
+              <caret line="100" column="18" lean-forward="true" selection-start-line="100" selection-start-column="18" selection-end-line="100" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -306,8 +302,8 @@
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49960285" weight="0.32863188" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32863188" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32863188" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32863188" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2584814" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32863188" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2584814" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" sideWeight="0.49789914" weight="0.32956383" />
@@ -680,8 +676,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.rst">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="121" column="15" selection-start-line="121" selection-start-column="15" selection-end-line="121" selection-end-column="15" />
+        <state relative-caret-position="182">
+          <caret line="100" column="18" lean-forward="true" selection-start-line="100" selection-start-column="18" selection-end-line="100" selection-end-column="18" />
         </state>
       </provider>
     </entry>
