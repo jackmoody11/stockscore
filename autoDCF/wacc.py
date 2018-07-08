@@ -10,8 +10,8 @@ in_pass = os.environ.get('in_pass')
 
 
 def get_beta(symbol):
-    json = requests.get(iex_url_base + '/stock/' +
-                        symbol.lower() + '/stats').json()
+
+    json = requests.get(iex_url_base + '/stock/' + symbol.lower() + '/stats').json()
     if float(json['beta']):
         beta = float(json['beta'])
     else:
@@ -63,7 +63,8 @@ def get_tax_rate_iex(symbol):
 def get_tax_rate(symbol):
 
     in_json = requests.get(in_url_base + '/financials/standardized?identifier=' + symbol.upper() +
-                           '&statement=income_statement&fiscal_year=2017&fiscal_period=FY', auth=(in_user, in_pass)).json()
+                           '&statement=income_statement&fiscal_year=2017&fiscal_period=FY',
+                           auth=(in_user, in_pass)).json()
     pretax_income = in_json['data'][11]['value']
     taxes = in_json['data'][12]['value']
     tax_rate = taxes / pretax_income
@@ -73,7 +74,8 @@ def get_tax_rate(symbol):
 def get_interest_exp(symbol):
 
     in_json = requests.get(in_url_base + '/financials/reported?identifier=' + symbol.upper() +
-                           '&statement=income_statement&fiscal_year=2017&fiscal_period=FY', auth=(in_user, in_pass)).json()
+                           '&statement=income_statement&fiscal_year=2017&fiscal_period=FY',
+                           auth=(in_user, in_pass)).json()
     data = in_json['data']
     int_exp_dict = next((item for item in data if item[
         'xbrl_tag'] == 'InterestExpense'), None)
@@ -97,7 +99,6 @@ def get_wacc(symbol, rp):
     d_to_v = 1 / (1 + (1 / debt_to_equity))
     cost_of_equity = risk_free + beta * rp
     tax_rate = get_tax_rate(symbol)
-    wacc = e_to_v * cost_of_equity + d_to_v * \
-        (1 - tax_rate) * get_interest_exp(symbol)  # /getPretaxIncome(symbol)
-    return wacc
+    wacc = e_to_v * cost_of_equity + d_to_v * (1 - tax_rate) * get_interest_exp(symbol)  # /getPretaxIncome(symbol)
 
+    return wacc

@@ -3,7 +3,6 @@ iex_url_base = "https://api.iextrading.com/1.0/"
 
 
 def dividend_test(batch_data, stock_scores):
-
     """
     :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
     functions to set batch_data
@@ -26,7 +25,6 @@ def dividend_test(batch_data, stock_scores):
 
 
 def net_income_test(batch_data, stock_scores):
-
     """
     :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
     functions to set batch_data
@@ -57,7 +55,14 @@ def net_income_test(batch_data, stock_scores):
 
 
 def current_ratio_test(batch_data, stock_scores):
-
+    """
+    :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
+    functions to set batch_data
+    :param stock_scores: Dictionary with stock symbols and corresponding scores
+    (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
+    :return: Returns an updated stock_score dictionary. Make sure to set stock_score to the function
+    so that current_ratio() can return updated stock scores.
+    """
     pool_outputs = start.get_pool_response(batch_data, "&types=financials&range=5y")
     for first in pool_outputs:
         for batch in first:
