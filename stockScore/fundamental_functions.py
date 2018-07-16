@@ -1,6 +1,8 @@
 from stockScore import start
 iex_url_base = "https://api.iextrading.com/1.0/"
 
+# ----------  Need to implement start.get_financials() to speed up screening ----------
+
 
 def dividend_test(batch_data, stock_scores):
     """
@@ -34,7 +36,7 @@ def net_income_test(batch_data, stock_scores):
     so that net_income_test() can return updated stock scores.
     """
     # Get data through multiprocessing
-    pool_outputs = start.get_pool_response(batch_data, "&types=financials&range=5y")
+    pool_outputs = start.get_pool_response(batch_data, "&types=financials")
     for first in pool_outputs:
         for batch in first:
             for ni_json in batch:
@@ -63,7 +65,7 @@ def current_ratio_test(batch_data, stock_scores):
     :return: Returns an updated stock_score dictionary. Make sure to set stock_score to the function
     so that current_ratio() can return updated stock scores.
     """
-    pool_outputs = start.get_pool_response(batch_data, "&types=financials&range=5y")
+    pool_outputs = start.get_pool_response(batch_data, "&types=financials")
     for first in pool_outputs:
         for batch in first:
             for ni_json in batch:
