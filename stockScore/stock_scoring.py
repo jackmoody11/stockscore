@@ -1,11 +1,8 @@
 # NOTE: NOT CURRENTLY IN USE - FOR FUTURE USE
-
-# import requests
+# from stockScore import start as start
 
 
 class Stock:
-
-    iex_url_base = "https://api.iextrading.com/1.0/"
 
     def __init__(self):
 

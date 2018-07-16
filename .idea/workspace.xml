@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="992aa82a-4760-4488-95f7-ed1cba6ef0dc" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/financials_example.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stats_example.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dictionaries/jacklm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/jacklm.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autoDCF/wacc.py" beforeDir="false" afterPath="$PROJECT_DIR$/autoDCF/wacc.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stockScore/fundamental_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/fundamental_functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stockScore/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/start.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stockScore/statistical_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/statistical_functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stockScore/stock_scoring.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/stock_scoring.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stockScore/technical_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/technical_functions.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,8 +22,8 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/stockScore$start.coverage" NAME="start Coverage Results" MODIFIED="1530833790942" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stockScore" />
-    <SUITE FILE_PATH="coverage/stockScore$statistical_functions.coverage" NAME="statistical_functions Coverage Results" MODIFIED="1530927155736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stockScore" />
-    <SUITE FILE_PATH="coverage/stockScore$stock_score.coverage" NAME="stock_score Coverage Results" MODIFIED="1530841532024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stockScore" />
+    <SUITE FILE_PATH="coverage/stockScore$statistical_functions.coverage" NAME="statistical_functions Coverage Results" MODIFIED="1531078693462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stockScore" />
+    <SUITE FILE_PATH="coverage/stockScore$stock_score.coverage" NAME="stock_score Coverage Results" MODIFIED="1531705125782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stockScore" />
     <SUITE FILE_PATH="coverage/stockScore$oneoff.coverage" NAME="oneoff Coverage Results" MODIFIED="1530917249096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stockScore" />
   </component>
   <component name="FavoritesManager">
@@ -33,11 +31,50 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="technical_functions.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="stock_score.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stockScore/stock_score.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="21" column="51" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="statistical_functions.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/stockScore/statistical_functions.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="62" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="technical_functions.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stockScore/technical_functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="43" column="26" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
+            <state relative-caret-position="602">
+              <caret line="50" column="52" lean-forward="true" selection-start-line="50" selection-start-column="52" selection-end-line="50" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fundamental_functions.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stockScore/fundamental_functions.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="76" selection-start-line="3" selection-start-column="76" selection-end-line="3" selection-end-column="76" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="start.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stockScore/start.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="122" column="21" lean-forward="true" selection-start-line="122" selection-start-column="21" selection-end-line="122" selection-end-column="21" />
+              <folding>
+                <element signature="e#10#39#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -56,6 +93,8 @@
       <find>start</find>
       <find>in</find>
       <find>batch_data</find>
+      <find>os.environ</find>
+      <find />
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -69,7 +108,6 @@
         <option value="$PROJECT_DIR$/tests/__init__.py" />
         <option value="$PROJECT_DIR$/stockScore/autodcf.py" />
         <option value="$PROJECT_DIR$/stockScore/wacc.py" />
-        <option value="$PROJECT_DIR$/stockScore/stock_scoring.py" />
         <option value="$PROJECT_DIR$/LICENSE" />
         <option value="$PROJECT_DIR$/stockScore/stock_score.py" />
         <option value="$PROJECT_DIR$/TODO.md" />
@@ -88,10 +126,13 @@
         <option value="$PROJECT_DIR$/stockScore/my_req.json" />
         <option value="$PROJECT_DIR$/stockScore/my_req2.json" />
         <option value="$PROJECT_DIR$/autoDCF/wacc.py" />
+        <option value="$PROJECT_DIR$/stockScore/new.py" />
+        <option value="$PROJECT_DIR$/stockScore/stock_scoring.py" />
+        <option value="$PROJECT_DIR$/stockScore/efficient_frontier.py" />
+        <option value="$PROJECT_DIR$/stockScore/technical_functions.py" />
         <option value="$PROJECT_DIR$/stockScore/start.py" />
         <option value="$PROJECT_DIR$/stockScore/fundamental_functions.py" />
         <option value="$PROJECT_DIR$/stockScore/statistical_functions.py" />
-        <option value="$PROJECT_DIR$/stockScore/technical_functions.py" />
       </list>
     </option>
   </component>
@@ -104,7 +145,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="712" />
@@ -162,8 +203,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.statistical_functions">
-    <configuration name="autodcf" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.stock_score">
+    <configuration name="efficient_frontier" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="stockScore" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -176,9 +217,28 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/stockScore/autodcf.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/stockScore/efficient_frontier.py" />
       <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="new" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="stockScore" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/stockScore" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/stockScore/new.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
@@ -258,40 +318,21 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="test_fundamental_functions" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="stockScore" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_fundamental_functions.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <list>
       <item itemvalue="Python.start" />
-      <item itemvalue="Python.autodcf" />
       <item itemvalue="Python.stock_score" />
       <item itemvalue="Python.oneoff" />
-      <item itemvalue="Python.test_fundamental_functions" />
       <item itemvalue="Python.statistical_functions" />
+      <item itemvalue="Python.new" />
+      <item itemvalue="Python.efficient_frontier" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.stock_score" />
+        <item itemvalue="Python.efficient_frontier" />
+        <item itemvalue="Python.new" />
         <item itemvalue="Python.statistical_functions" />
         <item itemvalue="Python.oneoff" />
-        <item itemvalue="Python.stock_score" />
-        <item itemvalue="Python.test_fundamental_functions" />
-        <item itemvalue="Python.autodcf" />
       </list>
     </recent_temporary>
   </component>
@@ -317,7 +358,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="712" extended-state="0" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -326,13 +367,13 @@
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49960285" weight="0.32863188" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32863188" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32863188" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.327212" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2584814" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.27503526" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2584814" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection Results" weight="0.32863188" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32863188" />
-      <window_info anchor="right" id="SciView" order="3" sideWeight="0.49789914" weight="0.32956383" />
+      <window_info anchor="right" id="SciView" order="3" sideWeight="0.49789914" weight="0.52100164" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3977433" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -394,27 +435,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/stockScore/wacc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="18" column="15" lean-forward="true" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stockScore/autodcf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stockScore/wacc.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -508,13 +528,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.pytest_cache/v/cache/nodeids" />
     <entry file="file://$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" />
-    <entry file="file://$PROJECT_DIR$/stockScore/stock_scoring.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stockScore/wacc.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1530">
@@ -540,13 +553,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stockScore/stock_score.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
@@ -668,34 +674,78 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/stockScore/new.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="25" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stockScore/stock_scoring.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stockScore/efficient_frontier.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1800">
+          <caret line="120" column="24" selection-start-line="120" selection-start-column="24" selection-end-line="120" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/shutil.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="460" column="17" lean-forward="true" selection-start-line="460" selection-start-column="17" selection-end-line="460" selection-end-column="17" />
+          <folding>
+            <element signature="e#159#168#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/stockScore/start.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1995">
-          <caret line="133" column="7" selection-start-line="133" selection-start-column="7" selection-end-line="133" selection-end-column="7" />
+        <state relative-caret-position="288">
+          <caret line="122" column="21" lean-forward="true" selection-start-line="122" selection-start-column="21" selection-end-line="122" selection-end-column="21" />
           <folding>
             <element signature="e#10#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stockScore/statistical_functions.py">
+    <entry file="file://$PROJECT_DIR$/stockScore/fundamental_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-217">
-          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+        <state relative-caret-position="45">
+          <caret line="3" column="76" selection-start-line="3" selection-start-column="76" selection-end-line="3" selection-end-column="76" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stockScore/fundamental_functions.py">
+    <entry file="file://$PROJECT_DIR$/stockScore/stock_score.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="96" column="20" lean-forward="true" selection-start-line="96" selection-start-column="20" selection-end-line="96" selection-end-column="20" />
+        <state relative-caret-position="255">
+          <caret line="21" column="51" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stockScore/technical_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="43" column="26" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
+        <state relative-caret-position="602">
+          <caret line="50" column="52" lean-forward="true" selection-start-line="50" selection-start-column="52" selection-end-line="50" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stockScore/statistical_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="62" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
         </state>
       </provider>
     </entry>

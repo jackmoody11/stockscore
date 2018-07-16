@@ -1,17 +1,21 @@
 from stockScore import start
 
 
-def moving_avg_test(batch_data, stock_scores):
+def moving_avg_test(batch_data, stock_scores, stats=None):
 
     """
     :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
     functions to set batch_data
     :param stock_scores: Dictionary with stock symbols and corresponding scores
     (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
+    :param stats: Defaults as None, but can be set to value to speed up performance if running suite
+    or multiple tests at once.
     :return: Returns an updated stock_score dictionary. Make sure to set stock_score to the function
     so that moving_avg_test() can return updated stock scores.
     """
-    stats = start.get_stats(batch_data)
+    if stats is None:
+        stats = start.get_stats(batch_data)
+
     for symbol in stock_scores:
         if stats.get(symbol) and stats[symbol].get('stats'):
             base = stats[symbol]['stats']
@@ -34,15 +38,17 @@ def moving_avg_test(batch_data, stock_scores):
     return stock_scores
 
 
-def suite(batch_data, stock_scores):
+def suite(batch_data, stock_scores, stats=None):
     """
     :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
     functions to set batch_data
     :param stock_scores: Dictionary with stock symbols and corresponding scores
     (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
+    :param stats: Defaults as None, but can be set to value to speed up performance if running suite
+    or multiple tests at once.
     :return: Returns an updated stock_score dictionary that runs all functions
     in technical_functions module. Make sure to set stock_score to the function
     so that suite() can return updated stock scores.
     """
-    stock_scores = moving_avg_test(batch_data, stock_scores)
+    stock_scores = moving_avg_test(batch_data, stock_scores, stats)
     return stock_scores
