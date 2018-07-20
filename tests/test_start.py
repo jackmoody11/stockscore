@@ -52,3 +52,10 @@ def test_return_top_assumes_length_of_dictionary_by_default():
     my_family = {'Jack': 20, 'Nat': 14, 'Sam': 17, 'Dad': 49, 'Mom': 48}
     top = start.return_top(my_family)
     assert top[4][0] == 'Nat'
+
+
+def test_get_stats():
+    symbols = start.get_symbols()
+    batch_data = start.set_batches(symbols)
+    stats = start.get_stats(batch_data)
+    assert stats
