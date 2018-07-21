@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="992aa82a-4760-4488-95f7-ed1cba6ef0dc" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/jacklm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/jacklm.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/financials_example.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stats_example.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stockScore/fundamental_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/fundamental_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stockScore/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/start.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stockScore/statistical_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/statistical_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_fundamental_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_fundamental_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_start.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_start.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_statistical_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_statistical_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_technical_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_technical_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/pip-selfcheck.json" beforeDir="false" afterPath="$PROJECT_DIR$/venv/pip-selfcheck.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,44 +25,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="statistical_functions.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/stockScore/statistical_functions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_statistical_functions.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/test_statistical_functions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="25" column="59" selection-start-line="25" selection-start-column="59" selection-end-line="25" selection-end-column="59" />
-              <folding>
-                <element signature="e#0#50#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_fundamental_functions.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/test_fundamental_functions.py">
+      <file leaf-file-name="fundamental_functions.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stockScore/fundamental_functions.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="403">
-              <caret line="43" column="53" lean-forward="true" selection-start-line="43" selection-start-column="53" selection-end-line="43" selection-end-column="54" />
+              <caret line="57" column="36" selection-start-line="57" selection-start-column="36" selection-end-line="57" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="start.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stockScore/start.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="115" column="56" lean-forward="true" selection-start-line="115" selection-start-column="56" selection-end-line="115" selection-end-column="56" />
               <folding>
-                <element signature="e#0#50#0" expanded="true" />
+                <element signature="e#10#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_technical_functions.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/test_technical_functions.py">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="60">
+              <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -114,7 +91,6 @@
         <option value="$PROJECT_DIR$/TODO.rst" />
         <option value="$PROJECT_DIR$/stockScore/oneoff.py" />
         <option value="$PROJECT_DIR$/CODE_OF_CONDUCT.md" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/autoDCF/__init__.py" />
         <option value="$PROJECT_DIR$/autoDCF/autodcf.py" />
         <option value="$PROJECT_DIR$/tests/test_wacc.py" />
@@ -138,6 +114,7 @@
         <option value="$PROJECT_DIR$/tests/test_fundamental_functions.py" />
         <option value="$PROJECT_DIR$/tests/test_statistical_functions.py" />
         <option value="$PROJECT_DIR$/stockScore/statistical_functions.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -169,11 +146,6 @@
           <expand>
             <path>
               <item name="stockScore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="stockScore" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="stockScore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="stockScore" type="462c0819:PsiDirectoryNode" />
               <item name="stockScore" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -374,7 +346,21 @@
       <option name="project" value="LOCAL" />
       <updated>1532084408457</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Update functions with new data setting and handle exceptions better">
+      <created>1532195914663</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1532195914663</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Improve data fetching">
+      <created>1532195979102</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1532195979102</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -387,11 +373,11 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32863188" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32863188" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49960285" weight="0.32863188" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49919224" weight="0.3441467" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49919224" visible="true" weight="0.3441467" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2625202" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32863188" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32863188" />
       <window_info anchor="right" id="SciView" order="3" sideWeight="0.49789914" weight="0.52100164" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -444,7 +430,9 @@
     <MESSAGE value="Update function documentation" />
     <MESSAGE value="Add testing for get_stats" />
     <MESSAGE value="Add example responses (as dictionaries)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add example responses (as dictionaries)" />
+    <MESSAGE value="Update functions with new data setting and handle exceptions better" />
+    <MESSAGE value="Improve data fetching" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improve data fetching" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -666,34 +654,17 @@
     <entry file="file://$PROJECT_DIR$/.pytest_cache/v/cache/nodeids">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stockScore/start.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="115" column="56" lean-forward="true" selection-start-line="115" selection-start-column="56" selection-end-line="115" selection-end-column="56" />
-          <folding>
-            <element signature="e#10#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stockScore/fundamental_functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="57" column="36" selection-start-line="57" selection-start-column="36" selection-end-line="57" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stockScore/technical_functions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="39" lean-forward="true" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_technical_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
@@ -704,13 +675,6 @@
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_technical_functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
@@ -726,8 +690,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/stockScore/statistical_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
+        <state relative-caret-position="435">
           <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stockScore/fundamental_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="57" column="36" selection-start-line="57" selection-start-column="36" selection-end-line="57" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stockScore/start.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="115" column="56" lean-forward="true" selection-start-line="115" selection-start-column="56" selection-end-line="115" selection-end-column="56" />
+          <folding>
+            <element signature="e#10#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
         </state>
       </provider>
     </entry>
