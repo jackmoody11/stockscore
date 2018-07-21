@@ -54,8 +54,17 @@ def test_return_top_assumes_length_of_dictionary_by_default():
     assert top[4][0] == 'Nat'
 
 
+# Needs work - Don't think this is working as it should
 def test_get_stats():
     symbols = start.get_symbols()
     batch_data = start.set_batches(symbols)
     stats = start.get_stats(batch_data)
     assert stats
+
+
+# Needs work - Don't think this is working as it should
+def test_get_financials():
+    symbols = start.get_symbols()
+    batch_data = start.set_batches(symbols)
+    financials = start.get_financials(batch_data)
+    assert financials
