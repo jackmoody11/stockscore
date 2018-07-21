@@ -1,8 +1,7 @@
 from stockScore import fundamental_functions as ff
 from stockScore import start as start
 
-symbols = start.get_symbols()
-batch_data = start.set_batches(symbols)
+symbols, _, batch_data = start.total_setup()
 financials = start.get_financials(batch_data)
 
 
@@ -56,4 +55,16 @@ def test_current_ratio_test_returns_scores():
 def test_current_ratio_test_not_all_zero():
     scores = start.init_stock_scores(symbols)
     scores = ff.current_ratio_test(batch_data, scores, financials=financials)
+    assert not all(score == 0 for score in scores.values())
+
+
+def test_suite_returns_scores():
+    scores = start.init_stock_scores(symbols)
+    scores = ff.suite(batch_data, scores, financials=financials)
+    assert len(scores) >= 1000, 'At least 1000 scores listed in stock_scores dictionary'
+
+
+def test_suite_not_all_zero():
+    scores = start.init_stock_scores(symbols)
+    scores = ff.suite(batch_data, scores, financials=financials)
     assert not all(score == 0 for score in scores.values())

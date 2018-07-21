@@ -1,8 +1,7 @@
 from stockScore import technical_functions as tf
 from stockScore import start as start
 
-symbols = start.get_symbols()
-batch_data = start.set_batches(symbols)
+symbols, _, batch_data = start.total_setup()
 stats = start.get_stats(batch_data)
 
 
