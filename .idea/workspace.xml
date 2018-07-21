@@ -7,11 +7,16 @@
     <list default="true" id="992aa82a-4760-4488-95f7-ed1cba6ef0dc" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dictionaries/jacklm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/jacklm.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/financials_example.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stats_example.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/stockScore/fundamental_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/fundamental_functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stockScore/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/start.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stockScore/statistical_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/statistical_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stockScore/stock_scoring.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/stock_scoring.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stockScore/technical_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/stockScore/technical_functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_fundamental_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_fundamental_functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_start.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_start.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_statistical_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_statistical_functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_technical_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_technical_functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/pip-selfcheck.json" beforeDir="false" afterPath="$PROJECT_DIR$/venv/pip-selfcheck.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,51 +35,45 @@
     <favorites_list name="stockScore" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="stock_score.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stockScore/stock_score.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="21" column="51" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="statistical_functions.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/stockScore/statistical_functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="62" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
+            <state relative-caret-position="169">
+              <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="technical_functions.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stockScore/technical_functions.py">
+      <file leaf-file-name="test_statistical_functions.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/test_statistical_functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="602">
-              <caret line="50" column="52" lean-forward="true" selection-start-line="50" selection-start-column="52" selection-end-line="50" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fundamental_functions.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stockScore/fundamental_functions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="76" selection-start-line="3" selection-start-column="76" selection-end-line="3" selection-end-column="76" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="start.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stockScore/start.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="122" column="21" lean-forward="true" selection-start-line="122" selection-start-column="21" selection-end-line="122" selection-end-column="21" />
+            <state relative-caret-position="349">
+              <caret line="25" column="59" selection-start-line="25" selection-start-column="59" selection-end-line="25" selection-end-column="59" />
               <folding>
-                <element signature="e#10#39#0" expanded="true" />
+                <element signature="e#0#50#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_fundamental_functions.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/test_fundamental_functions.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="403">
+              <caret line="43" column="53" lean-forward="true" selection-start-line="43" selection-start-column="53" selection-end-line="43" selection-end-column="54" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_technical_functions.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/test_technical_functions.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -94,7 +93,8 @@
       <find>in</find>
       <find>batch_data</find>
       <find>os.environ</find>
-      <find />
+      <find>user = os.environ</find>
+      <find>batch_symbols</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -113,12 +113,8 @@
         <option value="$PROJECT_DIR$/TODO.md" />
         <option value="$PROJECT_DIR$/TODO.rst" />
         <option value="$PROJECT_DIR$/stockScore/oneoff.py" />
-        <option value="$PROJECT_DIR$/tests/test_statistical_functions.py" />
-        <option value="$PROJECT_DIR$/tests/test_technical_functions.py" />
-        <option value="$PROJECT_DIR$/tests/test_start.py" />
         <option value="$PROJECT_DIR$/CODE_OF_CONDUCT.md" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/tests/test_fundamental_functions.py" />
         <option value="$PROJECT_DIR$/autoDCF/__init__.py" />
         <option value="$PROJECT_DIR$/autoDCF/autodcf.py" />
         <option value="$PROJECT_DIR$/tests/test_wacc.py" />
@@ -130,8 +126,17 @@
         <option value="$PROJECT_DIR$/stockScore/stock_scoring.py" />
         <option value="$PROJECT_DIR$/stockScore/efficient_frontier.py" />
         <option value="$PROJECT_DIR$/stockScore/technical_functions.py" />
+        <option value="$PROJECT_DIR$/tests/chart_example.json" />
+        <option value="$PROJECT_DIR$/chart_example.py" />
+        <option value="$PROJECT_DIR$/stockScore/dummy.txt" />
+        <option value="$PROJECT_DIR$/stats_example.py" />
+        <option value="$PROJECT_DIR$/financials_example.py" />
         <option value="$PROJECT_DIR$/stockScore/start.py" />
+        <option value="$PROJECT_DIR$/tests/test_start.py" />
         <option value="$PROJECT_DIR$/stockScore/fundamental_functions.py" />
+        <option value="$PROJECT_DIR$/tests/test_technical_functions.py" />
+        <option value="$PROJECT_DIR$/tests/test_fundamental_functions.py" />
+        <option value="$PROJECT_DIR$/tests/test_statistical_functions.py" />
         <option value="$PROJECT_DIR$/stockScore/statistical_functions.py" />
       </list>
     </option>
@@ -145,7 +150,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="712" />
@@ -158,6 +163,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -174,12 +180,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -354,38 +360,52 @@
       <option name="project" value="LOCAL" />
       <updated>1530929886694</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add testing for get_stats">
+      <created>1532084093033</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1532084093033</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add example responses (as dictionaries)">
+      <created>1532084408457</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1532084408457</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50039715" side_tool="true" weight="0.32863188" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50080776" side_tool="true" weight="0.27503526" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49960285" weight="0.32863188" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32863188" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32863188" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.27503526" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2584814" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49960285" weight="0.32863188" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49919224" weight="0.3441467" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2625202" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Inspection Results" weight="0.32863188" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32863188" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32863188" />
       <window_info anchor="right" id="SciView" order="3" sideWeight="0.49789914" weight="0.52100164" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3977433" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3977433" />
+      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="8" weight="0.32863188" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Coverage" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" x="0" y="0" width="270" height="600" id="Documentation" sideWeight="0.5021008" side_tool="true" weight="0.32956383" />
+      <window_info anchor="bottom" id="Inspection Results" order="9" weight="0.32863188" />
+      <window_info anchor="right" x="0" y="0" width="270" height="600" id="Documentation" order="3" sideWeight="0.5021008" side_tool="true" weight="0.32956383" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="8" weight="0.32863188" />
+      <window_info anchor="right" id="Coverage" order="3" side_tool="true" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -422,7 +442,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update function documentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update function documentation" />
+    <MESSAGE value="Add testing for get_stats" />
+    <MESSAGE value="Add example responses (as dictionaries)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add example responses (as dictionaries)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -431,24 +453,10 @@
           <properties exception="BaseException" />
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="45" />
+      <option name="time" value="48" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/stockScore/wacc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stockScore/start.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="51" column="20" lean-forward="true" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stockScore/start.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1245">
@@ -526,22 +534,8 @@
     <entry file="file://$PROJECT_DIR$/tests/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/.pytest_cache/v/cache/nodeids" />
-    <entry file="file://$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" />
-    <entry file="file://$PROJECT_DIR$/stockScore/wacc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="102" selection-start-line="102" selection-end-line="102" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stockScore/autodcf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/stockScore/wacc.py" />
+    <entry file="file://$PROJECT_DIR$/stockScore/autodcf.py" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -564,47 +558,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_start.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="53" column="29" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_statistical_functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_technical_functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CODE_OF_CONDUCT.md" />
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CODE_OF_CONDUCT.rst">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_fundamental_functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="58" column="4" selection-start-line="58" selection-start-column="4" selection-end-line="58" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/autoDCF/autodcf.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -640,23 +596,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stockScore/my_req2.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="37" column="40" lean-forward="true" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stockScore/my_req.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/financials_example.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/stockScore/my_req2.json" />
+    <entry file="file://$PROJECT_DIR$/stockScore/my_req.json" />
     <entry file="file://$PROJECT_DIR$/autoDCF/wacc.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-346">
@@ -667,23 +608,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stats_example.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stockScore/new.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="25" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/stockScore/new.py" />
     <entry file="file://$PROJECT_DIR$/stockScore/stock_scoring.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -691,30 +616,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stockScore/efficient_frontier.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1800">
-          <caret line="120" column="24" selection-start-line="120" selection-start-column="24" selection-end-line="120" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/stockScore/efficient_frontier.py" />
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/shutil.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="460" column="17" lean-forward="true" selection-start-line="460" selection-start-column="17" selection-end-line="460" selection-end-column="17" />
-          <folding>
-            <element signature="e#159#168#0" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stockScore/stock_score.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stockScore/dummy.txt" />
+    <entry file="file://$PROJECT_DIR$/financials_example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="91" column="48" selection-start-line="91" selection-start-column="48" selection-end-line="91" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats_example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-80">
+          <caret line="34" column="30" lean-forward="true" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chart_example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_start.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="64" column="55" selection-start-line="64" selection-start-column="55" selection-end-line="64" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.pytest_cache/v/cache/nodeids">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stockScore/start.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="122" column="21" lean-forward="true" selection-start-line="122" selection-start-column="21" selection-end-line="122" selection-end-column="21" />
+        <state relative-caret-position="242">
+          <caret line="115" column="56" lean-forward="true" selection-start-line="115" selection-start-column="56" selection-end-line="115" selection-end-column="56" />
           <folding>
             <element signature="e#10#39#0" expanded="true" />
           </folding>
@@ -723,29 +685,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/stockScore/fundamental_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="76" selection-start-line="3" selection-start-column="76" selection-end-line="3" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stockScore/stock_score.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="21" column="51" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
+        <state relative-caret-position="855">
+          <caret line="57" column="36" selection-start-line="57" selection-start-column="36" selection-end-line="57" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stockScore/technical_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="602">
-          <caret line="50" column="52" lean-forward="true" selection-start-line="50" selection-start-column="52" selection-end-line="50" selection-end-column="52" />
+        <state relative-caret-position="90">
+          <caret line="6" column="39" lean-forward="true" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_fundamental_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="43" column="53" lean-forward="true" selection-start-line="43" selection-start-column="53" selection-end-line="43" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_technical_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_statistical_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="25" column="59" selection-start-line="25" selection-start-column="59" selection-end-line="25" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stockScore/statistical_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="62" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
+        <state relative-caret-position="169">
+          <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
         </state>
       </provider>
     </entry>
