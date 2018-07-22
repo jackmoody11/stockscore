@@ -1,7 +1,7 @@
 from stockScore import start
-iex_url_base = "https://api.iextrading.com/1.0/"
 
 
+# Needs updating
 def dividend_test(batch_data, stock_scores):
     """
     :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
@@ -39,18 +39,16 @@ def net_income_test(batch_data, stock_scores, financials=None):
     for symbol in financials:
         try:
             symbol_financials = financials[symbol]['financials']['financials']
-            base_length = len(symbol_financials)
+            years = len(symbol_financials)
             try:
-                if all(symbol_financials[i]['netIncome'] for i in range(0, base_length)) \
-                        and all(symbol_financials[j]['netIncome'] > 0
-                                for j in range(0, base_length)):
-                    stock_scores[symbol] += base_length
-                    print(symbol + " score went up by " + str(
-                        base_length) + " -- positive net income for the last " + str(base_length) + " years")
+                if all(symbol_financials[i]['netIncome'] > 0 for i in range(0, years)):
+                    stock_scores[symbol] += years
+                    print(f'{symbol} score went up by {years} -- positive net income for the \
+                          last {years} years')
                 elif symbol_financials[0]['netIncome'] and \
                         symbol_financials[0]['netIncome'] > 0:
                     stock_scores[symbol] += 1
-                    print(symbol + " score went up by 1 -- positive net income last year")
+                    print(f'{symbol} score went up by 1 -- positive net income last year')
             except (KeyError, TypeError):
                 continue
         except (KeyError, TypeError):
@@ -74,20 +72,21 @@ def current_ratio_test(batch_data, stock_scores, financials=None):
         financials = start.get_financials(batch_data)
     for symbol in stock_scores:
         # Need to clean up with some sort of equivalent to dig() in Ruby
-        if financials.get(symbol) and financials[symbol]['financials'] and \
-           financials[symbol]['financials']['financials'] and financials[symbol]['financials']['financials'][0]:
-
+        try:
             current_assets = financials[symbol]['financials']['financials'][0]['currentAssets']
             current_debt = financials[symbol]['financials']['financials'][0]['currentDebt']
-
-            if current_debt != 0 and (current_debt and current_assets) is not None:
+            try:
                 current_ratio = current_assets/current_debt
                 if current_ratio >= 1.5:
                     stock_scores[symbol] += 2
-                    print(symbol + " score went up by 2 -- current ratio >= .5")
+                    print(f'{symbol} score went up by 2 -- current ratio >= .5')
                 elif current_ratio >= 1:
                     stock_scores[symbol] += 1
-                    print(symbol + " score went up by 1 -- current ratio >= 1")
+                    print(f'{symbol} score went up by 1 -- current ratio >= 1')
+            except (ZeroDivisionError, TypeError):
+                continue
+        except (KeyError, TypeError):
+            continue
 
     return stock_scores
 

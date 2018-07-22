@@ -9,6 +9,8 @@ def suite(batch_data, stock_scores, stats=None, chart=None):
     (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
     :param stats: Defaults as None, but can be set to value to speed up performance if running suite
     or multiple tests at once.
+    :param chart: Defaults as None, but can be set to value to speed up performance if running suite
+    or multiple tests at once.
     :return: Returns an updated stock_score dictionary that runs all functions
     in statistical_functions module. Make sure to set stock_score to the function
     so that suite() can return updated stock scores.
@@ -33,17 +35,18 @@ def p_to_b_test(batch_data, stock_scores, stats=None):
         stats = start.get_stats(batch_data)
 
     for symbol in stock_scores:
-        if stats.get(symbol):
-            if stats[symbol].get('stats').get('priceToBook'):
-                pts = round(5 / (stats[symbol]['stats']['priceToBook'] + 0.8))
-                if 0 < stats[symbol]['stats']['priceToBook'] <= 1:
-                    stock_scores[symbol] += pts
-                    print(symbol + " score went up by " +
-                          str(pts) + "-- price to book between 0 and 1")
-                elif 1 < stats[symbol]['stats']['priceToBook'] <= 2:
-                    stock_scores[symbol] += pts
-                    print(symbol + " score went up by " +
-                          str(pts) + "-- price to book between 1 and 2")
+        try:
+            pts = round(5 / (stats[symbol]['stats']['priceToBook'] + 0.8))
+            if 0 < stats[symbol]['stats']['priceToBook'] <= 1:
+                stock_scores[symbol] += pts
+                print(symbol + " score went up by " +
+                      str(pts) + "-- price to book between 0 and 1")
+            elif 1 < stats[symbol]['stats']['priceToBook'] <= 2:
+                stock_scores[symbol] += pts
+                print(symbol + " score went up by " +
+                      str(pts) + "-- price to book between 1 and 2")
+        except (TypeError, KeyError):
+            continue
 
     return stock_scores
 
