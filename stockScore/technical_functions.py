@@ -8,8 +8,8 @@ def moving_avg_test(batch_data, stock_scores, stats=None):
     functions to set batch_data
     :param stock_scores: Dictionary with stock symbols and corresponding scores
     (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
-    :param stats: Defaults as None, but can be set to value to speed up performance if running suite
-    or multiple tests at once.
+    :param stats: Dictionary with all statistical information from IEX API (see get_stats in start
+    module for more info.
     :return: Returns an updated stock_score dictionary. Make sure to set stock_score to the function
     so that moving_avg_test() can return updated stock scores.
     """
@@ -17,29 +17,38 @@ def moving_avg_test(batch_data, stock_scores, stats=None):
         stats = start.get_stats(batch_data)
 
     for symbol in stock_scores:
-        if stats.get(symbol) and stats[symbol].get('stats'):
+        try:
             base = stats[symbol]['stats']
-            if base.get('day200MovingAvg') and base.get('day50MovingAvg'):
-                avg_50 = base['day50MovingAvg']
-                avg_200 = base['day200MovingAvg']
-                per_diff = ((avg_50 - avg_200) / avg_200) * 100
-                score = per_diff
-                if 0 < per_diff < 2:
-                    pts = round(5 / (score + 1))
-                    stock_scores[symbol] += pts
-                    print(symbol + " score went up by " + str(pts) + " -- SMA 200 under SMA 50 by " + str(
-                        per_diff) + "%")
-                elif 2 < per_diff < 5:
-                    pts = round(5 / score)
-                    stock_scores[symbol] += pts
-                    print(symbol + " score went up by " + str(pts) + " -- SMA 200 under SMA 50 by " + str(
-                        per_diff) + "%")
+            avg_50 = base['day50MovingAvg']
+            avg_200 = base['day200MovingAvg']
+            per_diff = ((avg_50 - avg_200) / avg_200) * 100
+            if 0 < per_diff < 2:
+                pts = round(5 / (per_diff + 1))
+                stock_scores[symbol] += pts
+                print(f'{symbol} score went up by {pts} -- SMA 200 under SMA 50 by {per_diff}%')
+            elif 2 < per_diff < 5:
+                pts = round(5 / per_diff)
+                stock_scores[symbol] += pts
+                print(f'{symbol} score went up by {pts} -- SMA 200 under SMA 50 by {per_diff}%')
+
+        except (KeyError, TypeError):
+            continue
 
     return stock_scores
 
 
 def split_test(batch_data, stock_scores, splits=None, time="1y"):
-
+    """
+    :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
+    functions to set batch_data
+    :param stock_scores: Dictionary with stock symbols and corresponding scores
+    (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
+    :param splits: Dictionary with all split information from IEX API (see get_splits in start
+    module for more info.
+    :param time: Time over which to see if split occurred. (1d = 1 day, 1m = 1 month, 1y = 1 year)
+    :return: Returns an updated stock_score dictionary. Make sure to set stock_score to the function
+    so that moving_avg_test() can return updated stock scores.
+    """
     if splits is None:
         splits = start.get_splits(batch_data, time=time)
     for symbol in stock_scores:
@@ -56,17 +65,20 @@ def split_test(batch_data, stock_scores, splits=None, time="1y"):
     return stock_scores
 
 
-def suite(batch_data, stock_scores, stats=None):
+def suite(batch_data, stock_scores, stats=None, splits=None):
     """
     :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
     functions to set batch_data
     :param stock_scores: Dictionary with stock symbols and corresponding scores
     (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
-    :param stats: Defaults as None, but can be set to value to speed up performance if running suite
-    or multiple tests at once.
+    :param stats: Dictionary with all statistical information from IEX API (see get_stats in start
+    module for more info.
+    :param splits: Dictionary with all splits information from IEX API (see get_splits in start
+    module for more info.
     :return: Returns an updated stock_score dictionary that runs all functions
     in technical_functions module. Make sure to set stock_score to the function
     so that suite() can return updated stock scores.
     """
     stock_scores = moving_avg_test(batch_data, stock_scores, stats)
+    stock_scores = split_test(batch_data, stock_scores, splits)
     return stock_scores
