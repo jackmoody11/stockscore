@@ -53,7 +53,7 @@ def test_return_top_assumes_length_of_dictionary_by_default():
     assert top[4][0] == 'Billy'
 
 
-# Needs work - Don't think this is working as it should
+# These need work - Don't think these are working as planned
 def test_get_stats():
 
     *_, batch_data = start.total_setup()
@@ -61,9 +61,22 @@ def test_get_stats():
     assert stats
 
 
-# Needs work - Don't think this is working as it should
 def test_get_financials():
 
     *_, batch_data = start.total_setup()
     financials = start.get_financials(batch_data)
     assert financials
+
+
+def test_get_chart():
+
+    *_, batch_data = start.total_setup()
+    chart = start.get_chart(batch_data)
+    assert chart
+
+
+def test_get_splits():
+
+    *_, batch_data = start.total_setup()
+    splits = start.get_splits(batch_data)
+    assert splits
