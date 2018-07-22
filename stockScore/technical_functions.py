@@ -38,6 +38,24 @@ def moving_avg_test(batch_data, stock_scores, stats=None):
     return stock_scores
 
 
+def split_test(batch_data, stock_scores, splits=None, time="1y"):
+
+    if splits is None:
+        splits = start.get_splits(batch_data, time=time)
+    for symbol in stock_scores:
+        try:
+            symbol_splits = splits[symbol]['splits']
+            split_mult = len(symbol_splits)
+            if split_mult >= 1:
+                pts = split_mult
+                stock_scores[symbol] += pts
+                print(f'{symbol} went up by {pts} -- split {split_mult} times in past {time}')
+        except (TypeError, KeyError):
+            continue
+
+    return stock_scores
+
+
 def suite(batch_data, stock_scores, stats=None):
     """
     :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
