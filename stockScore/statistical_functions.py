@@ -1,25 +1,6 @@
 from stockScore import start
 
 
-def suite(batch_data, stock_scores, stats=None, chart=None):
-    """
-    :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
-    functions to set batch_data
-    :param stock_scores: Dictionary with stock symbols and corresponding scores
-    (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
-    :param stats: Defaults as None, but can be set to value to speed up performance if running suite
-    or multiple tests at once.
-    :param chart: Defaults as None, but can be set to value to speed up performance if running suite
-    or multiple tests at once.
-    :return: Returns an updated stock_score dictionary that runs all functions
-    in statistical_functions module. Make sure to set stock_score to the function
-    so that suite() can return updated stock scores.
-    """
-    stock_scores = p_to_b_test(batch_data, stock_scores, stats)
-    stock_scores = trading_volume_test(batch_data, stock_scores, chart)
-    return stock_scores
-
-
 def p_to_b_test(batch_data, stock_scores, stats=None):
     """
     :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
@@ -80,4 +61,23 @@ def trading_volume_test(batch_data, stock_scores, chart=None):
         except (KeyError, TypeError, IndexError):
             continue  # If no chart, assume data is incomplete - no penalty for symbol if data incomplete
 
+    return stock_scores
+
+
+def suite(batch_data, stock_scores, stats=None, chart=None):
+    """
+    :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
+    functions to set batch_data
+    :param stock_scores: Dictionary with stock symbols and corresponding scores
+    (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
+    :param stats: Defaults as None, but can be set to value to speed up performance if running suite
+    or multiple tests at once.
+    :param chart: Defaults as None, but can be set to value to speed up performance if running suite
+    or multiple tests at once.
+    :return: Returns an updated stock_score dictionary that runs all functions
+    in statistical_functions module. Make sure to set stock_score to the function
+    so that suite() can return updated stock scores.
+    """
+    stock_scores = p_to_b_test(batch_data, stock_scores, stats)
+    stock_scores = trading_volume_test(batch_data, stock_scores, chart)
     return stock_scores
