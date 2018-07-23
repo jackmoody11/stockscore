@@ -32,6 +32,20 @@ def test_p_to_b_not_all_zero():
     assert not all(score == 0 for score in scores.values())
 
 
+def test_pe_ratio_test_returns_scores():
+
+    scores = start.init_stock_scores(symbols)
+    scores = sf.pe_ratio_test(batch_data, scores, chart=chart, stats=stats)
+    assert len(
+        scores) >= 1000, 'At least 1000 P/E ratio scores listed in stock_scores dictionary'
+
+
+def test_pe_ratio_test_not_all_zero():
+    scores = start.init_stock_scores(symbols)
+    scores = sf.pe_ratio_test(batch_data, scores, chart=chart, stats=stats)
+    assert not all(score == 0 for score in scores.values())
+
+
 def test_suite_returns_scores():
     scores = start.init_stock_scores(symbols)
     scores = sf.suite(batch_data, scores, chart=chart, stats=stats)
