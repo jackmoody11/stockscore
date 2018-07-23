@@ -32,7 +32,29 @@ def p_to_b_test(batch_data, stock_scores, stats=None):
     return stock_scores
 
 
-# Work in progress
+def pe_ratio_test(batch_data, stock_scores, chart=None, stats=None):
+
+    if stats is None:
+        stats = start.get_stats(batch_data)
+    if chart is None:
+        chart = start.get_chart(batch_data)
+    for symbol in stock_scores:
+        try:
+            ttm_eps = stats[symbol]['stats']['ttmEPS']
+            price = chart[symbol]['chart'][0]['close']
+            pe_ratio = price/ttm_eps
+            if 0 < pe_ratio < 15:
+                stock_scores[symbol] += 2
+                print(f'{symbol} score went up by 2 -- P/E ratio positive and less than 15')
+            elif 15 < pe_ratio < 30:
+                stock_scores[symbol] += 1
+                print(f'{symbol} score went up by 1 -- P/E ratio positive and between 15 and 30')
+        except (ZeroDivisionError, IndexError, KeyError):
+            continue
+
+    return stock_scores
+
+
 def trading_volume_test(batch_data, stock_scores, chart=None):
     """
     :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
@@ -78,6 +100,7 @@ def suite(batch_data, stock_scores, stats=None, chart=None):
     in statistical_functions module. Make sure to set stock_score to the function
     so that suite() can return updated stock scores.
     """
-    stock_scores = p_to_b_test(batch_data, stock_scores, stats)
-    stock_scores = trading_volume_test(batch_data, stock_scores, chart)
+    stock_scores = p_to_b_test(batch_data, stock_scores, stats=stats)
+    stock_scores = trading_volume_test(batch_data, stock_scores, chart=chart)
+    stock_scores = pe_ratio_test(batch_data, stock_scores, chart=chart, stats=stats)
     return stock_scores

@@ -71,7 +71,6 @@ def current_ratio_test(batch_data, stock_scores, financials=None):
     if financials is None:
         financials = start.get_financials(batch_data)
     for symbol in stock_scores:
-        # Need to clean up with some sort of equivalent to dig() in Ruby
         try:
             current_assets = financials[symbol]['financials']['financials'][0]['currentAssets']
             current_debt = financials[symbol]['financials']['financials'][0]['currentDebt']
