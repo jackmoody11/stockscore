@@ -1,24 +1,30 @@
 from stockScore import start
+from math import floor
 
 
 # Needs updating
-def dividend_test(batch_data, stock_scores):
+def dividend_test(batch_data, stock_scores, dividends=None):
     """
     :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
     functions to set batch_data
     :param stock_scores: Dictionary with stock symbols and corresponding scores
     (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
+    :param dividends: Dictionary with all dividend information from IEX API (see get_dividends in start
+    module for more info.
     :return: Returns an updated stock_score dictionary. Make sure to set stock_score to the function
     so that dividend_test() can return updated stock scores.
     """
-    # Get data through multiprocessing
-    pool_outputs = start.get_pool_response(batch_data, "&types=dividends&range=5y")
-
-    for batch in pool_outputs:
-        for div_json in batch:
-            for symbol in div_json:
-                if div_json[symbol].get('dividends'):
-                    stock_scores[symbol] += 1
+    if dividends is None:
+        dividends = start.get_dividends(batch_data)
+    for symbol in dividends:
+        try:
+            symbol_dividends = dividends[symbol]['dividends']
+            years = floor(len(symbol_dividends)/4)
+            stock_scores[symbol] += years
+            print(f'{symbol} score went up by {years} -- paid dividends for the \
+                  last {years} years')
+        except (KeyError, IndexError):
+            continue
 
     return stock_scores
 
