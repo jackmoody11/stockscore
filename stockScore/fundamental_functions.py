@@ -96,20 +96,22 @@ def current_ratio_test(batch_data, stock_scores, financials=None):
     return stock_scores
 
 
-def suite(batch_data, stock_scores, financials=None):
+def suite(batch_data, stock_scores, dividends=None, financials=None):
 
     """
     :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
     functions to set batch_data
     :param stock_scores: Dictionary with stock symbols and corresponding scores
     (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
+    :param dividends: Dictionary with all dividend information from IEX API (see get_dividends in start
+    module for more info.
     :param financials: Dictionary with all financial information from IEX API (see get_financials in start
     module for more info.
     :return: Returns an updated stock_score dictionary that runs all functions
     in fundamental_functions module. Make sure to set stock_score to the function
     so that suite() can return updated stock scores.
     """
-    stock_scores = dividend_test(batch_data, stock_scores)
-    stock_scores = net_income_test(batch_data, stock_scores, financials)
-    stock_scores = current_ratio_test(batch_data, stock_scores, financials)
+    stock_scores = dividend_test(batch_data, stock_scores, dividends=dividends)
+    stock_scores = net_income_test(batch_data, stock_scores, financials=financials)
+    stock_scores = current_ratio_test(batch_data, stock_scores, financials=financials)
     return stock_scores
