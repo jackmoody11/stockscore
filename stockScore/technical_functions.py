@@ -22,12 +22,11 @@ def moving_avg_test(batch_data, stock_scores, stats=None):
             avg_50 = base['day50MovingAvg']
             avg_200 = base['day200MovingAvg']
             per_diff = ((avg_50 - avg_200) / avg_200) * 100
+            pts = round(5 / (per_diff + 1))
             if 0 < per_diff < 2:
-                pts = round(5 / (per_diff + 1))
                 stock_scores[symbol] += pts
                 print(f'{symbol} score went up by {pts} -- SMA 200 under SMA 50 by {per_diff}%')
             elif 2 < per_diff < 5:
-                pts = round(5 / per_diff)
                 stock_scores[symbol] += pts
                 print(f'{symbol} score went up by {pts} -- SMA 200 under SMA 50 by {per_diff}%')
 
@@ -59,6 +58,7 @@ def split_test(batch_data, stock_scores, splits=None, time="1y"):
                 pts = split_mult
                 stock_scores[symbol] += pts
                 print(f'{symbol} went up by {pts} -- split {split_mult} times in past {time}')
+
         except (TypeError, KeyError):
             continue
 
