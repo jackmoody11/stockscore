@@ -40,11 +40,19 @@ Make sure you have virtualenv installed
 
    pip install virtualenv
 
-Change your working directory to the main stockScore folder
+Change working directory to project folder
 
 ::
 
     cd my/path/to/stockScore
+
+Create a virtual environment
+
+::
+
+    python3 -m virtualenv env # for Mac users
+
+    py -m virtualenv env # for Windows users
 
 Then, in order to activate the virtual environment run the following:
 

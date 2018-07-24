@@ -10,34 +10,34 @@ from stockScore import statistical_functions as sf
 from stockScore import fundamental_functions as ff
 import time
 
-start_time = time.time()
 
-print("Setting up stocks and scores...")
-symbols, stock_scores, batch_data = start.total_setup()
+def score_stocks(num_stocks):
+    print("Setting up stocks and scores...")
+    symbols, stock_scores, batch_data = start.total_setup()
 
-print("Fetching data dictionaries...")
-chart, stats, financials, splits, dividends = (
-    start.get_chart(batch_data),
-    start.get_stats(batch_data),
-    start.get_financials(batch_data),
-    start.get_splits(batch_data),
-    start.get_dividends(batch_data),
-)
+    print("Fetching data dictionaries...")
+    chart, stats, financials, splits, dividends = (
+        start.get_chart(batch_data),
+        start.get_stats(batch_data),
+        start.get_financials(batch_data),
+        start.get_splits(batch_data),
+        start.get_dividends(batch_data),
+    )
 
-print("Running tests...")
-stock_scores = ff.suite(
-    batch_data, stock_scores, dividends=dividends, financials=financials
-)
-del financials, dividends
-stock_scores = sf.suite(batch_data, stock_scores, stats=stats, chart=chart)
-del chart
-stock_scores = tf.suite(batch_data, stock_scores, stats=stats, splits=splits)
-del stats, splits
+    print("Running tests...")
+    stock_scores = ff.suite(
+        batch_data, stock_scores, dividends=dividends, financials=financials
+    )
+    del financials, dividends
+    stock_scores = sf.suite(batch_data, stock_scores, stats=stats, chart=chart)
+    del chart
+    stock_scores = tf.suite(batch_data, stock_scores, stats=stats, splits=splits)
+    del stats, splits
+
+    top_stocks = start.return_top(stock_scores, num_stocks)
+    return top_stocks
 
 
-end_time = time.time()
-
-
-top_20 = start.return_top(stock_scores, 20)
-print("The top 20 companies are", top_20)
-print("That took " + str(end_time - start_time) + " seconds")
+if __name__ == "__main__":
+    top = score_stocks(20)
+    print(f"The top {20} stocks are {top}")
