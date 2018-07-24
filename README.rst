@@ -46,7 +46,7 @@ Change your working directory to the main stockScore folder
 
     cd my/path/to/stockScore
 
-Make a virtual environment with `python3 -m venv my-env`.
+Make a virtual environment with :code:`python3 -m venv my-env`.
 Then, in order to activate the virtual environment run the following:
 
 For Mac users:
@@ -61,7 +61,7 @@ For Windows users:
 
     .\my-env\Scripts\activate
 
-Then use `pip3 install -r requirements.txt` to install required modules.
+Then use :code:`pip3 install -r requirements.txt` to install required modules.
 
 End with an example of getting some data out of the system or using it
 for a little demo
