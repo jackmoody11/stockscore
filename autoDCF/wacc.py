@@ -21,13 +21,12 @@ def get_beta(symbol):
 
 def get_debt_to_equity(symbol):
 
-    json = requests.get(iex_url_base + 'stock/' +
-                        symbol.lower() + '/financials').json()
-    if int(json['financials'][0]['totalDebt']) and int(json['financials'][0]['shareholderEquity']):
-        total_debt = int(json['financials'][0]['totalDebt'])
-        total_equity = int(json['financials'][0]['shareholderEquity'])
+    de_json = requests.get(f'{iex_url_base}stock/{symbol.lower()}/financials').json()
+    try:
+        total_debt = int(de_json['financials'][0]['totalDebt'])
+        total_equity = int(de_json['financials'][0]['shareholderEquity'])
         debt_to_equity = total_debt / total_equity
-    else:
+    except (KeyError, TypeError):
         debt_to_equity = None
 
     return debt_to_equity
@@ -41,8 +40,7 @@ def get_rf():
         rf_rate = float(rf_soup.find(
             'span', attrs={'class': 'series-meta-observation-value'}).text.strip())
         return rf_rate / 100
-    else:
-        return None
+    return None
 
 
 def get_tax_rate_iex(symbol):
@@ -51,10 +49,10 @@ def get_tax_rate_iex(symbol):
                         symbol.lower() + '/financials').json()
     tax_rates = []
     for i in range(0, 4):
-        operating_income = int(json['financials'][i]['operatingIncome'])
+        op_income = int(json['financials'][i]['operatingIncome'])
         net_income = int(json['financials'][i]['netIncome'])
-        taxes = operating_income - net_income
-        tax_rate = taxes / operating_income
+        taxes = op_income - net_income
+        tax_rate = taxes / op_income
         tax_rates.append(tax_rate)
     # Use numpy to get average tax rate for trailing twelve months
     return np.mean(tax_rates)
@@ -62,8 +60,8 @@ def get_tax_rate_iex(symbol):
 
 def get_tax_rate(symbol):
 
-    in_json = requests.get(in_url_base + '/financials/standardized?identifier=' + symbol.upper() +
-                           '&statement=income_statement&fiscal_year=2017&fiscal_period=FY',
+    in_json = requests.get(f'{in_url_base}/financials/standardized?identifier={symbol.upper()}\
+                           &statement=income_statement&fiscal_year=2017&fiscal_period=FY',
                            auth=(in_user, in_pass)).json()
     pretax_income = in_json['data'][11]['value']
     taxes = in_json['data'][12]['value']
@@ -73,12 +71,11 @@ def get_tax_rate(symbol):
 
 def get_interest_exp(symbol):
 
-    in_json = requests.get(in_url_base + '/financials/reported?identifier=' + symbol.upper() +
-                           '&statement=income_statement&fiscal_year=2017&fiscal_period=FY',
+    in_json = requests.get(f'{in_url_base}/financials/standardized?identifier={symbol.upper()}\
+                           &statement=income_statement&fiscal_year=2017&fiscal_period=FY',
                            auth=(in_user, in_pass)).json()
     data = in_json['data']
-    int_exp_dict = next((item for item in data if item[
-        'xbrl_tag'] == 'InterestExpense'), None)
+    int_exp_dict = next((item for item in data if item['xbrl_tag'] == 'InterestExpense'), None)
     if int_exp_dict:
         interest_expense = int_exp_dict['value']
     else:
@@ -99,6 +96,6 @@ def get_wacc(symbol, rp):
     d_to_v = 1 / (1 + (1 / debt_to_equity))
     cost_of_equity = risk_free + beta * rp
     tax_rate = get_tax_rate(symbol)
-    wacc = e_to_v * cost_of_equity + d_to_v * (1 - tax_rate) * get_interest_exp(symbol)  # /getPretaxIncome(symbol)
+    wacc = (e_to_v * cost_of_equity) + (d_to_v * (1 - tax_rate) * get_interest_exp(symbol))  # /getPretaxIncome(symbol)
 
     return wacc
