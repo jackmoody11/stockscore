@@ -16,7 +16,7 @@ Prerequisites
 ~~~~~~~~~~~~~
 
 - You can get the latest version of Python 3 here_ (this should come with the latest version of pip)
-- All dependencies are contained in the virtual environment (more on that directly below)
+- All dependencies are contained in `requirements.txt` (more on that directly below)
 
 Installing
 ~~~~~~~~~~
@@ -46,6 +46,7 @@ Change working directory to project folder
 
     cd my/path/to/stockScore
 
+<<<<<<< HEAD
 Create a virtual environment
 
 ::
@@ -54,20 +55,24 @@ Create a virtual environment
 
     py -m virtualenv env # for Windows users
 
+=======
+Make a virtual environment with :code:`python3 -m venv my-env`.
+>>>>>>> b41d90368f79d6e37a4815504a9e40122ab290af
 Then, in order to activate the virtual environment run the following:
 
 For Mac users:
 
 ::
 
-    source venv/bin/activate
+    source my-env/bin/activate
 
 For Windows users:
 
 ::
 
-    .\venv\Scripts\activate
+    .\my-env\Scripts\activate
 
+Then use :code:`pip3 install -r requirements.txt` to install required modules.
 
 End with an example of getting some data out of the system or using it
 for a little demo
@@ -88,7 +93,7 @@ In order to run a specific test (like test_fundamental_functions.py), run
     py.test tests/test_fundamental_functions.py
 
 
-For more information on how to use py.test (like how to a select few tests),
+For more information on how to use py.test (like how to select a few tests),
 `look here`_ for the official py.test docs.
 
 Break down into end to end tests
