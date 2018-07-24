@@ -16,7 +16,7 @@ Prerequisites
 ~~~~~~~~~~~~~
 
 - You can get the latest version of Python 3 here_ (this should come with the latest version of pip)
-- All dependencies are contained in the virtual environment (more on that directly below)
+- All dependencies are contained in `requirements.txt` (more on that directly below)
 
 Installing
 ~~~~~~~~~~
@@ -46,20 +46,22 @@ Change your working directory to the main stockScore folder
 
     cd my/path/to/stockScore
 
+Make a virtual environment with `python3 -m venv my-env`.
 Then, in order to activate the virtual environment run the following:
 
 For Mac users:
 
 ::
 
-    source venv/bin/activate
+    source my-env/bin/activate
 
 For Windows users:
 
 ::
 
-    .\venv\Scripts\activate
+    .\my-env\Scripts\activate
 
+Then use `pip3 install -r requirements.txt` to install required modules.
 
 End with an example of getting some data out of the system or using it
 for a little demo
