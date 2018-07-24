@@ -80,7 +80,7 @@ In order to run a specific test (like test_fundamental_functions.py), run
     py.test tests/test_fundamental_functions.py
 
 
-For more information on how to use py.test (like how to a select few tests),
+For more information on how to use py.test (like how to select a few tests),
 `look here`_ for the official py.test docs.
 
 Break down into end to end tests
