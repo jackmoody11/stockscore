@@ -18,17 +18,21 @@ def moving_avg_test(batch_data, stock_scores, stats=None):
 
     for symbol in stock_scores:
         try:
-            base = stats[symbol]['stats']
-            avg_50 = base['day50MovingAvg']
-            avg_200 = base['day200MovingAvg']
+            base = stats[symbol]["stats"]
+            avg_50 = base["day50MovingAvg"]
+            avg_200 = base["day200MovingAvg"]
             per_diff = ((avg_50 - avg_200) / avg_200) * 100
             pts = round(5 / (per_diff + 1))
             if 0 < per_diff < 2:
                 stock_scores[symbol] += pts
-                print(f'{symbol} score went up by {pts} -- SMA 200 under SMA 50 by {per_diff}%')
+                print(
+                    f"{symbol} score went up by {pts} -- SMA 200 under SMA 50 by {per_diff}%"
+                )
             elif 2 < per_diff < 5:
                 stock_scores[symbol] += pts
-                print(f'{symbol} score went up by {pts} -- SMA 200 under SMA 50 by {per_diff}%')
+                print(
+                    f"{symbol} score went up by {pts} -- SMA 200 under SMA 50 by {per_diff}%"
+                )
 
         except (KeyError, TypeError):
             continue
@@ -52,12 +56,14 @@ def split_test(batch_data, stock_scores, splits=None, time="1y"):
         splits = start.get_splits(batch_data, time=time)
     for symbol in stock_scores:
         try:
-            symbol_splits = splits[symbol]['splits']
+            symbol_splits = splits[symbol]["splits"]
             split_mult = len(symbol_splits)
             if split_mult >= 1:
                 pts = split_mult
                 stock_scores[symbol] += pts
-                print(f'{symbol} went up by {pts} -- split {split_mult} times in past {time}')
+                print(
+                    f"{symbol} went up by {pts} -- split {split_mult} times in past {time}"
+                )
 
         except (TypeError, KeyError):
             continue

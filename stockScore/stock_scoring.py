@@ -3,7 +3,6 @@
 
 
 class Stock:
-
     def __init__(self):
 
         # Initialize different scores
@@ -14,8 +13,8 @@ class Stock:
         self.sentiment_score = 0
 
         # Initialize stock info
-        self.ticker = ''
-        self.company_name = ''
+        self.ticker = ""
+        self.company_name = ""
         self.current_price = None
         self.market_cap = None
 
