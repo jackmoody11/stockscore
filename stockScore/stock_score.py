@@ -12,16 +12,22 @@ import time
 
 start_time = time.time()
 
-print('Setting up stocks and scores...')
+print("Setting up stocks and scores...")
 symbols, stock_scores, batch_data = start.total_setup()
 
-print('Fetching data dictionaries...')
-chart, stats, financials, splits, dividends = start.get_chart(batch_data), start.get_stats(batch_data), \
-                                              start.get_financials(batch_data), start.get_splits(batch_data), \
-                                              start.get_dividends(batch_data)
+print("Fetching data dictionaries...")
+chart, stats, financials, splits, dividends = (
+    start.get_chart(batch_data),
+    start.get_stats(batch_data),
+    start.get_financials(batch_data),
+    start.get_splits(batch_data),
+    start.get_dividends(batch_data),
+)
 
-print('Running tests...')
-stock_scores = ff.suite(batch_data, stock_scores, dividends=dividends, financials=financials)
+print("Running tests...")
+stock_scores = ff.suite(
+    batch_data, stock_scores, dividends=dividends, financials=financials
+)
 del financials, dividends
 stock_scores = sf.suite(batch_data, stock_scores, stats=stats, chart=chart)
 del chart
