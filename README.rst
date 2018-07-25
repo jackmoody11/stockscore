@@ -57,7 +57,7 @@ For Windows users:
     
     py -m virtualenv env # for Windows users
 
-=======
+
 Make a virtual environment with :code:`python3 -m venv my-env`.
 Then, in order to activate the virtual environment run the following:
 
@@ -91,6 +91,7 @@ from the command line.
 
 In order to run a specific test (like test_fundamental_functions.py), run
 ::
+
     py.test tests/test_fundamental_functions.py
 
 
