@@ -1,6 +1,7 @@
 Stock Scores
 ============
-|CodeFactorBadge|
+.. raw:: html
+    <a href="https://www.codefactor.io/repository/github/jackmoody11/stockscores"><img src="https://www.codefactor.io/repository/github/jackmoody11/stockscores/badge" /></a>
 
 Stock Scores is a python script to score stocks based on specified
 criteria. The goal of this project is to provide a powerful stock scoring
@@ -150,7 +151,6 @@ Acknowledgments
 
 -  Hat tip to Benjamin Graham's *Intelligent Investor*. If you haven't already, read this book!
 
-.. |CodeFactorBadge| image:: https://www.codefactor.io/repository/github/jackmoody11/stockscores/badge
 .. _here: https://docs.python.org/3/installing/
 .. _look here: https://pytestguide.readthedocs.io/en/latest/
 .. _Dropwizard: http://www.dropwizard.io/1.0.2/docs/
