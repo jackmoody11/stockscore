@@ -1,6 +1,7 @@
 Stock Scores
 ============
 |CodeFactorBadge|
+
 Stock Scores is a python script to score stocks based on specified
 criteria. The goal of this project is to provide a powerful stock scoring
 system for various types of stock classifications (growth, momentum, value, etc.).
