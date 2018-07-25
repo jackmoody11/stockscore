@@ -46,7 +46,6 @@ Change working directory to project folder
 
     cd my/path/to/stockScore
 
-<<<<<<< HEAD
 Create a virtual environment
 
 ::
