@@ -1,5 +1,7 @@
 Stock Scores
 ============
+.. image:: https://www.codefactor.io/repository/github/jackmoody11/stockscores/badge 
+   :target: https://www.codefactor.io/repository/github/jackmoody11/stockscores
 
 Stock Scores is a python script to score stocks based on specified
 criteria. The goal of this project is to provide a powerful stock scoring
@@ -46,16 +48,18 @@ Change working directory to project folder
 
     cd my/path/to/stockScore
 
-<<<<<<< HEAD
 Create a virtual environment
-
+For Mac users:
 ::
 
-    python3 -m virtualenv env # for Mac users
+    python3 -m virtualenv env 
 
+For Windows users:
+::
+    
     py -m virtualenv env # for Windows users
 
-=======
+
 Make a virtual environment with :code:`python3 -m venv my-env`.
 Then, in order to activate the virtual environment run the following:
 
@@ -89,6 +93,7 @@ from the command line.
 
 In order to run a specific test (like test_fundamental_functions.py), run
 ::
+
     py.test tests/test_fundamental_functions.py
 
 
