@@ -40,7 +40,7 @@ def moving_avg_test(batch_data, stock_scores, stats=None):
     return stock_scores
 
 
-def split_test(batch_data, stock_scores, splits=None, time="1y"):
+def split_test(batch_data, stock_scores, splits=None, time="5y"):
     """
     :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
     functions to set batch_data
@@ -57,13 +57,23 @@ def split_test(batch_data, stock_scores, splits=None, time="1y"):
     for symbol in stock_scores:
         try:
             symbol_splits = splits[symbol]["splits"]
-            split_mult = len(symbol_splits)
-            if split_mult >= 1:
-                pts = split_mult
+            num_splits = len(symbol_splits)
+            split_ratios = [symbol_splits[i]["ratio"] for i in range(num_splits)]
+            if num_splits > 0 and all(split_ratios[i] < 1 for i in range(num_splits)):
+                # Stocks that split so that you get 7 stock for every 1 you own may indicate good future prospects
+                # They probably feel good about future prospects and want to allow more investors to invest in them
+                pts = num_splits
                 stock_scores[symbol] += pts
                 print(
-                    f"{symbol} went up by {pts} -- split {split_mult} times in past {time}"
+                    f"{symbol} went up by {pts} -- split bullishly {num_splits} times in past {time}"
                 )
+            elif num_splits > 0:
+                # Stocks that split so that you get 1 stock for every 7 you own may indicate poor future prospects
+                # They may be worried about staying in the market
+                # and need to maintain some minimum price to keep trading
+                pts = sum(1 for i in range(num_splits) if split_ratios[i] > 1)
+                stock_scores[symbol] -= pts
+                print(f"{symbol} went down by {pts} -- split bearishly {pts} times in past {time}")
 
         except (TypeError, KeyError):
             continue
