@@ -1,7 +1,6 @@
 Stock Scores
 ============
-.. raw:: html
-    <embed><a href="https://www.codefactor.io/repository/github/jackmoody11/stockscores"><img src="https://www.codefactor.io/repository/github/jackmoody11/stockscores/badge" /></a></embed>
+.. image:: https://www.codefactor.io/repository/github/jackmoody11/stockscores/badge :target: https://www.codefactor.io/repository/github/jackmoody11/stockscores
 
 Stock Scores is a python script to score stocks based on specified
 criteria. The goal of this project is to provide a powerful stock scoring
