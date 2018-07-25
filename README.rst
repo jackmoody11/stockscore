@@ -57,7 +57,6 @@ Create a virtual environment
 
 =======
 Make a virtual environment with :code:`python3 -m venv my-env`.
->>>>>>> b41d90368f79d6e37a4815504a9e40122ab290af
 Then, in order to activate the virtual environment run the following:
 
 For Mac users:
