@@ -1,6 +1,6 @@
 Stock Scores
 ============
-
+`CodeFactor`_
 Stock Scores is a python script to score stocks based on specified
 criteria. The goal of this project is to provide a powerful stock scoring
 system for various types of stock classifications (growth, momentum, value, etc.).
@@ -149,6 +149,7 @@ Acknowledgments
 
 -  Hat tip to Benjamin Graham's *Intelligent Investor*. If you haven't already, read this book!
 
+.. _CodeFactor: https://www.codefactor.io/repository/github/ninetaillabs/varaniumsharp.initiator
 .. _here: https://docs.python.org/3/installing/
 .. _look here: https://pytestguide.readthedocs.io/en/latest/
 .. _Dropwizard: http://www.dropwizard.io/1.0.2/docs/
