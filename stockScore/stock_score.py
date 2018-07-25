@@ -39,5 +39,8 @@ def score_stocks(num_stocks):
 
 
 if __name__ == "__main__":
+    begin = time.time()
     top = score_stocks(20)
     print(f"The top {20} stocks are {top}")
+    end = time.time()
+    print(f"That took {end - begin} seconds")
