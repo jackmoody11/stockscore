@@ -47,11 +47,14 @@ Change working directory to project folder
     cd my/path/to/stockScore
 
 Create a virtual environment
-
+For Mac users:
 ::
 
-    python3 -m virtualenv env # for Mac users
+    python3 -m virtualenv env 
 
+For Windows users:
+::
+    
     py -m virtualenv env # for Windows users
 
 =======
