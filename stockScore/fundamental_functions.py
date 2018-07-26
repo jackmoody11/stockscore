@@ -1,5 +1,4 @@
 from stockScore import start
-from math import floor
 
 
 # Needs updating
@@ -19,10 +18,11 @@ def dividend_test(batch_data, stock_scores, dividends=None):
     for symbol in dividends:
         try:
             symbol_dividends = dividends[symbol]["dividends"]
-            years = floor(len(symbol_dividends) / 4)
-            stock_scores[symbol] += years
+            years = len(symbol_dividends) // 4
+            pts = years
+            stock_scores[symbol] += pts
             print(
-                f"{symbol} score went up by {years} -- paid dividends for the \
+                f"{symbol} score went up by {pts} -- paid dividends for the \
                   last {years} years"
             )
         except (KeyError, IndexError):
@@ -47,22 +47,15 @@ def net_income_test(batch_data, stock_scores, financials=None):
     for symbol in financials:
         try:
             symbol_financials = financials[symbol]["financials"]["financials"]
-            years = len(symbol_financials)
+            quarters = len(symbol_financials)
             try:
-                if all(symbol_financials[i]["netIncome"] > 0 for i in range(0, years)):
-                    stock_scores[symbol] += years
+                if all(symbol_financials[i]["netIncome"] > 0 for i in range(quarters)):
+                    pts = 3
+                    stock_scores[symbol] += pts
                     print(
-                        f"{symbol} score went up by {years} -- positive net income for the \
-                          last {years} years"
+                        f"{symbol} score went up by {pts} -- positive net income for all quarters reporting"
                     )
-                elif (
-                    symbol_financials[0]["netIncome"]
-                    and symbol_financials[0]["netIncome"] > 0
-                ):
-                    stock_scores[symbol] += 1
-                    print(
-                        f"{symbol} score went up by 1 -- positive net income last year"
-                    )
+
             except (KeyError, TypeError):
                 continue
         except (KeyError, TypeError):
@@ -86,12 +79,9 @@ def current_ratio_test(batch_data, stock_scores, financials=None):
         financials = start.get_financials(batch_data)
     for symbol in stock_scores:
         try:
-            current_assets = financials[symbol]["financials"]["financials"][0][
-                "currentAssets"
-            ]
-            current_debt = financials[symbol]["financials"]["financials"][0][
-                "currentDebt"
-            ]
+            fin_base = financials[symbol]["financials"]["financials"][0]
+            current_assets = fin_base["currentAssets"]
+            current_debt = fin_base["currentDebt"]
             try:
                 current_ratio = current_assets / current_debt
                 if current_ratio >= 1.5:

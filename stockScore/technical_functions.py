@@ -73,7 +73,9 @@ def split_test(batch_data, stock_scores, splits=None, time="5y"):
                 # and need to maintain some minimum price to keep trading
                 pts = sum(1 for i in range(num_splits) if split_ratios[i] > 1)
                 stock_scores[symbol] -= pts
-                print(f"{symbol} went down by {pts} -- split bearishly {pts} times in past {time}")
+                print(
+                    f"{symbol} went down by {pts} -- split bearishly {pts} times in past {time}"
+                )
 
         except (TypeError, KeyError):
             continue
