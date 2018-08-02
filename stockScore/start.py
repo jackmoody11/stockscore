@@ -47,6 +47,14 @@ def set_batches(symbols):
     return batch_symbols
 
 
+def split_symbols(symbols, n=99):
+    # Will change n = 100 once iexfinance module __init__.py is updated
+    sym_list = list()
+    for i in range(0, len(symbols), n):
+        sym_list.append(symbols[i:i+n])
+    return sym_list
+
+
 def batch_get(batch, url_end):
     """
     Note: This function is only intended to be used for get_pool_response() function in start module,
