@@ -1,9 +1,15 @@
 from stockScore import start
 
 
-def test_get_symbols():
+def test_get_symbols_not_empty():
 
     assert start.get_symbols(), 'Returns non-empty list of symbols'
+
+
+def test_get_symbols_contains_at_least_1000_symbols():
+
+    symbols = start.get_symbols()
+    assert len(symbols) >= 1000, 'There are at least 1000 stock symbols'
 
 
 def test_init_stock_scores_sets_all_scores_to_zero():
@@ -20,10 +26,17 @@ def test_init_stock_scores_returns_scores():
     assert len(stock_scores) >= 1000, 'At least 1000 stock scores initialized'
 
 
-def test_set_batches():
+def test_set_batches_not_empty():
 
     symbols = start.get_symbols()
     assert start.set_batches(symbols), 'Batches set - list is not empty'
+
+
+def test_set_batches_contains_at_least_10_batches():
+
+    symbols = start.get_symbols()
+    batches = start.set_batches(symbols)
+    assert len(batches) >= 10, 'At least 10 batches of symbols'
 
 
 def test_total_start():
@@ -54,28 +67,33 @@ def test_return_top_assumes_length_of_dictionary_by_default():
 
 
 # These need work - Don't think these are working as planned
-*_, batch_data = start.total_setup()
-
-
-def test_get_stats():
-
-    stats = start.get_stats(batch_data)
-    assert stats
-
-
-def test_get_financials():
-
-    financials = start.get_financials(batch_data)
-    assert financials
-
-
-def test_get_chart():
-
-    chart = start.get_chart(batch_data)
-    assert chart
-
-
-def test_get_splits():
-
-    splits = start.get_splits(batch_data)
-    assert splits
+# *_, batch_data = start.total_setup()
+#
+#
+# def test_get_stats():
+#
+#     stats = start.get_stats(batch_data)
+#     aapl_stats = stats['AAPL']
+#     assert aapl_stats, 'Successfully retrieved AAPL stats'
+#
+#
+# def test_get_financials():
+#
+#     financials = start.get_financials(batch_data)
+#     aapl_financials = financials['AAPL']
+#     assert aapl_financials, 'Successfully retrieved AAPL financials'
+#
+#
+# def test_get_chart():
+#
+#     chart = start.get_chart(batch_data)
+#     aapl_chart = chart['AAPL']
+#     assert aapl_chart, 'Successfully retrieved AAPL chart'
+#
+#
+# # AAPL will work for now, but this may need to be revisited if AAPL doesn't split in future
+# def test_get_splits():
+#
+#     splits = start.get_splits(batch_data)
+#     aapl_splits = splits['AAPL']
+#     assert aapl_splits, 'Successfully retrieved AAPL splits'
