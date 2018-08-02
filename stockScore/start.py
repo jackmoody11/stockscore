@@ -34,14 +34,14 @@ def set_batches(symbols):
     :return: Concatenates stock symbols in lumps of
     up to 100 to allow for batch GET requests from IEX API
     """
-    num_batches = ceil(len(symbols) / 100)
+    num_batches = int(ceil(len(symbols) / 100))
     x = 0
     batch_symbols = []
     for i in range(0, num_batches):
         if x + 99 <= len(symbols):
-            batch_symbols.append(",".join(symbols[x : x + 99]))
+            batch_symbols.append(",".join(symbols[x: x + 99]))
         else:
-            batch_symbols.append(",".join(symbols[x : len(symbols) + 1]))
+            batch_symbols.append(",".join(symbols[x: len(symbols) + 1]))
             break
         x = (i + 1) * 100
     return batch_symbols
