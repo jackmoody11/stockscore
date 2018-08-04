@@ -9,6 +9,9 @@ Stock Scores
 .. image:: https://travis-ci.com/jackmoody11/stockScores.svg?branch=master
     :target: https://travis-ci.com/jackmoody11/stockScores
 
+.. image:: https://img.shields.io/github/license/mashape/apistatus.svg?style=popout
+   :target: https://github.com/jackmoody11/stockScores/blob/master/LICENSE
+
 Stock Scores is a python script to score stocks based on specified
 criteria. The goal of this project is to provide a powerful stock scoring
 system for various types of stock classifications (growth, momentum, value, etc.).
