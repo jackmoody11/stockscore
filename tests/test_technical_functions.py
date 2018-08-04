@@ -10,41 +10,44 @@ def test_moving_avg_returns_scores():
 
     scores = start.init_stock_scores(symbols)
     scores = tf.moving_avg_test(batch_data, scores, stats=stats)
-    assert len(
-        scores) >= 1000, 'At least 1000 moving avg scores listed in stock_scores dictionary'
+    if not(len(scores) >= 1000):
+        raise AssertionError('At least 1000 moving avg scores listed in stock_scores dictionary')
 
 
 def test_moving_avg_not_all_zero():
 
     scores = start.init_stock_scores(symbols)
     scores = tf.moving_avg_test(batch_data, scores, stats=stats)
-    assert not all(score == 0 for score in scores.values())
+    if all(score == 0 for score in scores.values()):
+        raise AssertionError('Moving average test returning all scores as zero')
 
 
 def test_splits_returns_scores():
 
     scores = start.init_stock_scores(symbols)
     scores = tf.split_test(batch_data, scores, splits=splits)
-    assert len(
-        scores) >= 1000, 'At least 1000 moving avg scores listed in stock_scores dictionary'
+    if not(len(scores) >= 1000):
+        raise AssertionError('At least 1000 moving avg scores listed in stock_scores dictionary')
 
 
 def test_splits_not_all_zero():
 
     scores = start.init_stock_scores(symbols)
     scores = tf.split_test(batch_data, scores, splits=splits)
-    assert not all(score == 0 for score in scores.values())
+    if all(score == 0 for score in scores.values()):
+        raise AssertionError('Splits test returning all scores as zero')
 
 
 def test_suite_not_all_zero():
     scores = start.init_stock_scores(symbols)
     scores = tf.suite(batch_data, scores, stats=stats, splits=splits)
-    assert not all(score == 0 for score in scores.values())
+    if all(score == 0 for score in scores.values()):
+        raise AssertionError('Technical suite returning all scores as zero')
 
 
 def test_suite_returns_scores():
 
     scores = start.init_stock_scores(symbols)
     scores = tf.suite(batch_data, scores, stats=stats, splits=splits)
-    assert len(
-        scores) >= 1000, 'At least 1000 moving avg scores listed in stock_scores dictionary'
+    if not(len(scores) >= 1000):
+        raise AssertionError('At least 1000 moving avg scores listed in stock_scores dictionary')
