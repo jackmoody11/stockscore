@@ -13,7 +13,7 @@ import time
 
 def score_stocks(num_stocks):
     print("Setting up stocks and scores...")
-    symbols, stock_scores, batch_data = start.total_setup()
+    _, stock_scores, batch_data = start.total_setup()
 
     print("Fetching data dictionaries...")
     chart, stats, financials, splits, dividends = (
