@@ -39,9 +39,9 @@ def set_batches(symbols):
     batch_symbols = []
     for i in range(0, num_batches):
         if x + 99 <= len(symbols):
-            batch_symbols.append(",".join(symbols[x: x + 99]))
+            batch_symbols.append(",".join(symbols[x : x + 99]))
         else:
-            batch_symbols.append(",".join(symbols[x: len(symbols) + 1]))
+            batch_symbols.append(",".join(symbols[x : len(symbols) + 1]))
             break
         x = (i + 1) * 100
     return batch_symbols
@@ -51,7 +51,7 @@ def split_symbols(symbols, n=100):
     # Don't use this until PR is accepted for iexfinance module
     sym_list = list()
     for i in range(0, len(symbols), n):
-        sym_list.append(symbols[i:i+n])
+        sym_list.append(symbols[i: i + n])
     return sym_list
 
 
