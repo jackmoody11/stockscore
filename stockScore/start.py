@@ -14,7 +14,7 @@ def get_symbols():
     """
     symbols_json = requests.get(iex_url_base + "ref-data/symbols").json()
     symbols = []
-    for i in range(len(symbols_json)):
+    for i, _ in enumerate(symbols_json):
         if symbols_json[i]["type"] == "cs":
             symbols.append(symbols_json[i]["symbol"])
     return symbols
