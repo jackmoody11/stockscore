@@ -1,9 +1,9 @@
 from stockScore import technical_functions as tf
 from stockScore import start as start
-
-symbols, _, batch_data = start.total_setup()
-stats = start.get_stats(batch_data)
-splits = start.get_splits(batch_data)
+from .utils import symbols as symbols
+from .utils import batch_data as batch_data
+from .utils import stats as stats
+from .utils import splits as splits
 
 
 def test_moving_avg_returns_scores():

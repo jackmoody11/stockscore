@@ -1,9 +1,9 @@
 from stockScore import statistical_functions as sf
 from stockScore import start as start
-
-symbols, _, batch_data = start.total_setup()
-stats = start.get_stats(batch_data)
-chart = start.get_chart(batch_data)
+from .utils import symbols as symbols
+from .utils import batch_data as batch_data
+from .utils import stats as stats
+from .utils import chart as chart
 
 
 def test_trading_volume_test_returns_scores():

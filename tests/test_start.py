@@ -1,4 +1,5 @@
 from stockScore import start
+symbols = start.get_symbols()
 
 
 def test_get_symbols_not_empty():
@@ -9,14 +10,12 @@ def test_get_symbols_not_empty():
 
 def test_get_symbols_contains_at_least_1000_symbols():
 
-    symbols = start.get_symbols()
     if not(len(symbols) >= 1000):
         raise AssertionError('There are at least 1000 stock symbols')
 
 
 def test_init_stock_scores_sets_all_scores_to_zero():
 
-    symbols = start.get_symbols()
     stock_scores = start.init_stock_scores(symbols)
     if not(all(scores == 0 for scores in stock_scores.values())):
         raise AssertionError('All scores set to zero')
@@ -24,7 +23,6 @@ def test_init_stock_scores_sets_all_scores_to_zero():
 
 def test_init_stock_scores_returns_scores():
 
-    symbols = start.get_symbols()
     stock_scores = start.init_stock_scores(symbols)
     if not(len(stock_scores) >= 1000):
         raise AssertionError('At least 1000 stock scores initialized')
@@ -32,14 +30,12 @@ def test_init_stock_scores_returns_scores():
 
 def test_set_batches_not_empty():
 
-    symbols = start.get_symbols()
     if not start.set_batches(symbols):
-        raise  AssertionError('Batches set - list is empty')
+        raise AssertionError('Batches set - list is empty')
 
 
 def test_set_batches_contains_at_least_10_batches():
 
-    symbols = start.get_symbols()
     batches = start.set_batches(symbols)
     if not(len(batches) >= 10):
         raise AssertionError('At least 10 batches of symbols')
@@ -47,7 +43,7 @@ def test_set_batches_contains_at_least_10_batches():
 
 def test_total_start():
 
-    symbols, stock_scores, batch_symbols = start.total_setup()
+    _, stock_scores, batch_symbols = start.total_setup()
     if not(len(symbols) >= 100):
         raise AssertionError('Symbols not added')
     if not(all(scores == 0 for scores in stock_scores.values())):
@@ -107,4 +103,4 @@ def test_return_top_assumes_length_of_dictionary_by_default():
 #
 #     splits = start.get_splits(batch_data)
 #     aapl_splits = splits['AAPL']
-#     assert aapl_splits, 'Successfully retrieved AAPL splits'
+#     assert aapl_splits, 'Successfully retrieved AAPL spl
