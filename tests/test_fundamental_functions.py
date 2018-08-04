@@ -1,8 +1,8 @@
 from stockScore import fundamental_functions as ff
 from stockScore import start as start
-
-symbols, _, batch_data = start.total_setup()
-financials = start.get_financials(batch_data)
+from .utils import symbols as symbols
+from .utils import batch_data as batch_data
+from .utils import financials as financials
 
 
 def test_dividend_test_returns_scores():

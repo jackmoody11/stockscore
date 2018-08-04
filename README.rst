@@ -29,10 +29,7 @@ Prerequisites
 Installing
 ~~~~~~~~~~
 
-A step by step series of examples that tell you how to get a development
-env running
-
-To clone this, run the following:
+To clone this repository, run the following:
 
 ::
 
