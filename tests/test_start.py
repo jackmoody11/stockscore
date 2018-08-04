@@ -3,7 +3,8 @@ from stockScore import start
 
 def test_get_symbols_not_empty():
 
-    assert start.get_symbols(), 'Returns non-empty list of symbols'
+    if not start.get_symbols():
+        raise AssertionError('Returns empty list of symbols')
 
 
 def test_get_symbols_contains_at_least_1000_symbols():
