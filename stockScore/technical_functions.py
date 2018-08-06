@@ -1,5 +1,5 @@
 from stockScore import start
-
+import numpy as np
 
 def moving_avg_test(batch_data, stock_scores, stats=None):
 
@@ -82,6 +82,27 @@ def split_test(batch_data, stock_scores, splits=None, time="5y"):
 
     return stock_scores
 
+# In progress
+# def rsi_test(batch_data, stock_scores, chart=None):
+#     if chart is None:
+#         chart = start.get_chart(batch_data, time='1m')
+#
+#     for symbol in chart:
+#         try:
+#             change_pct = list()
+#             rsi = list()
+#             for day in range(len(chart[symbol]['chart'])):
+#                 change_pct.insert(0, chart[symbol]['chart'][day]['changePercent'])
+#             for i in range(len(change_pct)):
+#                 avg_gain = np.average([change_pct[j] for j in range(i, i+14) if change_pct[j] >= 0])
+#                 avg_loss = np.average([change_pct[j] for j in range(i, i+14) if change_pct[j] < 0])
+#                 rs = avg_gain/avg_loss
+#                 val = 100 - 100/(1+rs)
+#                 rsi.insert(val)
+#         except (KeyError, TypeError, IndexError):
+#             continue  # If no chart, assume data is incomplete - no penalty for symbol if data incomplete
+#
+#     return stock_scores
 
 def suite(batch_data, stock_scores, stats=None, splits=None):
     """

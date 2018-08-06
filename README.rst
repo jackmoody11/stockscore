@@ -1,6 +1,9 @@
 Stock Scores
 ============
-.. image:: https://www.codefactor.io/repository/github/jackmoody11/stockscores/badge 
+.. image:: https://img.shields.io/badge/python-v3-green.svg
+   :target: https://www.python.org
+
+.. image:: https://www.codefactor.io/repository/github/jackmoody11/stockscores/badge
    :target: https://www.codefactor.io/repository/github/jackmoody11/stockscores
 
 .. image:: https://api.codacy.com/project/badge/Grade/d2108117522f4fe498530c6f7185108e
