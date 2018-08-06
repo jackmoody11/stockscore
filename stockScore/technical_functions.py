@@ -25,14 +25,14 @@ def moving_avg_test(batch_data, stock_scores, stats=None):
             pts = round(5 / (per_diff + 1))
             if 0 < per_diff < 2:
                 stock_scores[symbol] += pts
-                print(
-                    f"{symbol} score went up by {pts} -- SMA 200 under SMA 50 by {per_diff}%"
-                )
+                # print(
+                #     f"{symbol} score went up by {pts} -- SMA 200 under SMA 50 by {per_diff}%"
+                # )
             elif 2 < per_diff < 5:
                 stock_scores[symbol] += pts
-                print(
-                    f"{symbol} score went up by {pts} -- SMA 200 under SMA 50 by {per_diff}%"
-                )
+                # print(
+                #     f"{symbol} score went up by {pts} -- SMA 200 under SMA 50 by {per_diff}%"
+                # )
 
         except (KeyError, TypeError):
             continue
@@ -64,18 +64,18 @@ def split_test(batch_data, stock_scores, splits=None, time="5y"):
                 # They probably feel good about future prospects and want to allow more investors to invest in them
                 pts = num_splits
                 stock_scores[symbol] += pts
-                print(
-                    f"{symbol} went up by {pts} -- split bullishly {num_splits} times in past {time}"
-                )
+                # print(
+                #     f"{symbol} went up by {pts} -- split bullishly {num_splits} times in past {time}"
+                # )
             elif num_splits > 0:
                 # Stocks that split so that you get 1 stock for every 7 you own may indicate poor future prospects
                 # They may be worried about staying in the market
                 # and need to maintain some minimum price to keep trading
                 pts = sum(1 for i in range(num_splits) if split_ratios[i] > 1)
                 stock_scores[symbol] -= pts
-                print(
-                    f"{symbol} went down by {pts} -- split bearishly {pts} times in past {time}"
-                )
+                # print(
+                #     f"{symbol} went down by {pts} -- split bearishly {pts} times in past {time}"
+                # )
 
         except (TypeError, KeyError):
             continue

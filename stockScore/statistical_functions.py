@@ -20,20 +20,10 @@ def p_to_b_test(batch_data, stock_scores, stats=None):
             pts = round(5 / (stats[symbol]["stats"]["priceToBook"] + 0.8))
             if 0 < stats[symbol]["stats"]["priceToBook"] <= 1:
                 stock_scores[symbol] += pts
-                print(
-                    symbol
-                    + " score went up by "
-                    + str(pts)
-                    + "-- price to book between 0 and 1"
-                )
+                # print(f"{symbol} score went up by {pts}-- price to book between 0 and 1")
             elif 1 < stats[symbol]["stats"]["priceToBook"] <= 2:
                 stock_scores[symbol] += pts
-                print(
-                    symbol
-                    + " score went up by "
-                    + str(pts)
-                    + "-- price to book between 1 and 2"
-                )
+                # print(f"{symbol} score went up by {pts}-- price to book between 1 and 2")
         except (TypeError, KeyError):
             continue
 
@@ -53,14 +43,14 @@ def pe_ratio_test(batch_data, stock_scores, chart=None, stats=None):
             pe_ratio = price / ttm_eps
             if 0 < pe_ratio < 15:
                 stock_scores[symbol] += 2
-                print(
-                    f"{symbol} score went up by 2 -- P/E ratio positive and less than 15"
-                )
+                # print(
+                #     f"{symbol} score went up by 2 -- P/E ratio positive and less than 15"
+                # )
             elif 15 < pe_ratio < 30:
                 stock_scores[symbol] += 1
-                print(
-                    f"{symbol} score went up by 1 -- P/E ratio positive and between 15 and 30"
-                )
+                # print(
+                #     f"{symbol} score went up by 1 -- P/E ratio positive and between 15 and 30"
+                # )
         except (ZeroDivisionError, IndexError, KeyError):
             continue
 

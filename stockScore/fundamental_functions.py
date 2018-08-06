@@ -21,10 +21,10 @@ def dividend_test(batch_data, stock_scores, dividends=None):
             years = len(symbol_dividends) // 4
             pts = years
             stock_scores[symbol] += pts
-            print(
-                f"{symbol} score went up by {pts} -- paid dividends for the \
-                  last {years} years"
-            )
+            # print(
+            #     f"{symbol} score went up by {pts} -- paid dividends for the \
+            #       last {years} years"
+            # )
         except (KeyError, IndexError):
             continue
 
@@ -52,9 +52,9 @@ def net_income_test(batch_data, stock_scores, financials=None):
                 if all(symbol_financials[i]["netIncome"] > 0 for i in range(quarters)):
                     pts = 3
                     stock_scores[symbol] += pts
-                    print(
-                        f"{symbol} score went up by {pts} -- positive net income for all quarters reporting"
-                    )
+                    # print(
+                    #     f"{symbol} score went up by {pts} -- positive net income for all quarters reporting"
+                    # )
 
             except (KeyError, TypeError):
                 continue
@@ -86,10 +86,10 @@ def current_ratio_test(batch_data, stock_scores, financials=None):
                 current_ratio = current_assets / current_debt
                 if current_ratio >= 1.5:
                     stock_scores[symbol] += 2
-                    print(f"{symbol} score went up by 2 -- current ratio >= .5")
+                    # print(f"{symbol} score went up by 2 -- current ratio >= .5")
                 elif current_ratio >= 1:
                     stock_scores[symbol] += 1
-                    print(f"{symbol} score went up by 1 -- current ratio >= 1")
+                    # print(f"{symbol} score went up by 1 -- current ratio >= 1")
             except (ZeroDivisionError, TypeError):
                 continue
         except (KeyError, TypeError):
