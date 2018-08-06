@@ -1,4 +1,4 @@
-from stockScore import start
+from stockScore import utils
 
 
 # Needs updating
@@ -8,13 +8,13 @@ def dividend_test(batch_data, stock_scores, dividends=None):
     functions to set batch_data
     :param stock_scores: Dictionary with stock symbols and corresponding scores
     (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
-    :param dividends: Dictionary with all dividend information from IEX API (see get_dividends in start
+    :param dividends: Dictionary with all dividend information from IEX API (see get_dividends in utils
     module for more info.
     :return: Returns an updated stock_score dictionary. Make sure to set stock_score to the function
     so that dividend_test() can return updated stock scores.
     """
     if dividends is None:
-        dividends = start.get_dividends(batch_data)
+        dividends = utils.get_dividends(batch_data)
     for symbol in dividends:
         try:
             symbol_dividends = dividends[symbol]["dividends"]
@@ -37,13 +37,13 @@ def net_income_test(batch_data, stock_scores, financials=None):
     functions to set batch_data
     :param stock_scores: Dictionary with stock symbols and corresponding scores
     (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
-    :param financials: Dictionary with all financial information from IEX API (see get_financials in start
+    :param financials: Dictionary with all financial information from IEX API (see get_financials in utils
     module for more info.
     :return: Returns an updated stock_score dictionary. Make sure to set stock_score to the function
     so that net_income_test() can return updated stock scores.
     """
     if financials is None:
-        financials = start.get_financials(batch_data)
+        financials = utils.get_financials(batch_data)
     for symbol in financials:
         try:
             symbol_financials = financials[symbol]["financials"]["financials"]
@@ -70,13 +70,13 @@ def current_ratio_test(batch_data, stock_scores, financials=None):
     functions to set batch_data
     :param stock_scores: Dictionary with stock symbols and corresponding scores
     (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
-    :param financials: Dictionary with all financial information from IEX API (see get_financials in start
+    :param financials: Dictionary with all financial information from IEX API (see get_financials in utils
     module for more info.
     :return: Returns an updated stock_score dictionary. Make sure to set stock_score to the function
     so that current_ratio() can return updated stock scores.
     """
     if financials is None:
-        financials = start.get_financials(batch_data)
+        financials = utils.get_financials(batch_data)
     for symbol in stock_scores:
         try:
             fin_base = financials[symbol]["financials"]["financials"][0]
@@ -110,7 +110,7 @@ def p_to_b_test(batch_data, stock_scores, stats=None):
     so that p_to_b_test() returns updated stock scores.
     """
     if stats is None:
-        stats = start.get_stats(batch_data)
+        stats = utils.get_stats(batch_data)
 
     for symbol in stock_scores:
         try:
@@ -127,9 +127,9 @@ def p_to_b_test(batch_data, stock_scores, stats=None):
 def pe_ratio_test(batch_data, stock_scores, chart=None, stats=None):
 
     if stats is None:
-        stats = start.get_stats(batch_data)
+        stats = utils.get_stats(batch_data)
     if chart is None:
-        chart = start.get_chart(batch_data)
+        chart = utils.get_chart(batch_data)
     for symbol in stock_scores:
         try:
             ttm_eps = stats[symbol]["stats"]["ttmEPS"]
@@ -158,11 +158,11 @@ def suite(batch_data, stock_scores, dividends=None, financials=None, stats=None)
     functions to set batch_data
     :param stock_scores: Dictionary with stock symbols and corresponding scores
     (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
-    :param dividends: Dictionary with all dividend information from IEX API (see get_dividends in start
+    :param dividends: Dictionary with all dividend information from IEX API (see get_dividends in utils
     module for more info.
-    :param financials: Dictionary with all financial information from IEX API (see get_financials in start
+    :param financials: Dictionary with all financial information from IEX API (see get_financials in utils
     module for more info.
-    :param stats: Dictionary with all stats information from IEX API (see get_stats in start
+    :param stats: Dictionary with all stats information from IEX API (see get_stats in utils
     module for more info.
     :return: Returns an updated stock_score dictionary that runs all functions
     in fundamental_functions module. Make sure to set stock_score to the function

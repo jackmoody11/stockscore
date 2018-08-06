@@ -4,24 +4,24 @@
 # import sys
 # import numpy as np
 
-from stockScore import start as start
+from stockScore import utils
 from stockScore import technical_functions as tf
 from stockScore import fundamental_functions as ff
-from stockScore.graph import plot_top as plot_top
+from stockScore.graph import plot_top
 import time
 
 
 def score_stocks(num_stocks):
     print("Setting up stocks and scores...")
-    _, stock_scores, batch_data = start.total_setup()
+    _, stock_scores, batch_data = utils.total_setup()
 
     print("Fetching data dictionaries...")
     chart, stats, financials, splits, dividends = (
-        start.get_chart(batch_data),
-        start.get_stats(batch_data),
-        start.get_financials(batch_data),
-        start.get_splits(batch_data),
-        start.get_dividends(batch_data),
+        utils.get_chart(batch_data),
+        utils.get_stats(batch_data),
+        utils.get_financials(batch_data),
+        utils.get_splits(batch_data),
+        utils.get_dividends(batch_data),
     )
 
     print("Running tests...")
@@ -30,7 +30,7 @@ def score_stocks(num_stocks):
     stock_scores = tf.suite(batch_data, stock_scores, stats=stats, splits=splits, chart=chart)
     del stats, splits, chart
 
-    top_stocks = start.return_top(stock_scores, num_stocks)
+    top_stocks = utils.return_top(stock_scores, num_stocks)
     plot_top(top_stocks)
     return top_stocks
 
