@@ -1,4 +1,4 @@
-from stockScore import start
+from stockScore import utils
 # import numpy as np
 
 
@@ -9,13 +9,13 @@ def moving_avg_test(batch_data, stock_scores, stats=None):
     functions to set batch_data
     :param stock_scores: Dictionary with stock symbols and corresponding scores
     (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
-    :param stats: Dictionary with all statistical information from IEX API (see get_stats in start
+    :param stats: Dictionary with all statistical information from IEX API (see get_stats in utils
     module for more info.
     :return: Returns an updated stock_score dictionary. Make sure to set stock_score to the function
     so that moving_avg_test() can return updated stock scores.
     """
     if stats is None:
-        stats = start.get_stats(batch_data)
+        stats = utils.get_stats(batch_data)
 
     for symbol in stock_scores:
         try:
@@ -47,14 +47,14 @@ def split_test(batch_data, stock_scores, splits=None, time="5y"):
     functions to set batch_data
     :param stock_scores: Dictionary with stock symbols and corresponding scores
     (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
-    :param splits: Dictionary with all split information from IEX API (see get_splits in start
+    :param splits: Dictionary with all split information from IEX API (see get_splits in utils
     module for more info.
     :param time: Time over which to see if split occurred. (1d = 1 day, 1m = 1 month, 1y = 1 year)
     :return: Returns an updated stock_score dictionary. Make sure to set stock_score to the function
     so that moving_avg_test() can return updated stock scores.
     """
     if splits is None:
-        splits = start.get_splits(batch_data, time=time)
+        splits = utils.get_splits(batch_data, time=time)
     for symbol in stock_scores:
         try:
             symbol_splits = splits[symbol]["splits"]
@@ -96,7 +96,7 @@ def trading_volume_test(batch_data, stock_scores, chart=None):
     so that trading_volume_test() returns updated stock scores.
     """
     if chart is None:
-        chart = start.get_chart(batch_data)
+        chart = utils.get_chart(batch_data)
 
     for symbol in chart:
         try:
@@ -116,7 +116,7 @@ def trading_volume_test(batch_data, stock_scores, chart=None):
 # In progress
 # def rsi_test(batch_data, stock_scores, chart=None):
 #     if chart is None:
-#         chart = start.get_chart(batch_data, time='1m')
+#         chart = utils.get_chart(batch_data, time='1m')
 #
 #     for symbol in chart:
 #         try:
@@ -142,11 +142,11 @@ def suite(batch_data, stock_scores, stats=None, splits=None, chart=None):
     functions to set batch_data
     :param stock_scores: Dictionary with stock symbols and corresponding scores
     (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
-    :param stats: Dictionary with all statistical information from IEX API (see get_stats in start
+    :param stats: Dictionary with all statistical information from IEX API (see get_stats in utils
     module for more info.
-    :param splits: Dictionary with all splits information from IEX API (see get_splits in start
+    :param splits: Dictionary with all splits information from IEX API (see get_splits in utils
     module for more info.
-    :param chart: Dictionary with price and volume information from IEX API (see get_chart in start
+    :param chart: Dictionary with price and volume information from IEX API (see get_chart in utils
     module for more info.
     :return: Returns an updated stock_score dictionary that runs all functions
     in technical_functions module. Make sure to set stock_score to the function
