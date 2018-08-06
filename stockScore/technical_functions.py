@@ -1,5 +1,6 @@
 from stockScore import start
-import numpy as np
+# import numpy as np
+
 
 def moving_avg_test(batch_data, stock_scores, stats=None):
 
@@ -82,6 +83,36 @@ def split_test(batch_data, stock_scores, splits=None, time="5y"):
 
     return stock_scores
 
+
+def trading_volume_test(batch_data, stock_scores, chart=None):
+    """
+    :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
+    functions to set batch_data
+    :param stock_scores: Dictionary with stock symbols and corresponding scores
+    (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
+    :param chart: Defaults as None, but can be set to value to speed up performance if running suite
+    or multiple tests at once.
+    :return: Returns updated stock_score dictionary. Make sure to set stock_score to the function
+    so that trading_volume_test() returns updated stock scores.
+    """
+    if chart is None:
+        chart = start.get_chart(batch_data)
+
+    for symbol in chart:
+        try:
+            latest_volume = chart[symbol]["chart"][0]["volume"]
+            if latest_volume >= 100000:
+                stock_scores[symbol] += 1
+                # print(f'{symbol} score went up by {1} -- Volume over 100,000')
+            elif latest_volume >= 50000:
+                pass
+            else:
+                stock_scores[symbol] -= 1
+                # print(f'{symbol} score went down by {1} -- Volume under 50,000')
+        except (KeyError, TypeError, IndexError):
+            continue  # If no chart, assume data is incomplete - no penalty for symbol if data incomplete
+
+    return stock_scores
 # In progress
 # def rsi_test(batch_data, stock_scores, chart=None):
 #     if chart is None:
@@ -104,7 +135,8 @@ def split_test(batch_data, stock_scores, splits=None, time="5y"):
 #
 #     return stock_scores
 
-def suite(batch_data, stock_scores, stats=None, splits=None):
+
+def suite(batch_data, stock_scores, stats=None, splits=None, chart=None):
     """
     :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
     functions to set batch_data
@@ -114,10 +146,13 @@ def suite(batch_data, stock_scores, stats=None, splits=None):
     module for more info.
     :param splits: Dictionary with all splits information from IEX API (see get_splits in start
     module for more info.
+    :param chart: Dictionary with price and volume information from IEX API (see get_chart in start
+    module for more info.
     :return: Returns an updated stock_score dictionary that runs all functions
     in technical_functions module. Make sure to set stock_score to the function
     so that suite() can return updated stock scores.
     """
-    stock_scores = moving_avg_test(batch_data, stock_scores, stats)
-    stock_scores = split_test(batch_data, stock_scores, splits)
+    stock_scores = moving_avg_test(batch_data, stock_scores, stats=stats)
+    stock_scores = split_test(batch_data, stock_scores, splits=splits)
+    stock_scores = trading_volume_test(batch_data, stock_scores, chart=chart)
     return stock_scores

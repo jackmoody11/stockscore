@@ -1,9 +1,11 @@
 from stockScore import technical_functions as tf
 from stockScore import start as start
+# Set constants
 from .utils import symbols as symbols
 from .utils import batch_data as batch_data
 from .utils import stats as stats
 from .utils import splits as splits
+from .utils import chart as chart
 
 
 def test_moving_avg_returns_scores():
@@ -36,6 +38,21 @@ def test_splits_not_all_zero():
     scores = tf.split_test(batch_data, scores, splits=splits)
     if all(score == 0 for score in scores.values()):
         raise AssertionError('Splits test returning all scores as zero')
+
+
+def test_trading_volume_test_returns_scores():
+
+    scores = start.init_stock_scores(symbols)
+    scores = tf.trading_volume_test(batch_data, scores, chart=chart)
+    if not(len(scores) >= 1000):
+        raise AssertionError('At least 1000 dividend scores listed in stock_scores dictionary')
+
+
+def test_trading_volume_test_not_all_zero():
+    scores = start.init_stock_scores(symbols)
+    scores = tf.trading_volume_test(batch_data, scores, chart=chart)
+    if all(score == 0 for score in scores.values()):
+        raise AssertionError('Trading volume test returning all zero values')
 
 
 def test_suite_not_all_zero():
