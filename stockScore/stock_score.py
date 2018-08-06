@@ -8,6 +8,7 @@ from stockScore import start as start
 from stockScore import technical_functions as tf
 from stockScore import statistical_functions as sf
 from stockScore import fundamental_functions as ff
+from stockScore.graph import plot_top as plot_top
 import time
 
 
@@ -35,12 +36,13 @@ def score_stocks(num_stocks):
     del stats, splits
 
     top_stocks = start.return_top(stock_scores, num_stocks)
+    plot_top(top_stocks)
     return top_stocks
 
 
 if __name__ == "__main__":
     begin = time.time()
-    top = score_stocks(20)
-    print(f"The top {20} stocks are {top}")
+    top = score_stocks(5)
+    print(f"The top {5} stocks are {top}")
     end = time.time()
     print(f"That took {end - begin} seconds")
