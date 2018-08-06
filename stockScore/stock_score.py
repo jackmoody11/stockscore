@@ -6,7 +6,6 @@
 
 from stockScore import start as start
 from stockScore import technical_functions as tf
-from stockScore import statistical_functions as sf
 from stockScore import fundamental_functions as ff
 from stockScore.graph import plot_top as plot_top
 import time
@@ -26,14 +25,10 @@ def score_stocks(num_stocks):
     )
 
     print("Running tests...")
-    stock_scores = ff.suite(
-        batch_data, stock_scores, dividends=dividends, financials=financials
-    )
-    del financials, dividends
-    stock_scores = sf.suite(batch_data, stock_scores, stats=stats, chart=chart)
-    del chart
-    stock_scores = tf.suite(batch_data, stock_scores, stats=stats, splits=splits)
-    del stats, splits
+    stock_scores = ff.suite(batch_data, stock_scores, dividends=dividends, financials=financials, stats=stats)
+    del dividends, financials
+    stock_scores = tf.suite(batch_data, stock_scores, stats=stats, splits=splits, chart=chart)
+    del stats, splits, chart
 
     top_stocks = start.return_top(stock_scores, num_stocks)
     plot_top(top_stocks)
