@@ -32,8 +32,8 @@ Prerequisites
 - You can get the latest version of Python 3 here_ (this should come with the latest version of pip)
 - All dependencies are contained in `requirements.txt` (more on that directly below)
 
-Installing
-~~~~~~~~~~
+Getting Started
+~~~~~~~~~~~~~~~
 
 To clone this repository, run the following:
 
@@ -41,11 +41,7 @@ To clone this repository, run the following:
 
     git clone https://github.com/jackmoody11/stockScores
 
-These instructions will get you a copy of the project up and running on
-your local machine for development and testing purposes. See deployment
-for notes on how to deploy the project on a live system.
-
-Make sure you have virtualenv installed
+It's nice to have virtualenv installed
 
 ::
 
@@ -84,18 +80,33 @@ For Windows users:
 
     .\my-env\Scripts\activate
 
-Then use :code:`pip3 install -r requirements.txt` to install required modules.
+Then use :code:`pip install -r requirements.txt` to install required modules.
 
-End with an example of getting some data out of the system or using it
-for a little demo
+Run the program!
+----------------
+To make sure that everything is working, while in the working directory of the stockScore project, run :code:`python3 stock_score.py`.
+
+*Note*: Make sure you are using :code:`python3`, because older versions of python do not support f strings.
+
+Here is an example output of what you can expect to see when you run the program:
+
+Terminal output:
+
+.. image:: /media/terminal_output.png
+
+
+Top 5 stocks output:
+
+.. image:: /media/top5_output.png
+
 
 Running the tests
 -----------------
 
-Once the environment is setup, all tests can be run by simply running
+Al tests can be run by simply running
 ::
 
-    py.test
+    pytest
 
 from the command line.
 
@@ -103,49 +114,33 @@ from the command line.
 In order to run a specific test (like test_fundamental_functions.py), run
 ::
 
-    py.test tests/test_fundamental_functions.py
+    pytest tests/test_fundamental_functions.py
 
 
 For more information on how to use py.test (like how to select a few tests),
 `look here`_ for the official py.test docs.
 
-Break down into end to end tests
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Stock Score tests aim to make sure that the program is able to retrieve data
-from the IEX API and use that data to properly score the stocks based on
-certain numbers relating to the stocks.
-
-
-And coding style tests
-~~~~~~~~~~~~~~~~~~~~~~
-
-Explain what these tests test and why
-
-::
-
-   Give an example
-
 Deployment
 ----------
 
-Add additional notes about how to deploy this on a live system
+In order to make code styling simple, this project uses black_. To make sure your pull request follows the format, run :code:`black stockScore` while working in the main :code:`stockScore` directory.
+
+This project is very simple to deploy to a live system. To change which tests you are using, change which functions are added to the suites (this is the name used in both files) of :code:`fundamental_functions.py` and :code:`technical_functions.py`.
 
 Built With
 ----------
 
-Python 3 and some great third party modules.
+Python 3 and some great third party modules (see `requirements.txt`_ for more details).
 
 Contributing
 ------------
 
-Please read `CODE_OF_CONDUCT.md`_ for details on our code of conduct, and
-the process for submitting pull requests to us.
+Please read the `code of conduct`_ for details on how to positively contribute to this project.
 
 Versioning
 ----------
 
-We use `SemVer`_ for versioning. For the versions available, see the
+This project uses `SemVer`_ for versioning. For the versions available, see the
 `tags on this repository`_.
 
 
@@ -165,7 +160,9 @@ Acknowledgments
 .. _Dropwizard: http://www.dropwizard.io/1.0.2/docs/
 .. _Maven: https://maven.apache.org/
 .. _ROME: https://rometools.github.io/rome/
-.. _CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md
+.. _black: https://github.com/ambv/black
+.. _`requirements.txt`: https://github.com/jackmoody11/stockScores/blob/master/requirements.txt
+.. _`code of conduct`: CODE_OF_CONDUCT.md
 .. _SemVer: http://semver.org/
 .. _tags on this repository: https://github.com/jackmoody11/stockScores/tags
 .. _LICENSE: https://github.com/jackmoody11/stockScores/blob/master/LICENSE
