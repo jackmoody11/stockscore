@@ -1,4 +1,4 @@
-from stockScore import utils
+from stockscore import utils
 symbols = utils.get_symbols()
 
 

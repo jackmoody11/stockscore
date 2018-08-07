@@ -1,5 +1,5 @@
-from stockScore import fundamental_functions as ff
-from stockScore import utils
+from stockscore import fundamental_functions as ff
+from stockscore import utils
 from .utils import symbols
 from .utils import batch_data
 from .utils import financials

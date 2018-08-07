@@ -1,4 +1,4 @@
-from stockScore import utils
+from stockscore import utils
 # import numpy as np
 
 
