@@ -4,10 +4,10 @@
 # import sys
 # import numpy as np
 
-from stockScore import utils
-from stockScore import technical_functions as tf
-from stockScore import fundamental_functions as ff
-from stockScore.graph import plot_top
+from stockscore import utils
+from stockscore import technical_functions as tf
+from stockscore import fundamental_functions as ff
+from stockscore.graph import plot_top
 import time
 
 

@@ -1,5 +1,5 @@
-from stockScore import technical_functions as tf
-from stockScore import utils
+from stockscore import technical_functions as tf
+from stockscore import utils
 # Set constants
 from .utils import symbols
 from .utils import batch_data

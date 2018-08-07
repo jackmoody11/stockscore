@@ -1,4 +1,4 @@
-from stockScore import utils
+from stockscore import utils
 
 symbols, _, batch_data = utils.total_setup()
 financials = utils.get_financials(batch_data)
