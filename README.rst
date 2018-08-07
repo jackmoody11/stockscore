@@ -24,8 +24,6 @@ where to go to dinner, Stock Scores lets investors choose what screens
 they want to run. Then, this script takes care of the rest,
 showing which stocks performed best under the given tests.
 
-*Note: This README is a work in progress*
-
 Prerequisites
 ~~~~~~~~~~~~~
 
