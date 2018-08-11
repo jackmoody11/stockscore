@@ -101,7 +101,7 @@ Top 5 stocks output:
 Running the tests
 -----------------
 
-Al tests can be run by simply running
+All tests can be run by simply running
 ::
 
     pytest
