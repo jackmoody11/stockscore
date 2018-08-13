@@ -1,4 +1,5 @@
 from stockscore import utils
+
 # import numpy as np
 
 
@@ -113,6 +114,8 @@ def trading_volume_test(batch_data, stock_scores, chart=None):
             continue  # If no chart, assume data is incomplete - no penalty for symbol if data incomplete
 
     return stock_scores
+
+
 # In progress
 # def rsi_test(batch_data, stock_scores, chart=None):
 #     if chart is None:
