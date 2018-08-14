@@ -2,8 +2,6 @@
 from bs4 import BeautifulSoup
 import requests
 import multiprocessing
-import os
-from math import ceil
 
 iex_url_base = "https://api.iextrading.com/1.0/"
 
@@ -13,18 +11,13 @@ def get_symbols():
     :return: Gets all symbols(tickers) from IEX API
     """
     symbols_json = requests.get(iex_url_base + "ref-data/symbols").json()
-    symbols = []
-    for i, _ in enumerate(symbols_json):
-        if symbols_json[i]["type"] == "cs":
-            symbols.append(symbols_json[i]["symbol"])
+    symbols = [symbol["symbol"] for symbol in symbols_json if symbol["type"] == "cs"]
     return symbols
 
 
 def init_stock_scores(symbols):
     """Set all stock scores to zero. """
-    stock_scores = {}
-    for symbol in symbols:
-        stock_scores[symbol] = 0
+    stock_scores = {symbol: 0 for symbol in symbols}
     return stock_scores
 
 
@@ -34,45 +27,33 @@ def set_batches(symbols):
     :return: Concatenates stock symbols in lumps of
     up to 100 to allow for batch GET requests from IEX API
     """
-    num_batches = int(ceil(len(symbols) / 100))
-    x = 0
-    batch_symbols = []
-    for i in range(0, num_batches):
-        if x + 99 <= len(symbols):
-            batch_symbols.append(",".join(symbols[x : x + 99]))
-        else:
-            batch_symbols.append(",".join(symbols[x : len(symbols) + 1]))
-            break
-        x = (i + 1) * 100
-    return batch_symbols
+    batches = [",".join(symbols[i:i+100]) for i in range(0, len(symbols), 100)]
+    return batches
 
 
-def batch_get(batch, url_end):
+def batch_get(payload):
     """
     Note: This function is only intended to be used for get_pool_response() function in utils module,
     but SHOULD NOT be embedded into get_pool_response to avoid pickling problems.
-    :param batch: Give a single batch of tickers (ex: 'A,AA,AAPL,...,MSFT')
-    :param url_end: Add the query that you will be using  (ex: "&types=dividends&range=5y")
+    :param payload: dictionary of parameters for GET request of the form
+    payload = {"symbols" : "A,AA,...", "types": "stats", ...}
     :return: all the data necessary to make multiple get requests at once
     """
-    batch_url = f"{iex_url_base}stock/market/batch?symbols={batch}{url_end}"
-    response = requests.get(batch_url).json()
+    batch_url = f"{iex_url_base}stock/market/batch?"
+    response = requests.get(batch_url, params=payload).json()
     return response
 
 
-def get_pool_response(batch_data, url_end, num_processes=os.cpu_count()):
+def get_pool_response(payloads, num_processes=multiprocessing.cpu_count()):
 
     """
-    :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
-    functions to set batch_data
-    :param url_end: Add the query that you will be using  (ex: "&types=dividends&range=5y")
+    :param payloads: list of payloads for GET request
     :param num_processes: Defaults to # of computer cores, but it is possible to have more.
     Increase this as your computer capacity allows for faster multiprocessing.
     :return: Returns all batch GET requests from API for given url_end.
     """
     pool = multiprocessing.Pool(processes=num_processes)
-    outputs = []
-    outputs.append(pool.starmap(batch_get, [[batch, url_end] for batch in batch_data]))
+    outputs = pool.map(batch_get, [payload for payload in payloads])
     pool.close()
     pool.join()
     return outputs
@@ -86,12 +67,9 @@ def get_stats(batch_data):
     statistic for individual stock, use something of the general form stats[symbol]['stats'][specific_stat].
     Note that 'stats' is fixed string.
     """
-    stats = {}
-    outputs = get_pool_response(batch_data, "&types=stats")[0]
-    for batch_dict in outputs:
-        for symbol in batch_dict:
-            batch_index = outputs.index(batch_dict)
-            stats[symbol] = outputs[batch_index][symbol]
+    payloads = [{"symbols": batch, "types": "stats"} for batch in batch_data]
+    outputs = get_pool_response(payloads=payloads)
+    stats = {symbol: outputs[outputs.index(batch_dict)][symbol] for batch_dict in outputs for symbol in batch_dict}
     return stats
 
 
@@ -101,12 +79,10 @@ def get_company(batch_data):
     functions to set batch_data
     :return: Gives dictionary with each symbols info (sector, industry, CEO name, etc.)
     """
-    company = {}
-    outputs = get_pool_response(batch_data, "&types=company")[0]
-    for batch_dict in outputs:
-        for symbol in batch_dict:
-            batch_index = outputs.index(batch_dict)
-            company[symbol] = outputs[batch_index][symbol]["company"]
+    payloads = [{"symbols": batch, "types": "company"} for batch in batch_data]
+    outputs = get_pool_response(payloads=payloads)
+    company = {symbol: outputs[outputs.index(batch_dict)][symbol]["company"]
+               for batch_dict in outputs for symbol in batch_dict}
     return company
 
 
@@ -119,12 +95,9 @@ def get_chart(batch_data, time="1m"):
     statistic for individual stock, use something of the general form stats[symbol]['stats'][specific_stat].
     Note that 'stats' is fixed string.
     """
-    chart = {}
-    outputs = get_pool_response(batch_data, f"&types=chart&range={time}")[0]
-    for batch_dict in outputs:
-        for symbol in batch_dict:
-            batch_index = outputs.index(batch_dict)
-            chart[symbol] = outputs[batch_index][symbol]
+    payloads = [{"symbols": batch, "types": "chart", "range": time} for batch in batch_data]
+    outputs = get_pool_response(payloads=payloads)
+    chart = {symbol: outputs[outputs.index(batch_dict)][symbol] for batch_dict in outputs for symbol in batch_dict}
     return chart
 
 
@@ -136,12 +109,9 @@ def get_financials(batch_data):
     statistic for individual stock, use something of the general form stats[symbol]['stats'][specific_stat].
     Note that 'stats' is fixed string.
     """
-    financials = {}
-    outputs = get_pool_response(batch_data, "&types=financials")[0]
-    for batch_dict in outputs:
-        for symbol in batch_dict:
-            batch_index = outputs.index(batch_dict)
-            financials[symbol] = outputs[batch_index][symbol]
+    payloads = [{"symbols": batch, "types": "financials"} for batch in batch_data]
+    outputs = get_pool_response(payloads=payloads)
+    financials = {symbol: outputs[outputs.index(batch_dict)][symbol] for batch_dict in outputs for symbol in batch_dict}
     return financials
 
 
@@ -152,12 +122,9 @@ def get_splits(batch_data, time="1y"):
     :param time: Length of time (1m = 1 month, 1y = 1 year, etc.) can go up to 5y
     :return: Dictionary of stock splits
     """
-    splits = {}
-    outputs = get_pool_response(batch_data, f"&types=splits&range={time}")[0]
-    for batch_dict in outputs:
-        for symbol in batch_dict:
-            batch_index = outputs.index(batch_dict)
-            splits[symbol] = outputs[batch_index][symbol]
+    payloads = [{"symbols": batch, "types": "splits", "range": time} for batch in batch_data]
+    outputs = get_pool_response(payloads=payloads)
+    splits = {symbol: outputs[outputs.index(batch_dict)][symbol] for batch_dict in outputs for symbol in batch_dict}
     return splits
 
 
@@ -168,12 +135,9 @@ def get_dividends(batch_data, time="5y"):
     :param time: Length of time (1m = 1 month, 1y = 1 year, etc.) can go up to 5y
     :return: Dictionary of stock dividends
     """
-    dividends = {}
-    outputs = get_pool_response(batch_data, f"&types=dividends&range={time}")[0]
-    for batch_dict in outputs:
-        for symbol in batch_dict:
-            batch_index = outputs.index(batch_dict)
-            dividends[symbol] = outputs[batch_index][symbol]
+    payloads = [{"symbols": batch, "types": "dividends", "range": time} for batch in batch_data]
+    outputs = get_pool_response(payloads=payloads)
+    dividends = {symbol: outputs[outputs.index(batch_dict)][symbol] for batch_dict in outputs for symbol in batch_dict}
     return dividends
 
 
@@ -202,7 +166,6 @@ def return_top(dictionary, x=None):
     :param x: # of keys to be returned. Function defaults to return entire dictionary sorted.
     :return: Will return top x values with keys.
     """
-    if x is None:
-        x = len(dictionary)
+    x = len(dictionary) if x is None else x
     sorted_array = sorted(dictionary.items(), key=lambda a: a[1], reverse=True)
     return sorted_array[0:x]
