@@ -146,7 +146,7 @@ def pe_ratio_test(batch_data, stock_scores, chart=None, stats=None):
                 #     f"{symbol} score went up by 1 -- P/E ratio positive and between 15 and 30"
                 # )
         except (ZeroDivisionError, IndexError, KeyError):
-            continue
+            continue  # if earnings is zero or EPS is not available, skip scoring for stock
 
     return stock_scores
 
