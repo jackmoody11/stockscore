@@ -5,3 +5,4 @@ __pycache__/
 .idea/
 venv/
 stockScore/oneoff.py
+.DS_Store
