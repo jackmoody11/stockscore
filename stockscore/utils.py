@@ -27,7 +27,7 @@ def set_batches(symbols):
     :return: Concatenates stock symbols in lumps of
     up to 100 to allow for batch GET requests from IEX API
     """
-    batches = [",".join(symbols[i:i+100]) for i in range(0, len(symbols), 100)]
+    batches = [",".join(symbols[i : i + 100]) for i in range(0, len(symbols), 100)]
     return batches
 
 
@@ -69,7 +69,11 @@ def get_stats(batch_data):
     """
     payloads = [{"symbols": batch, "types": "stats"} for batch in batch_data]
     outputs = get_pool_response(payloads=payloads)
-    stats = {symbol: outputs[outputs.index(batch_dict)][symbol] for batch_dict in outputs for symbol in batch_dict}
+    stats = {
+        symbol: outputs[outputs.index(batch_dict)][symbol]
+        for batch_dict in outputs
+        for symbol in batch_dict
+    }
     return stats
 
 
@@ -81,8 +85,11 @@ def get_company(batch_data):
     """
     payloads = [{"symbols": batch, "types": "company"} for batch in batch_data]
     outputs = get_pool_response(payloads=payloads)
-    company = {symbol: outputs[outputs.index(batch_dict)][symbol]["company"]
-               for batch_dict in outputs for symbol in batch_dict}
+    company = {
+        symbol: outputs[outputs.index(batch_dict)][symbol]["company"]
+        for batch_dict in outputs
+        for symbol in batch_dict
+    }
     return company
 
 
@@ -95,9 +102,15 @@ def get_chart(batch_data, time="1m"):
     statistic for individual stock, use something of the general form stats[symbol]['stats'][specific_stat].
     Note that 'stats' is fixed string.
     """
-    payloads = [{"symbols": batch, "types": "chart", "range": time} for batch in batch_data]
+    payloads = [
+        {"symbols": batch, "types": "chart", "range": time} for batch in batch_data
+    ]
     outputs = get_pool_response(payloads=payloads)
-    chart = {symbol: outputs[outputs.index(batch_dict)][symbol] for batch_dict in outputs for symbol in batch_dict}
+    chart = {
+        symbol: outputs[outputs.index(batch_dict)][symbol]
+        for batch_dict in outputs
+        for symbol in batch_dict
+    }
     return chart
 
 
@@ -111,7 +124,11 @@ def get_financials(batch_data):
     """
     payloads = [{"symbols": batch, "types": "financials"} for batch in batch_data]
     outputs = get_pool_response(payloads=payloads)
-    financials = {symbol: outputs[outputs.index(batch_dict)][symbol] for batch_dict in outputs for symbol in batch_dict}
+    financials = {
+        symbol: outputs[outputs.index(batch_dict)][symbol]
+        for batch_dict in outputs
+        for symbol in batch_dict
+    }
     return financials
 
 
@@ -122,9 +139,15 @@ def get_splits(batch_data, time="1y"):
     :param time: Length of time (1m = 1 month, 1y = 1 year, etc.) can go up to 5y
     :return: Dictionary of stock splits
     """
-    payloads = [{"symbols": batch, "types": "splits", "range": time} for batch in batch_data]
+    payloads = [
+        {"symbols": batch, "types": "splits", "range": time} for batch in batch_data
+    ]
     outputs = get_pool_response(payloads=payloads)
-    splits = {symbol: outputs[outputs.index(batch_dict)][symbol] for batch_dict in outputs for symbol in batch_dict}
+    splits = {
+        symbol: outputs[outputs.index(batch_dict)][symbol]
+        for batch_dict in outputs
+        for symbol in batch_dict
+    }
     return splits
 
 
@@ -135,9 +158,15 @@ def get_dividends(batch_data, time="5y"):
     :param time: Length of time (1m = 1 month, 1y = 1 year, etc.) can go up to 5y
     :return: Dictionary of stock dividends
     """
-    payloads = [{"symbols": batch, "types": "dividends", "range": time} for batch in batch_data]
+    payloads = [
+        {"symbols": batch, "types": "dividends", "range": time} for batch in batch_data
+    ]
     outputs = get_pool_response(payloads=payloads)
-    dividends = {symbol: outputs[outputs.index(batch_dict)][symbol] for batch_dict in outputs for symbol in batch_dict}
+    dividends = {
+        symbol: outputs[outputs.index(batch_dict)][symbol]
+        for batch_dict in outputs
+        for symbol in batch_dict
+    }
     return dividends
 
 
