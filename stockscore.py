@@ -24,20 +24,22 @@ def score_stocks(num_stocks):
         utils.get_dividends(batch_data),
     )
 
-    print("Running tests...")
+    print("Running screens...")
     stock_scores = ff.suite(batch_data, stock_scores, dividends=dividends, financials=financials, stats=stats)
-    del dividends, financials
+    del dividends, financials  # Clear up memory space
     stock_scores = tf.suite(batch_data, stock_scores, stats=stats, splits=splits, chart=chart)
-    del stats, splits, chart
+    del stats, splits, chart  # Clear up memory space
 
-    top_stocks = utils.return_top(stock_scores, num_stocks)
-    plot_top(top_stocks)
+    top_stocks = utils.return_top(stock_scores, num_stocks)  # Return top scoring stocks
+    plot_top(top_stocks)  # Plot top stocks as bar chart
     return top_stocks
 
 
+# Run stock screening
 if __name__ == "__main__":
     begin = time.time()
-    top = score_stocks(5)
-    print(f"The top 5 stocks are {top}")
+    num_stocks = 10
+    top = score_stocks(num_stocks=num_stocks)
+    print(f"The top {num_stocks} stocks are {top}")
     end = time.time()
-    print(f"That took {end - begin} seconds")
+    print(f"That took {end - begin:.2f} seconds")

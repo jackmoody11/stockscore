@@ -1,5 +1,5 @@
-Stock Scores
-============
+Stock Score
+===========
 .. image:: https://img.shields.io/badge/python-v3-green.svg
    :target: https://www.python.org
 
@@ -15,14 +15,14 @@ Stock Scores
 .. image:: https://img.shields.io/github/license/mashape/apistatus.svg?style=popout
    :target: https://github.com/jackmoody11/stockScores/blob/master/LICENSE
 
-Stock Scores is a python script to score stocks based on specified
-criteria. The goal of this project is to provide a powerful stock scoring
+Stock Score is a python script to score stocks based on specified
+criteria. The goal of this project is to provide a stock screening
 system for various types of stock classifications (growth, momentum, value, etc.).
 
 Similar to how one might rank the best options when they are deciding
-where to go to dinner, Stock Scores lets investors choose what screens
+where to go to dinner, Stock Score lets investors choose what screens
 they want to run. Then, this script takes care of the rest,
-showing which stocks performed best under the given tests.
+showing which stocks performed best under the given screens.
 
 Prerequisites
 ~~~~~~~~~~~~~
@@ -37,7 +37,7 @@ To clone this repository, run the following:
 
 ::
 
-    git clone https://github.com/jackmoody11/stockScores
+    git clone https://github.com/jackmoody11/stockscore
 
 It's nice to have virtualenv installed
 
@@ -49,7 +49,7 @@ Change working directory to project folder
 
 ::
 
-    cd my/path/to/stockScore
+    cd my/path/to/stockscore
 
 Create a virtual environment
 For Mac users:
@@ -115,13 +115,13 @@ In order to run a specific test (like test_fundamental_functions.py), run
     pytest tests/test_fundamental_functions.py
 
 
-For more information on how to use py.test (like how to select a few tests),
-`look here`_ for the official py.test docs.
+For more information on how to use pytest (like how to select a few tests),
+`look here`_ for the official pytest docs.
 
 Deployment
 ----------
 
-In order to make code styling simple, this project uses black_. To make sure your pull request follows the format, run :code:`black stockScore` while working in the main :code:`stockScore` directory.
+In order to make code styling simple, this project uses black_. To make sure your pull request follows the format, run :code:`black stockscore` while working in the main :code:`stockscore` directory.
 
 This project is very simple to deploy to a live system. To change which tests you are using, change which functions are added to the suites (this is the name used in both files) of :code:`fundamental_functions.py` and :code:`technical_functions.py`.
 
@@ -152,6 +152,14 @@ Acknowledgments
 ---------------
 
 -  Hat tip to Benjamin Graham's *Intelligent Investor*. If you haven't already, read this book!
+-  Also, I recommend reading *Common Stocks and Uncommon Profits* by Philip Fisher.
+
+Notes
+-----
+
+- *Note that the screens included in this project are not exclusive and do not guarantee any sort of returns. I assume no liability for investment decisions you make and am not a professional adviser. Please do your due diligence before making investment decisions and consult with a professional as necessary.*
+
+
 
 .. _here: https://docs.python.org/3/installing/
 .. _look here: https://pytestguide.readthedocs.io/en/latest/
