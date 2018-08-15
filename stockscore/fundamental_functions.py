@@ -13,6 +13,7 @@ def dividend_test(batch_data, stock_scores, dividends=None):
     :return: Returns an updated stock_score dictionary. Make sure to set stock_score to the function
     so that dividend_test() can return updated stock scores.
     """
+    # Get data for screen
     if dividends is None:
         dividends = utils.get_dividends(batch_data)
     for symbol in dividends:
@@ -20,13 +21,9 @@ def dividend_test(batch_data, stock_scores, dividends=None):
             symbol_dividends = dividends[symbol]["dividends"]
             years = len(symbol_dividends) // 4
             pts = years
-            stock_scores[symbol] += pts
-            # print(
-            #     f"{symbol} score went up by {pts} -- paid dividends for the \
-            #       last {years} years"
-            # )
+            stock_scores[symbol] += pts  # Add numbers of years which dividends have been paid
         except (KeyError, IndexError):
-            continue
+            continue  # Skip to next stock if unable to get data
 
     return stock_scores
 
@@ -42,24 +39,22 @@ def net_income_test(batch_data, stock_scores, financials=None):
     :return: Returns an updated stock_score dictionary. Make sure to set stock_score to the function
     so that net_income_test() can return updated stock scores.
     """
+    # Get data for screen
     if financials is None:
         financials = utils.get_financials(batch_data)
+    # Give score based on net income results from the past year
     for symbol in financials:
         try:
             symbol_financials = financials[symbol]["financials"]["financials"]
             quarters = len(symbol_financials)
             try:
                 if all(symbol_financials[i]["netIncome"] > 0 for i in range(quarters)):
-                    pts = 3
-                    stock_scores[symbol] += pts
-                    # print(
-                    #     f"{symbol} score went up by {pts} -- positive net income for all quarters reporting"
-                    # )
-
+                    pts = quarters
+                    stock_scores[symbol] += pts  # positive net income for all quarters reporting
             except (KeyError, TypeError):
                 continue
         except (KeyError, TypeError):
-            continue
+            continue  # Skip to next stock if unable to get data
 
     return stock_scores
 
@@ -75,8 +70,10 @@ def current_ratio_test(batch_data, stock_scores, financials=None):
     :return: Returns an updated stock_score dictionary. Make sure to set stock_score to the function
     so that current_ratio() can return updated stock scores.
     """
+    # Get data for screen
     if financials is None:
         financials = utils.get_financials(batch_data)
+    # Give score based on current ratio (measure of ability to cover short term debt obligations
     for symbol in stock_scores:
         try:
             fin_base = financials[symbol]["financials"]["financials"][0]
@@ -86,14 +83,20 @@ def current_ratio_test(batch_data, stock_scores, financials=None):
                 current_ratio = current_assets / current_debt
                 if current_ratio >= 1.5:
                     stock_scores[symbol] += 2
-                    # print(f"{symbol} score went up by 2 -- current ratio >= .5")
+                    # print(f"{symbol} score went up by 2 -- current ratio >= 1.5")
                 elif current_ratio >= 1:
                     stock_scores[symbol] += 1
                     # print(f"{symbol} score went up by 1 -- current ratio >= 1")
-            except (ZeroDivisionError, TypeError):
-                continue
+            except ZeroDivisionError:
+                if isinstance(current_assets,int or float) and current_assets > 0:
+                    stock_scores[symbol] += 1  # company has no short term obligations to pay
+                continue  # If data is bad, skip to next stock
+            except TypeError:
+                if current_debt is None and current_assets is not None and current_assets > 0:
+                    stock_scores[symbol] += 1  # company has no short term obligations to pay
+                continue  # If data is bad, skip to next stock
         except (KeyError, TypeError):
-            continue
+            continue  # If current assets and current debt stats are not available, skip to next stock
 
     return stock_scores
 
@@ -109,9 +112,10 @@ def p_to_b_test(batch_data, stock_scores, stats=None):
     :return: Returns updated stock_score dictionary. Make sure to set stock_score to the function
     so that p_to_b_test() returns updated stock scores.
     """
+    # Get data for screen
     if stats is None:
         stats = utils.get_stats(batch_data)
-
+    # Give score based on price/book ratio - criteria taken from Ben Graham's Intelligent Investor
     for symbol in stock_scores:
         try:
             if 0 < stats[symbol]["stats"]["priceToBook"] <= 1.2:
@@ -119,17 +123,18 @@ def p_to_b_test(batch_data, stock_scores, stats=None):
                 stock_scores[symbol] += pts
                 # print(f"{symbol} score went up by {pts}-- price to book between 0 and 1.2")
         except (TypeError, KeyError):
-            continue
+            continue  # If price/book ratio is not given, skip to next symbol
 
     return stock_scores
 
 
 def pe_ratio_test(batch_data, stock_scores, chart=None, stats=None):
-
+    # Get data for screen
     if stats is None:
         stats = utils.get_stats(batch_data)
     if chart is None:
         chart = utils.get_chart(batch_data)
+    # Give score based on price/earnings ratio
     for symbol in stock_scores:
         try:
             ttm_eps = stats[symbol]["stats"]["ttmEPS"]
@@ -146,7 +151,7 @@ def pe_ratio_test(batch_data, stock_scores, chart=None, stats=None):
                 #     f"{symbol} score went up by 1 -- P/E ratio positive and between 15 and 30"
                 # )
         except (ZeroDivisionError, IndexError, KeyError):
-            continue  # if earnings is zero or EPS is not available, skip scoring for stock
+            continue  # if earnings is zero or EPS is not available, go to next symbol
 
     return stock_scores
 
@@ -154,6 +159,7 @@ def pe_ratio_test(batch_data, stock_scores, chart=None, stats=None):
 def suite(batch_data, stock_scores, dividends=None, financials=None, stats=None):
 
     """
+    Runs all tests within fundamental_functions at once
     :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
     functions to set batch_data
     :param stock_scores: Dictionary with stock symbols and corresponding scores
