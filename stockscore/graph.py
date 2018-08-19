@@ -18,4 +18,4 @@ def plot_top(tuple_list):
     plt.ylabel("Score")
     plt.xlabel("Tickers")
     plt.title(f"Top {len(scores)} Stock Scores")
-    plt.show()
+    plt.show(block=True)
