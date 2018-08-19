@@ -38,8 +38,8 @@ def score_stocks(num_stocks):
 # Run stock screening
 if __name__ == "__main__":
     begin = time.time()
-    num_stocks = 10
-    top = score_stocks(num_stocks=num_stocks)
-    print(f"The top {num_stocks} stocks are {top}")
+    stock_count = 10
+    top = score_stocks(stock_count)
+    print(f"The top {stock_count} stocks are {top}")
     end = time.time()
     print(f"That took {end - begin:.2f} seconds")
