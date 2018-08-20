@@ -3,8 +3,8 @@ Stock Score
 .. image:: https://img.shields.io/badge/python-v3-green.svg
    :target: https://www.python.org
 
-.. image:: https://www.codefactor.io/repository/github/jackmoody11/stockscores/badge
-   :target: https://www.codefactor.io/repository/github/jackmoody11/stockscores
+.. image:: https://www.codefactor.io/repository/github/jackmoody11/stockscore/badge
+   :target: https://www.codefactor.io/repository/github/jackmoody11/stockscore
 
 .. image:: https://api.codacy.com/project/badge/Grade/d2108117522f4fe498530c6f7185108e
    :target: https://www.codacy.com/project/jacklaytonmoody/stockScores/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jackmoody11/stockScores&amp;utm_campaign=Badge_Grade_Dashboard
