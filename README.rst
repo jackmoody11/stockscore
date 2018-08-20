@@ -7,13 +7,13 @@ Stock Score
    :target: https://www.codefactor.io/repository/github/jackmoody11/stockscore
 
 .. image:: https://api.codacy.com/project/badge/Grade/d2108117522f4fe498530c6f7185108e
-   :target: https://www.codacy.com/project/jacklaytonmoody/stockScores/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jackmoody11/stockScores&amp;utm_campaign=Badge_Grade_Dashboard
+   :target: https://www.codacy.com/project/jacklaytonmoody/stockscore/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jackmoody11/stockScores&amp;utm_campaign=Badge_Grade_Dashboard
 
-.. image:: https://travis-ci.com/jackmoody11/stockScores.svg?branch=master
-    :target: https://travis-ci.com/jackmoody11/stockScores
+.. image:: https://travis-ci.com/jackmoody11/stockscore.svg?branch=master
+    :target: https://travis-ci.com/jackmoody11/stockscore
 
 .. image:: https://img.shields.io/github/license/mashape/apistatus.svg?style=popout
-   :target: https://github.com/jackmoody11/stockScores/blob/master/LICENSE
+   :target: https://github.com/jackmoody11/stockscore/blob/master/LICENSE
 
 Stock Score is a python script to score stocks based on specified
 criteria. The goal of this project is to provide a stock screening
