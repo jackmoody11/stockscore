@@ -9,8 +9,8 @@ def plot_top(tuple_list):
     plt.interactive(False)
     # Custom Font - Download Apple's SF fonts for this to work
     # Otherwise, should default to default font
-    plt.rcParams['font.family'] = 'sans-serif'
-    plt.rcParams['font.sans-serif'] = 'SF Pro Display'
+    plt.rcParams["font.family"] = "sans-serif"
+    plt.rcParams["font.sans-serif"] = "SF Pro Display"
     # Set tickers and scores for bar chart
     symbols = [x[0] for x in tuple_list]
     scores = [x[1] for x in tuple_list]
