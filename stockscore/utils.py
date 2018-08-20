@@ -1,7 +1,7 @@
 # Modules
 from bs4 import BeautifulSoup
+import grequests
 import requests
-import multiprocessing
 
 iex_url_base = "https://api.iextrading.com/1.0/"
 
@@ -31,31 +31,16 @@ def set_batches(symbols):
     return batches
 
 
-def batch_get(payload):
-    """
-    Note: This function is only intended to be used for get_pool_response() function in utils module,
-    but SHOULD NOT be embedded into get_pool_response to avoid pickling problems.
-    :param payload: dictionary of parameters for GET request of the form
-    payload = {"symbols" : "A,AA,...", "types": "stats", ...}
-    :return: all the data necessary to make multiple get requests at once
-    """
-    batch_url = f"{iex_url_base}stock/market/batch?"
-    response = requests.get(batch_url, params=payload).json()
-    return response
-
-
-def get_pool_response(payloads, num_processes=multiprocessing.cpu_count()):
+def get_responses(payloads):
 
     """
     :param payloads: list of payloads for GET request
-    :param num_processes: Defaults to # of computer cores, but it is possible to have more.
-    Increase this as your computer capacity allows for faster multiprocessing.
     :return: Returns all batch GET requests from API for given url_end.
     """
-    pool = multiprocessing.Pool(processes=num_processes)
-    outputs = pool.map(batch_get, [payload for payload in payloads])
-    pool.close()
-    pool.join()
+    batch_url = f"{iex_url_base}stock/market/batch?"
+    rs = (grequests.get(batch_url, params=payload) for payload in payloads)
+    result = grequests.map(rs)
+    outputs = [r.json() for r in result]
     return outputs
 
 
@@ -68,7 +53,7 @@ def get_stats(batch_data):
     Note that 'stats' is fixed string.
     """
     payloads = [{"symbols": batch, "types": "stats"} for batch in batch_data]
-    outputs = get_pool_response(payloads=payloads)
+    outputs = get_responses(payloads=payloads)
     stats = {
         symbol: outputs[outputs.index(batch_dict)][symbol]
         for batch_dict in outputs
@@ -84,7 +69,7 @@ def get_company(batch_data):
     :return: Gives dictionary with each symbols info (sector, industry, CEO name, etc.)
     """
     payloads = [{"symbols": batch, "types": "company"} for batch in batch_data]
-    outputs = get_pool_response(payloads=payloads)
+    outputs = get_responses(payloads=payloads)
     company = {
         symbol: outputs[outputs.index(batch_dict)][symbol]["company"]
         for batch_dict in outputs
@@ -105,7 +90,7 @@ def get_chart(batch_data, time="1m"):
     payloads = [
         {"symbols": batch, "types": "chart", "range": time} for batch in batch_data
     ]
-    outputs = get_pool_response(payloads=payloads)
+    outputs = get_responses(payloads=payloads)
     chart = {
         symbol: outputs[outputs.index(batch_dict)][symbol]
         for batch_dict in outputs
@@ -123,7 +108,7 @@ def get_financials(batch_data):
     Note that 'stats' is fixed string.
     """
     payloads = [{"symbols": batch, "types": "financials"} for batch in batch_data]
-    outputs = get_pool_response(payloads=payloads)
+    outputs = get_responses(payloads=payloads)
     financials = {
         symbol: outputs[outputs.index(batch_dict)][symbol]
         for batch_dict in outputs
@@ -142,7 +127,7 @@ def get_splits(batch_data, time="1y"):
     payloads = [
         {"symbols": batch, "types": "splits", "range": time} for batch in batch_data
     ]
-    outputs = get_pool_response(payloads=payloads)
+    outputs = get_responses(payloads=payloads)
     splits = {
         symbol: outputs[outputs.index(batch_dict)][symbol]
         for batch_dict in outputs
@@ -161,7 +146,7 @@ def get_dividends(batch_data, time="5y"):
     payloads = [
         {"symbols": batch, "types": "dividends", "range": time} for batch in batch_data
     ]
-    outputs = get_pool_response(payloads=payloads)
+    outputs = get_responses(payloads=payloads)
     dividends = {
         symbol: outputs[outputs.index(batch_dict)][symbol]
         for batch_dict in outputs
