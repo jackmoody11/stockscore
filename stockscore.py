@@ -40,6 +40,7 @@ if __name__ == "__main__":
     begin = time.time()
     stock_count = 10
     top = score_stocks(stock_count)
-    print(f"The top {stock_count} stocks are {top}")
+    stocks = [x[0] for x in top]
+    print(f"The top {stock_count} stocks are {stocks}")
     end = time.time()
     print(f"That took {end - begin:.2f} seconds")
