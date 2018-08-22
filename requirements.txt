@@ -15,7 +15,7 @@ idna==2.7
 kiwisolver==1.0.1
 matplotlib==2.2.3
 more-itertools==4.2.0
-numpy==1.15.0
+numpy==1.15.1
 pandas==0.23.3
 pluggy==0.6.0
 py==1.5.4
