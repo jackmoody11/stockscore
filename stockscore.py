@@ -5,8 +5,8 @@
 # import numpy as np
 
 from stockscore import utils
-from stockscore import technical_functions as tf
-from stockscore import fundamental_functions as ff
+from stockscore import technical_screens as tf
+from stockscore import fundamental_screens as ff
 from stockscore.graph import plot_top
 import time
 
