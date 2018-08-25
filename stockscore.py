@@ -29,18 +29,22 @@ def score_stocks(num_stocks):
     del dividends, financials  # Clear up memory space
     stock_scores = tf.suite(batch_data, stock_scores, stats=stats, splits=splits, chart=chart)
     del stats, splits, chart  # Clear up memory space
-
     top_stocks = utils.return_top(stock_scores, num_stocks)  # Return top scoring stocks
-    plot_top(top_stocks)  # Plot top stocks as bar chart
     return top_stocks
 
 
 # Run stock screening
 if __name__ == "__main__":
+    # Timer starts
     begin = time.time()
+    # Choose number of top stocks you want to see
     stock_count = 10
+    # Run screens to find top stocks
     top = score_stocks(stock_count)
     stocks = [x[0] for x in top]
     print(f"The top {stock_count} stocks are {stocks}")
+    # End timer
     end = time.time()
     print(f"That took {end - begin:.2f} seconds")
+    # Plot top stocks in bar chart
+    plot_top(top)
