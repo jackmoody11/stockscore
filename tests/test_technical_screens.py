@@ -1,11 +1,7 @@
 from stockscore import technical_screens as ts
 from stockscore import utils
 # Set constants
-from .utils import symbols
-from .utils import batch_data
-from .utils import stats
-from .utils import splits
-from .utils import chart
+from .utils import symbols, batch_data, stats, splits, chart
 
 
 def test_moving_avg_returns_scores():
