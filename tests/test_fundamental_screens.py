@@ -1,10 +1,6 @@
 from stockscore import fundamental_screens as fs
 from stockscore import utils
-from .utils import symbols
-from .utils import batch_data
-from .utils import financials
-from .utils import chart
-from .utils import stats
+from .utils import symbols, batch_data, financials, chart, stats
 
 
 def test_dividend_test_returns_scores():
