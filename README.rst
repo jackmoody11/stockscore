@@ -121,7 +121,9 @@ For more information on how to use pytest (like how to select a few tests),
 Deployment
 ----------
 
-In order to make code styling simple, this project uses black_. To make sure your pull request follows the format, run :code:`black stockscore` while working in the main :code:`stockscore` directory.
+In order to make code styling simple, this project uses black_. To make sure that this code adheres to this opinion based formatting, stockscore uses :code:`pre-commit`. In order to run black automatically before making a commit, please download :code:`pre-commit`.
+
+You may need to run :code:`pre-commit install` before you are able to use this. For more details, check out the `pre-commit`_ website.
 
 This project is very simple to deploy to a live system. To change which tests you are using, change which functions are added to the suites (this is the name used in both files) of :code:`fundamental_functions.py` and :code:`technical_functions.py`.
 
@@ -167,6 +169,7 @@ Notes
 .. _Maven: https://maven.apache.org/
 .. _ROME: https://rometools.github.io/rome/
 .. _black: https://github.com/ambv/black
+.. _pre-commit: https://pre-commit.com
 .. _`requirements.txt`: https://github.com/jackmoody11/stockScores/blob/master/requirements.txt
 .. _`code of conduct`: CODE_OF_CONDUCT.md
 .. _SemVer: http://semver.org/
