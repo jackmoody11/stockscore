@@ -21,7 +21,9 @@ def dividend_test(batch_data, stock_scores, dividends=None):
             symbol_dividends = dividends[symbol]["dividends"]
             years = len(symbol_dividends) // 4
             pts = years
-            stock_scores[symbol] += pts  # Add numbers of years which dividends have been paid
+            stock_scores[
+                symbol
+            ] += pts  # Add numbers of years which dividends have been paid
         except (KeyError, IndexError):
             continue  # Skip to next stock if unable to get data
 
@@ -50,7 +52,9 @@ def net_income_test(batch_data, stock_scores, financials=None):
             try:
                 if all(symbol_financials[i]["netIncome"] > 0 for i in range(quarters)):
                     pts = quarters
-                    stock_scores[symbol] += pts  # positive net income for all quarters reporting
+                    stock_scores[
+                        symbol
+                    ] += pts  # positive net income for all quarters reporting
             except (KeyError, TypeError):
                 continue
         except (KeyError, TypeError):
@@ -88,12 +92,20 @@ def current_ratio_test(batch_data, stock_scores, financials=None):
                     stock_scores[symbol] += 1
                     # print(f"{symbol} score went up by 1 -- current ratio >= 1")
             except ZeroDivisionError:
-                if isinstance(current_assets,int or float) and current_assets > 0:
-                    stock_scores[symbol] += 1  # company has no short term obligations to pay
+                if isinstance(current_assets, int or float) and current_assets > 0:
+                    stock_scores[
+                        symbol
+                    ] += 1  # company has no short term obligations to pay
                 continue  # If data is bad, skip to next stock
             except TypeError:
-                if current_debt is None and current_assets is not None and current_assets > 0:
-                    stock_scores[symbol] += 1  # company has no short term obligations to pay
+                if (
+                    current_debt is None
+                    and current_assets is not None
+                    and current_assets > 0
+                ):
+                    stock_scores[
+                        symbol
+                    ] += 1  # company has no short term obligations to pay
                 continue  # If data is bad, skip to next stock
         except (KeyError, TypeError):
             continue  # If current assets and current debt stats are not available, skip to next stock
