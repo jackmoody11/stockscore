@@ -152,7 +152,7 @@ def pe_ratio_test(batch_data, stock_scores, chart=None, stats=None):
             ttm_eps = stats[symbol]["stats"]["ttmEPS"]
             price = chart[symbol]["chart"][0]["close"]
             pe_ratio = price / ttm_eps
-            if (((0 < pe_ratio <= 15))):
+            if 0 < pe_ratio <= 15:
                 stock_scores[symbol] += 2
                 # print(
                 #     f"{symbol} score went up by 2 -- P/E ratio positive and less than 15"
