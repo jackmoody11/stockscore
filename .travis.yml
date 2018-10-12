@@ -1,12 +1,12 @@
 language: python
 python:
   - "3.6"
-  - "3.7"
+#  - "3.7" Will not include 3.7 support for now
 # earlier versions not supported by black
 # command to install dependencies
 # Current workaround for running Python 3.7 tests
-sudo: required
-dist: xenial
+# sudo: required
+# dist: xenial
 install:
   - pip install -r requirements.txt
 script:
