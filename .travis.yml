@@ -1,6 +1,8 @@
 language: python
 python:
-  - "3.6" # earlier versions not supported by black
+  - "3.6"
+  - "3.7"
+# earlier versions not supported by black
 # command to install dependencies
 install:
   - pip install -r requirements.txt
