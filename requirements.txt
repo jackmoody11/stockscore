@@ -35,6 +35,6 @@ requests==2.19.1
 scikit-learn==0.19.2
 scipy==1.1.0
 six==1.11.0
-toml==0.9.4
+toml==0.10.0
 urllib3==1.23
 virtualenv==16.0.0
