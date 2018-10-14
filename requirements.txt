@@ -1,6 +1,6 @@
 appdirs==1.4.3
 aspy.yaml==1.1.1
-atomicwrites==1.1.5
+atomicwrites==1.2.1
 attrs==18.1.0
 beautifulsoup4==4.6.0
 black==18.6b4
