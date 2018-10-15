@@ -3,7 +3,7 @@ aspy.yaml==1.1.1
 atomicwrites==1.1.5
 attrs==18.1.0
 beautifulsoup4==4.6.0
-black==18.6b4
+black==18.9b0
 bs4==0.0.1
 cached-property==1.5.1
 certifi==2018.4.16
