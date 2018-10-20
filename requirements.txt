@@ -16,6 +16,7 @@ greenlet==0.4.13
 grequests==0.3.0
 identify==1.1.7
 idna==2.7
+iexfinance==0.3.4
 kiwisolver==1.0.1
 matplotlib==2.2.3
 more-itertools==4.2.0
