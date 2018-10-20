@@ -3,35 +3,27 @@ from stockscore import utils
 # import numpy as np
 
 
-def moving_avg_test(batch_data, stock_scores, stats=None):
+def moving_avg_test(symbols, stock_scores, stats=None):
 
     """
-    :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
-    functions to set batch_data
-    :param stock_scores: Dictionary with stock symbols and corresponding scores
-    (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
-    :param stats: Dictionary with all statistical information from IEX API (see get_stats in utils
+    :param symbols: List of symbols
+    :param stock_scores: Pandas DataFrame with scores
+    :param stats: DataFrame with all statistical information from IEX API (see get_stats in utils
     module for more info.
-    :return: Returns an updated stock_score dictionary. Make sure to set stock_score to the function
+    :return: Returns an updated stock_score DataFrame. Make sure to set stock_score to the function
     so that moving_avg_test() can return updated stock scores.
     """
     if stats is None:
-        stats = utils.get_stats(batch_data)
+        stats = utils.get_stats(symbols)
 
     for symbol in stock_scores:
         try:
-            base = stats[symbol]["stats"]
-            avg_50 = base["day50MovingAvg"]
-            avg_200 = base["day200MovingAvg"]
+            avg_50 = stats.loc[symbol]["day50MovingAvg"]
+            avg_200 = stats.loc[symbol]["day200MovingAvg"]
             per_diff = ((avg_50 - avg_200) / avg_200) * 100
             pts = round(5 / (per_diff + 1))
-            if 0 < per_diff < 2:
-                stock_scores[symbol] += pts
-                # print(
-                #     f"{symbol} score went up by {pts} -- SMA 200 under SMA 50 by {per_diff}%"
-                # )
-            elif 2 < per_diff < 5:
-                stock_scores[symbol] += pts
+            if 0 < per_diff < 5:
+                stock_scores.loc[symbol]["Momentum Score"] += pts
                 # print(
                 #     f"{symbol} score went up by {pts} -- SMA 200 under SMA 50 by {per_diff}%"
                 # )
@@ -42,7 +34,7 @@ def moving_avg_test(batch_data, stock_scores, stats=None):
     return stock_scores
 
 
-def split_test(batch_data, stock_scores, splits=None, time="5y"):
+def split_test(batch_data, stock_scores, splits=None, time="1y"):
     """
     :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
     functions to set batch_data
@@ -50,7 +42,7 @@ def split_test(batch_data, stock_scores, splits=None, time="5y"):
     (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
     :param splits: Dictionary with all split information from IEX API (see get_splits in utils
     module for more info.
-    :param time: Time over which to see if split occurred. (1d = 1 day, 1m = 1 month, 1y = 1 year)
+    :param time: Time over which to see if split occurred. (1d = 1 day, 1m = 1 month, 1y = 1 year, etc.)
     :return: Returns an updated stock_score dictionary. Make sure to set stock_score to the function
     so that moving_avg_test() can return updated stock scores.
     """
@@ -58,14 +50,14 @@ def split_test(batch_data, stock_scores, splits=None, time="5y"):
         splits = utils.get_splits(batch_data, time=time)
     for symbol in stock_scores:
         try:
-            symbol_splits = splits[symbol]["splits"]
+            symbol_splits = splits[symbol]
             num_splits = len(symbol_splits)
             split_ratios = [symbol_splits[i]["ratio"] for i in range(num_splits)]
             if num_splits > 0 and all(split_ratios[i] < 1 for i in range(num_splits)):
                 # Stocks that split so that you get 7 stock for every 1 you own may indicate good future prospects
                 # They probably feel good about future prospects and want to allow more investors to invest in them
                 pts = num_splits
-                stock_scores[symbol] += pts
+                stock_scores.loc[symbol]["Momentum Score"] += pts
                 # print(
                 #     f"{symbol} went up by {pts} -- split bullishly {num_splits} times in past {time}"
                 # )
@@ -74,7 +66,7 @@ def split_test(batch_data, stock_scores, splits=None, time="5y"):
                 # They may be worried about staying in the market
                 # and need to maintain some minimum price to keep trading
                 pts = sum(1 for i in range(num_splits) if split_ratios[i] > 1)
-                stock_scores[symbol] -= pts
+                stock_scores.loc[symbol]["Momentum Score"] -= pts
                 # print(
                 #     f"{symbol} went down by {pts} -- split bearishly {pts} times in past {time}"
                 # )
@@ -101,14 +93,16 @@ def trading_volume_test(batch_data, stock_scores, chart=None):
 
     for symbol in chart:
         try:
-            latest_volume = chart[symbol]["chart"][0]["volume"]
+            latest_volume = chart[symbol][0]["volume"]
             if latest_volume >= 100000:
-                stock_scores[symbol] += 1
+                stock_scores.loc[symbol]["Momentum Score"] += 1
+                stock_scores.loc[symbol]["Value Score"] += 1
                 # print(f'{symbol} score went up by {1} -- Volume over 100,000')
             elif latest_volume >= 50000:
                 pass
             else:
-                stock_scores[symbol] -= 1
+                stock_scores.loc[symbol]["Momentum Score"] -= 1
+                stock_scores.loc[symbol]["Value Score"] -= 1
                 # print(f'{symbol} score went down by {1} -- Volume under 50,000')
         except (KeyError, TypeError, IndexError):
             continue  # If no chart, assume data is incomplete - no penalty for symbol if data incomplete
@@ -139,8 +133,9 @@ def trading_volume_test(batch_data, stock_scores, chart=None):
 #     return stock_scores
 
 
-def suite(batch_data, stock_scores, stats=None, splits=None, chart=None):
+def suite(symbols, batch_data, stock_scores, stats=None, splits=None, chart=None):
     """
+    :param symbols: List of symbols
     :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
     functions to set batch_data
     :param stock_scores: Dictionary with stock symbols and corresponding scores
@@ -155,7 +150,7 @@ def suite(batch_data, stock_scores, stats=None, splits=None, chart=None):
     in technical_functions module. Make sure to set stock_score to the function
     so that suite() can return updated stock scores.
     """
-    stock_scores = moving_avg_test(batch_data, stock_scores, stats=stats)
+    stock_scores = moving_avg_test(symbols, stock_scores, stats=stats)
     stock_scores = split_test(batch_data, stock_scores, splits=splits)
     stock_scores = trading_volume_test(batch_data, stock_scores, chart=chart)
     return stock_scores
