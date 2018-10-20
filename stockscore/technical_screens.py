@@ -15,20 +15,19 @@ def moving_avg_test(symbols, stock_scores, stats=None):
     """
     if stats is None:
         stats = utils.get_stats(symbols)
-
-    for symbol in stock_scores:
+    stats["perDiff"] = (
+        (stats.day50MovingAvg - stats.day200MovingAvg) / stats.day200MovingAvg
+    ) * 100
+    for symbol, _ in stock_scores.iterrows():
         try:
-            avg_50 = stats.loc[symbol]["day50MovingAvg"]
-            avg_200 = stats.loc[symbol]["day200MovingAvg"]
-            per_diff = ((avg_50 - avg_200) / avg_200) * 100
-            pts = round(5 / (per_diff + 1))
-            if 0 < per_diff < 5:
+            pts = round(5 / (stats.loc[symbol]["perDiff"] + 1))
+            if 0 < stats.loc[symbol]["perDiff"] < 5:
                 stock_scores.loc[symbol]["Momentum Score"] += pts
                 # print(
                 #     f"{symbol} score went up by {pts} -- SMA 200 under SMA 50 by {per_diff}%"
                 # )
 
-        except (KeyError, TypeError):
+        except ValueError:
             continue
 
     return stock_scores
@@ -48,7 +47,7 @@ def split_test(batch_data, stock_scores, splits=None, time="1y"):
     """
     if splits is None:
         splits = utils.get_splits(batch_data, time=time)
-    for symbol in stock_scores:
+    for symbol, _ in stock_scores.iterrows():
         try:
             symbol_splits = splits[symbol]
             num_splits = len(symbol_splits)
@@ -71,7 +70,7 @@ def split_test(batch_data, stock_scores, splits=None, time="1y"):
                 #     f"{symbol} went down by {pts} -- split bearishly {pts} times in past {time}"
                 # )
 
-        except (TypeError, KeyError):
+        except ValueError:
             continue
 
     return stock_scores
