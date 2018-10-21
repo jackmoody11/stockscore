@@ -1,7 +1,5 @@
 from stockscore import utils
 
-# import numpy as np
-
 
 def moving_avg_test(symbols, stock_scores, stats=None):
 
@@ -37,13 +35,11 @@ def split_test(batch_data, stock_scores, splits=None, time="1y"):
     """
     :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
     functions to set batch_data
-    :param stock_scores: Dictionary with stock symbols and corresponding scores
-    (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
+    :param stock_scores: Pandas DataFrame with scores
     :param splits: Dictionary with all split information from IEX API (see get_splits in utils
     module for more info.
-    :param time: Time over which to see if split occurred. (1d = 1 day, 1m = 1 month, 1y = 1 year, etc.)
-    :return: Returns an updated stock_score dictionary. Make sure to set stock_score to the function
-    so that moving_avg_test() can return updated stock scores.
+    :param time: Time over which to see if split occurred (1d = 1 day, 1m = 1 month, 1y = 1 year, etc.)
+    :return: Returns updated stock score DataFrame
     """
     if splits is None:
         splits = utils.get_splits(batch_data, time=time)
@@ -76,23 +72,19 @@ def split_test(batch_data, stock_scores, splits=None, time="1y"):
     return stock_scores
 
 
-def trading_volume_test(batch_data, stock_scores, chart=None):
+def trading_volume_test(symbols, stock_scores, volume=None):
     """
-    :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
-    functions to set batch_data
-    :param stock_scores: Dictionary with stock symbols and corresponding scores
-    (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
-    :param chart: Defaults as None, but can be set to value to speed up performance if running suite
-    or multiple tests at once.
-    :return: Returns updated stock_score dictionary. Make sure to set stock_score to the function
-    so that trading_volume_test() returns updated stock scores.
+    :param symbols: List of symbols
+    :param stock_scores: Pandas DataFrame with scores
+    :param volume: Pandas DataFrame with latest volume of symbols
+    :return: Returns updated stock score DataFrame
     """
-    if chart is None:
-        chart = utils.get_chart(batch_data)
+    if volume is None:
+        volume = utils.get_volume(symbols)
 
-    for symbol in chart:
+    for symbol, _ in volume.iterrows():
         try:
-            latest_volume = chart[symbol][0]["volume"]
+            latest_volume = volume.loc[symbol]["latestVolume"]
             if latest_volume >= 100000:
                 stock_scores.loc[symbol]["Momentum Score"] += 1
                 stock_scores.loc[symbol]["Value Score"] += 1
@@ -102,9 +94,8 @@ def trading_volume_test(batch_data, stock_scores, chart=None):
             else:
                 stock_scores.loc[symbol]["Momentum Score"] -= 1
                 stock_scores.loc[symbol]["Value Score"] -= 1
-                # print(f'{symbol} score went down by {1} -- Volume under 50,000')
         except (KeyError, TypeError, IndexError):
-            continue  # If no chart, assume data is incomplete - no penalty for symbol if data incomplete
+            continue  # If no value, assume data is incomplete and do not penalize
 
     return stock_scores
 
@@ -132,24 +123,22 @@ def trading_volume_test(batch_data, stock_scores, chart=None):
 #     return stock_scores
 
 
-def suite(symbols, batch_data, stock_scores, stats=None, splits=None, chart=None):
+def suite(symbols, batch_data, stock_scores, stats=None, splits=None, volume=None):
     """
     :param symbols: List of symbols
     :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
     functions to set batch_data
-    :param stock_scores: Dictionary with stock symbols and corresponding scores
-    (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
+    :param stock_scores: Pandas DataFrame with scores
     :param stats: Dictionary with all statistical information from IEX API (see get_stats in utils
     module for more info.
     :param splits: Dictionary with all splits information from IEX API (see get_splits in utils
     module for more info.
-    :param chart: Dictionary with price and volume information from IEX API (see get_chart in utils
-    module for more info.
+    :param volume: DataFrame with latest volume for symbols
     :return: Returns an updated stock_score dictionary that runs all functions
     in technical_functions module. Make sure to set stock_score to the function
     so that suite() can return updated stock scores.
     """
     stock_scores = moving_avg_test(symbols, stock_scores, stats=stats)
     stock_scores = split_test(batch_data, stock_scores, splits=splits)
-    stock_scores = trading_volume_test(batch_data, stock_scores, chart=chart)
+    stock_scores = trading_volume_test(symbols, stock_scores, volume=volume)
     return stock_scores

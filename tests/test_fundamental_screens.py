@@ -1,6 +1,6 @@
 from stockscore import fundamental_screens as fs
 from stockscore import utils
-from .utils import symbols, batch_data, financials, chart, stats, dividends
+from .utils import symbols, batch_data, financials, stats, dividends, close
 
 
 def test_dividend_test_returns_scores():
@@ -81,14 +81,14 @@ def test_p_to_b_not_all_zero():
 def test_pe_ratio_test_returns_scores():
 
     scores = utils.init_stock_scores(symbols)
-    scores = fs.pe_ratio_test(symbols, batch_data, scores, chart=chart, stats=stats)
+    scores = fs.pe_ratio_test(symbols, scores, stats=stats, close=close)
     if not (len(scores) >= 1000):
         raise AssertionError("At least 1000 P/E ratio scores listed in stock scores")
 
 
 def test_pe_ratio_test_not_all_zero():
     scores = utils.init_stock_scores(symbols)
-    scores = fs.pe_ratio_test(symbols, batch_data, scores, chart=chart, stats=stats)
+    scores = fs.pe_ratio_test(symbols, scores, close=close, stats=stats)
     if all(scores.iloc[i]["Value Score"] == 0 for i in range(len(scores))):
         raise AssertionError("Price to earnings test returning all scores as zero")
 

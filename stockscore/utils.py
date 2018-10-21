@@ -63,25 +63,22 @@ def get_stats(symbols):
     return stats
 
 
-def get_chart(batch_data, time="1m"):
-    """
-    :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
-    functions to set batch_data
-    :param time: Length of time (1m = 1 month, 1y = 1 year, etc.) can go up to 5y
-    :return: Gives large list of statistics for symbols in batch_data. To get individual
-    statistic for individual stock, use something of the general form stats[symbol]['stats'][specific_stat].
-    Note that 'stats' is fixed string.
-    """
-    payloads = [
-        {"symbols": batch, "types": "chart", "range": time} for batch in batch_data
-    ]
-    outputs = get_responses(payloads=payloads)
-    chart = {
-        symbol: outputs[outputs.index(batch_dict)][symbol]["chart"]
-        for batch_dict in outputs
-        for symbol in batch_dict
-    }
-    return chart
+def get_close(symbols):
+    symbols = [symbols[i : i + 99] for i in range(0, len(symbols), 99)]
+    frames = []
+    for batch in symbols:
+        frames.append(Stock(batch, output_format="pandas").get_close())
+    close = pd.concat(frames)
+    return close
+
+
+def get_volume(symbols):
+    symbols = [symbols[i : i + 99] for i in range(0, len(symbols), 99)]
+    frames = []
+    for batch in symbols:
+        frames.append(Stock(batch, output_format="pandas").get_volume())
+    volume = pd.concat(frames)
+    return volume
 
 
 def get_financials(batch_data):
