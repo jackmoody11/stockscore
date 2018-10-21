@@ -132,43 +132,42 @@ def p_to_b_test(symbols, stock_scores, stats=None):
             if 0 < stats.loc[symbol]["priceToBook"] <= 1.2:
                 pts = 1
                 stock_scores.loc[symbol]["Value Score"] += pts
-                # print(f"{symbol} score went up by {pts}-- price to book between 0 and 1.2")
-        except (TypeError, KeyError):
+        except TypeError:
             continue  # If price/book ratio is not given, skip to next symbol
 
     return stock_scores
 
 
-def pe_ratio_test(symbols, batch_data, stock_scores, chart=None, stats=None):
+def pe_ratio_test(symbols, stock_scores, close=None, stats=None):
     # Get data for screen
     if stats is None:
         stats = utils.get_stats(symbols)
-    if chart is None:
-        chart = utils.get_chart(batch_data)
+    if close is None:
+        close = utils.get_close(symbols)
     # Give score based on price/earnings ratio
     for symbol, _ in stock_scores.iterrows():
         try:
             ttm_eps = stats.loc[symbol]["ttmEPS"]
-            price = chart[symbol][0]["close"]
+            price = close.loc[symbol]["close"]
             pe_ratio = price / ttm_eps
             if 0 < pe_ratio <= 15:
                 stock_scores.loc[symbol]["Value Score"] += 2
-                # print(
-                #     f"{symbol} score went up by 2 -- P/E ratio positive and less than 15"
-                # )
             elif 15 < pe_ratio < 30:
                 stock_scores.loc[symbol]["Value Score"] += 1
-                # print(
-                #     f"{symbol} score went up by 1 -- P/E ratio positive and between 15 and 30"
-                # )
-        except (ZeroDivisionError, IndexError, KeyError):
+        except ZeroDivisionError:
             continue  # if earnings is zero or EPS is not available, go to next symbol
 
     return stock_scores
 
 
 def suite(
-    symbols, batch_data, stock_scores, dividends=None, financials=None, stats=None
+    symbols,
+    batch_data,
+    stock_scores,
+    dividends=None,
+    financials=None,
+    stats=None,
+    close=None,
 ):
 
     """
@@ -192,5 +191,5 @@ def suite(
     stock_scores = net_income_test(batch_data, stock_scores, financials=financials)
     stock_scores = current_ratio_test(batch_data, stock_scores, financials=financials)
     stock_scores = p_to_b_test(symbols, stock_scores, stats=stats)
-    stock_scores = pe_ratio_test(symbols, batch_data, stock_scores, stats=stats)
+    stock_scores = pe_ratio_test(symbols, stock_scores, stats=stats, close=close)
     return stock_scores

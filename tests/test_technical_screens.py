@@ -2,7 +2,7 @@ from stockscore import technical_screens as ts
 from stockscore import utils
 
 # Set constants
-from .utils import symbols, batch_data, stats, splits, chart
+from .utils import symbols, batch_data, stats, splits, volume
 
 
 def test_moving_avg_returns_scores():
@@ -44,7 +44,7 @@ def test_splits_not_all_zero():
 def test_trading_volume_test_returns_scores():
 
     scores = utils.init_stock_scores(symbols)
-    scores = ts.trading_volume_test(batch_data, scores, chart=chart)
+    scores = ts.trading_volume_test(symbols, scores, volume=volume)
     if not (len(scores) >= 1000):
         raise AssertionError(
             "At least 1000 dividend scores listed in stock_scores dictionary"
@@ -53,7 +53,7 @@ def test_trading_volume_test_returns_scores():
 
 def test_trading_volume_test_not_all_zero():
     scores = utils.init_stock_scores(symbols)
-    scores = ts.trading_volume_test(batch_data, scores, chart=chart)
+    scores = ts.trading_volume_test(symbols, scores, volume=volume)
     if all(scores.iloc[i]["Momentum Score"] == 0 for i in range(len(scores))):
         raise AssertionError("Trading volume test returning all zero values")
 
@@ -68,8 +68,10 @@ def test_suite_not_all_zero():
 def test_suite_returns_scores():
 
     scores = utils.init_stock_scores(symbols)
-    scores = ts.suite(symbols, batch_data, scores, stats=stats, splits=splits)
+    scores = ts.suite(
+        symbols, batch_data, scores, stats=stats, splits=splits, volume=volume
+    )
     if not (len(scores) >= 1000):
         raise AssertionError(
-            "At least 1000 moving avg scores listed in stock_scores dictionary"
+            "At least 1000 moving avg scores not listed in stock scores"
         )

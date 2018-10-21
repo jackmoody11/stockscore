@@ -13,22 +13,33 @@ import time
 
 def score_stocks(num_stocks):
     print("Setting up stocks and scores...")
-    _, stock_scores, batch_data = utils.total_setup()
+    symbols, stock_scores, batch_data = utils.total_setup()
 
     print("Fetching data dictionaries...")
-    chart, stats, financials, splits, dividends = (
-        utils.get_chart(batch_data),
-        utils.get_stats(batch_data),
+    volume, close, stats, financials, splits, dividends = (
+        utils.get_volume(symbols),
+        utils.get_close(symbols),
+        utils.get_stats(symbols),
         utils.get_financials(batch_data),
         utils.get_splits(batch_data),
         utils.get_dividends(batch_data),
     )
 
     print("Running screens...")
-    stock_scores = ff.suite(batch_data, stock_scores, dividends=dividends, financials=financials, stats=stats)
-    del dividends, financials  # Clear up memory space
-    stock_scores = tf.suite(batch_data, stock_scores, stats=stats, splits=splits, chart=chart)
-    del stats, splits, chart  # Clear up memory space
+    stock_scores = ff.suite(
+        symbols,
+        batch_data,
+        stock_scores,
+        dividends=dividends,
+        financials=financials,
+        stats=stats,
+        close=close,
+    )
+    del dividends, financials, close  # Clear up memory space
+    stock_scores = tf.suite(
+        symbols, batch_data, stock_scores, stats=stats, splits=splits, volume=volume
+    )
+    del stats, splits, volume  # Clear up memory space
     top_stocks = utils.return_top(stock_scores, num_stocks)  # Return top scoring stocks
     return top_stocks
 

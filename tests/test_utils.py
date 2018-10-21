@@ -91,34 +91,4 @@ def test_return_top_assumes_length_of_dictionary_by_default():
         )
 
 
-# These need work - Don't think these are working as planned
-# *_, batch_data = utils.total_setup()
-#
-#
-# def test_get_stats():
-#
-#     stats = utils.get_stats(batch_data)
-#     aapl_stats = stats['AAPL']
-#     assert aapl_stats, 'Successfully retrieved AAPL stats'
-#
-#
-# def test_get_financials():
-#
-#     financials = utils.get_financials(batch_data)
-#     aapl_financials = financials['AAPL']
-#     assert aapl_financials, 'Successfully retrieved AAPL financials'
-#
-#
-# def test_get_chart():
-#
-#     chart = utils.get_chart(batch_data)
-#     aapl_chart = chart['AAPL']
-#     assert aapl_chart, 'Successfully retrieved AAPL chart'
-#
-#
-# # AAPL will work for now, but this may need to be revisited if AAPL doesn't split in future
-# def test_get_splits():
-#
-#     splits = utils.get_splits(batch_data)
-#     aapl_splits = splits['AAPL']
-#     assert aapl_splits, 'Successfully retrieved AAPL spl
+# Need to add tests for checking data retrieval (stats, financials, volume, etc.)
