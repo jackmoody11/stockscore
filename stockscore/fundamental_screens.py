@@ -154,7 +154,7 @@ def pe_ratio_test(symbols, stock_scores, close=None, stats=None):
                 stock_scores.loc[symbol]["Value Score"] += 2
             elif 15 < pe_ratio < 30:
                 stock_scores.loc[symbol]["Value Score"] += 1
-        except ZeroDivisionError:
+        except (ZeroDivisionError, TypeError):
             continue  # if earnings is zero or EPS is not available, go to next symbol
 
     return stock_scores
@@ -183,6 +183,7 @@ def suite(
     module for more info.
     :param stats: Dictionary with all stats information from IEX API (see get_stats in utils
     module for more info.
+    :param close: Closing price DataFrame
     :return: Returns an updated stock_score dictionary that runs all functions
     in fundamental_functions module. Make sure to set stock_score to the function
     so that suite() can return updated stock scores.
