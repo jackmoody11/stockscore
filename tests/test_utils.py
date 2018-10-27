@@ -12,7 +12,7 @@ def test_get_symbols_not_empty():
 def test_get_symbols_contains_at_least_1000_symbols():
 
     if not (len(symbols) >= 1000):
-        raise AssertionError("There are at least 1000 stock symbols")
+        raise AssertionError("There are not at least 1000 stock symbols")
 
 
 def test_init_stock_scores_sets_all_scores_to_zero():
@@ -31,7 +31,7 @@ def test_init_stock_scores_returns_scores():
 
     stock_scores = utils.init_stock_scores(symbols)
     if not (len(stock_scores) >= 1000):
-        raise AssertionError("At least 1000 stock scores initialized")
+        raise AssertionError("At least 1000 stock scores not initialized")
 
 
 def test_set_batches_not_empty():
