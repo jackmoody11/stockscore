@@ -5,6 +5,8 @@ import requests
 import pandas as pd
 import numpy as np
 from iexfinance import Stock
+from multiprocessing import Pool
+import os
 
 iex_url_base = "https://api.iextrading.com/1.0/"
 
@@ -50,6 +52,11 @@ def get_responses(payloads):
     return outputs
 
 
+def iex_get_stat(batch):
+    frame = Stock(batch, output_format="pandas").get_key_stats().T
+    return frame
+
+
 def get_stats(symbols):
     """
     :param symbols: List of symbols
@@ -57,27 +64,43 @@ def get_stats(symbols):
     """
     symbols = [symbols[i : i + 99] for i in range(0, len(symbols), 99)]
     frames = []
-    for batch in symbols:
-        frames.append(Stock(batch, output_format="pandas").get_key_stats().T)
-    stats = pd.concat(frames)
+    pool = Pool(processes=os.cpu_count())
+    frames.append(pool.starmap(iex_get_stat, [[batch] for batch in symbols]))
+    pool.close()
+    pool.join()
+    stats = pd.concat(frames[0])
     return stats
+
+
+def iex_get_close(batch):
+    frame = Stock(batch, output_format="pandas").get_close()
+    return frame
 
 
 def get_close(symbols):
     symbols = [symbols[i : i + 99] for i in range(0, len(symbols), 99)]
     frames = []
-    for batch in symbols:
-        frames.append(Stock(batch, output_format="pandas").get_close())
-    close = pd.concat(frames)
+    pool = Pool(processes=os.cpu_count())
+    frames.append(pool.starmap(iex_get_close, [[batch] for batch in symbols]))
+    pool.close()
+    pool.join()
+    close = pd.concat(frames[0])
     return close
+
+
+def iex_get_volume(batch):
+    frame = Stock(batch, output_format="pandas").get_volume()
+    return frame
 
 
 def get_volume(symbols):
     symbols = [symbols[i : i + 99] for i in range(0, len(symbols), 99)]
     frames = []
-    for batch in symbols:
-        frames.append(Stock(batch, output_format="pandas").get_volume())
-    volume = pd.concat(frames)
+    pool = Pool(processes=os.cpu_count())
+    frames.append(pool.starmap(iex_get_volume, [[batch] for batch in symbols]))
+    pool.close()
+    pool.join()
+    volume = pd.concat(frames[0])
     return volume
 
 
