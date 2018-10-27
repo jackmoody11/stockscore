@@ -71,24 +71,4 @@ def test_soup_it():
         raise AssertionError("Able to fetch parsed HTML from Google")
 
 
-def test_return_top_gives_correct_largest_value():
-
-    my_family = {"Billy": 2, "Bob": 14, "Suzy": 7, "Dad": 49, "Mom": 48}
-    top = utils.return_top(my_family, 5)
-    if not (top[0][0] == "Dad"):
-        raise AssertionError(
-            "return_top() does not return greatest value in dictionary"
-        )
-
-
-def test_return_top_assumes_length_of_dictionary_by_default():
-
-    my_family = {"Billy": 2, "Bob": 14, "Suzy": 7, "Dad": 49, "Mom": 48}
-    top = utils.return_top(my_family)
-    if not (top[4][0] == "Billy"):
-        raise AssertionError(
-            "return_top() does not assume length of dictionary by default"
-        )
-
-
 # Need to add tests for checking data retrieval (stats, financials, volume, etc.)

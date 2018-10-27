@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 plt.rcdefaults()
 
 
-def plot_top(tuple_list):
+def plot_top(df):
     # Set styling
     plt.style.use("seaborn-darkgrid")
     plt.interactive(False)
@@ -11,16 +11,10 @@ def plot_top(tuple_list):
     # Otherwise, should default to default font
     plt.rcParams["font.family"] = "sans-serif"
     plt.rcParams["font.sans-serif"] = "SF Pro Display"
-    # Set tickers and scores for bar chart
-    symbols = [x[0] for x in tuple_list]
-    scores = [x[1] for x in tuple_list]
-    # Set position for each bar
-    y_pos = [i for i in range(len(symbols))]
-    # Create bar chart and ticks on x axis
-    plt.bar(y_pos, scores, align="center", alpha=0.5)
-    plt.xticks(y_pos, symbols)
+    # Plot DataFrame as bar chart
+    df.plot.bar()
     # Plot labels
     plt.ylabel("Score")
     plt.xlabel("Tickers")
-    plt.title(f"Top {len(scores)} Stock Scores")
+    plt.title(f"Top {len(df)} Stock Scores")
     plt.show(block=True)
