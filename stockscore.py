@@ -40,7 +40,10 @@ def score_stocks(num_stocks):
         symbols, batch_data, stock_scores, stats=stats, splits=splits, volume=volume
     )
     del stats, splits, volume  # Clear up memory space
-    top_stocks = utils.return_top(stock_scores, num_stocks)  # Return top scoring stocks
+    stock_scores["Score"] = stock_scores.sum(axis=1)
+    top_stocks = utils.return_top(
+        stock_scores, "Score", num_stocks
+    )  # Return top scoring stocks
     return top_stocks
 
 
@@ -52,7 +55,7 @@ if __name__ == "__main__":
     stock_count = 10
     # Run screens to find top stocks
     top = score_stocks(stock_count)
-    stocks = [x[0] for x in top]
+    stocks = list(top.index)
     print(f"The top {stock_count} stocks are {stocks}")
     # End timer
     end = time.time()

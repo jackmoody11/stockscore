@@ -169,15 +169,15 @@ def total_setup():
     return symbols, stock_scores, batch_symbols
 
 
-def return_top(dictionary, x=None):
+def return_top(scores, metric, x):
     """
-    :param dictionary: Give a dictionary with numeric values (ex: {'Ticker1':200, 'Ticker2':300, 'Ticker3':450})
-    :param x: # of keys to be returned. Function defaults to return entire dictionary sorted.
-    :return: Will return top x values with keys.
+    :param scores: Pandas DataFrame with scores -- use init_stock_scores() to initialize DataFrame
+    :param metric: String value for what score is desired ("Growth Score", "Value Score", "Momentum Score", "Score")
+    :param x: Integer number of top stocks to return
+    :return: return top x number of stocks by score as pandas DataFrame
     """
-    x = len(dictionary) if x is None else x
-    sorted_array = sorted(dictionary.items(), key=lambda a: a[1], reverse=True)
-    return sorted_array[0:x]
+    top = scores.nlargest(x, [metric])
+    return top
 
 
 def soup_it(url):
