@@ -48,7 +48,11 @@ def get_responses(payloads):
     batch_url = f"{iex_url_base}stock/market/batch?"
     rs = (grequests.get(batch_url, params=payload) for payload in payloads)
     result = grequests.map(rs)
-    outputs = [r.json() for r in result]
+    try:
+        outputs = [r.json() for r in result]
+    except AttributeError:
+        outputs = []
+        pass
     return outputs
 
 
