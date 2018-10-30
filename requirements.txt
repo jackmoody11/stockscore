@@ -30,7 +30,7 @@ pyparsing==2.2.0
 PyPortfolioOpt==0.1.1
 pytest==3.6.3
 python-dateutil==2.7.3
-pytz==2018.5
+pytz==2018.7
 PyYAML==3.13
 requests==2.20.0
 scikit-learn==0.19.2
