@@ -14,8 +14,7 @@ def dividend_test(batch_data, stock_scores, dividends=None):
     so that dividend_test() can return updated stock scores.
     """
     # Get data for screen
-    if dividends is None:
-        dividends = utils.get_dividends(batch_data)
+    dividends = utils.get_dividends(batch_data) if dividends is None else dividends
     for symbol in dividends:
         try:
             symbol_dividends = dividends[symbol]
@@ -42,8 +41,7 @@ def net_income_test(batch_data, stock_scores, financials=None):
     so that net_income_test() can return updated stock scores.
     """
     # Get data for screen
-    if financials is None:
-        financials = utils.get_financials(batch_data)
+    financials = utils.get_financials(batch_data) if financials is None else financials
     # Give score based on net income results from the past year
     for symbol in financials:
         try:
@@ -75,8 +73,7 @@ def current_ratio_test(batch_data, stock_scores, financials=None):
     so that current_ratio() can return updated stock scores.
     """
     # Get data for screen
-    if financials is None:
-        financials = utils.get_financials(batch_data)
+    financials = utils.get_financials(batch_data) if financials is None else financials
     # Give score based on current ratio (measure of ability to cover short term debt obligations
     for symbol, _ in stock_scores.iterrows():
         try:
@@ -124,14 +121,14 @@ def p_to_b_test(symbols, stock_scores, stats=None):
     so that p_to_b_test() returns updated stock scores.
     """
     # Get data for screen
-    if stats is None:
-        stats = utils.get_stats(symbols)
+    stats = utils.get_stats(symbols) if stats is None else stats
     # Give score based on price/book ratio - criteria taken from Ben Graham's Intelligent Investor
     for symbol, _ in stock_scores.iterrows():
         try:
-            if 0 < stats.loc[symbol]["priceToBook"] <= 1.2:
-                pts = 1
-                stock_scores.loc[symbol]["Value Score"] += pts
+            pts = 1
+            stock_scores.loc[symbol]["Value Score"] += (
+                pts if 0 < stats.loc[symbol]["priceToBook"] <= 1.2 else 0
+            )
         except TypeError:
             continue  # If price/book ratio is not given, skip to next symbol
 
@@ -140,10 +137,8 @@ def p_to_b_test(symbols, stock_scores, stats=None):
 
 def pe_ratio_test(symbols, stock_scores, close=None, stats=None):
     # Get data for screen
-    if stats is None:
-        stats = utils.get_stats(symbols)
-    if close is None:
-        close = utils.get_close(symbols)
+    stats = utils.get_stats(symbols) if stats is None else stats
+    close = utils.get_close(symbols) if close is None else close
     # Give score based on price/earnings ratio
     for symbol, _ in stock_scores.iterrows():
         try:
