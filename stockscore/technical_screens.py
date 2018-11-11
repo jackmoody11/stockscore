@@ -2,14 +2,15 @@ from stockscore import utils
 
 
 def moving_avg_test(symbols, stock_scores, stats=None):
-
     """
     :param symbols: List of symbols
+    :type symbols: list
     :param stock_scores: Pandas DataFrame with scores
-    :param stats: DataFrame with all statistical information from IEX API (see get_stats in utils
-    module for more info.
-    :return: Returns an updated stock_score DataFrame. Make sure to set stock_score to the function
-    so that moving_avg_test() can return updated stock scores.
+    :type stock_scores: Pandas DataFrame
+    :param stats: Pandas DataFrame with key stats from IEX API
+    :type stats: Pandas DataFrame
+    :return: Returns an updated stock_score Pandas DataFrame
+    :rtype: Pandas DataFrame
     """
     if stats is None:
         stats = utils.get_stats(symbols)
@@ -33,13 +34,16 @@ def moving_avg_test(symbols, stock_scores, stats=None):
 
 def split_test(batch_data, stock_scores, splits=None, time="1y"):
     """
-    :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
-    functions to set batch_data
+    :param batch_data: List of concatenated symbols
+    :type batch_data: list
     :param stock_scores: Pandas DataFrame with scores
-    :param splits: Dictionary with all split information from IEX API (see get_splits in utils
-    module for more info.
+    :type stock_scores: Pandas DataFrame
+    :param splits: Dictionary with all split information from IEX API
+    :type splits: dict
     :param time: Time over which to see if split occurred (1d = 1 day, 1m = 1 month, 1y = 1 year, etc.)
-    :return: Returns updated stock score DataFrame
+    :type time: str
+    :return: Returns updated stock_score Pandas DataFrame
+    :rtype: Pandas DataFrame
     """
     if splits is None:
         splits = utils.get_splits(batch_data, time=time)
@@ -75,9 +79,13 @@ def split_test(batch_data, stock_scores, splits=None, time="1y"):
 def trading_volume_test(symbols, stock_scores, volume=None):
     """
     :param symbols: List of symbols
+    :type symbols: list
     :param stock_scores: Pandas DataFrame with scores
+    :type stock_scores: Pandas DataFrame
     :param volume: Pandas DataFrame with latest volume of symbols
-    :return: Returns updated stock score DataFrame
+    :type volume: Pandas DataFrame
+    :return: Returns updated stock_scores Pandas DataFrame
+    :rtype: Pandas DataFrame
     """
     if volume is None:
         volume = utils.get_volume(symbols)
@@ -126,17 +134,19 @@ def trading_volume_test(symbols, stock_scores, volume=None):
 def suite(symbols, batch_data, stock_scores, stats=None, splits=None, volume=None):
     """
     :param symbols: List of symbols
-    :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
-    functions to set batch_data
+    :type symbols: list
+    :param batch_data: List of concatenated symbols
+    :type batch_data: list
     :param stock_scores: Pandas DataFrame with scores
-    :param stats: Dictionary with all statistical information from IEX API (see get_stats in utils
-    module for more info.
-    :param splits: Dictionary with all splits information from IEX API (see get_splits in utils
-    module for more info.
-    :param volume: DataFrame with latest volume for symbols
-    :return: Returns an updated stock_score dictionary that runs all functions
-    in technical_functions module. Make sure to set stock_score to the function
-    so that suite() can return updated stock scores.
+    :type stock_scores: Pandas DataFrame
+    :param stats: Dictionary with key stats from IEX
+    :type stats: dict
+    :param splits: Dictionary with all splits information from IEX
+    :type splits: dict
+    :param volume: Pandas DataFrame with latest volume for symbols
+    :type volume: Pandas DataFrame
+    :return: Returns an updated stock_score Pandas DataFrame
+    :rtype: Pandas DataFrame
     """
     stock_scores = moving_avg_test(symbols, stock_scores, stats=stats)
     stock_scores = split_test(batch_data, stock_scores, splits=splits)

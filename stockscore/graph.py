@@ -4,6 +4,11 @@ plt.rcdefaults()
 
 
 def plot_top(df):
+    """
+    :param df: Stock score Pandas DataFrame
+    :type df: Pandas DataFrame
+    :return: Matplotlib plot with stocks and scores (broken down by score id)
+    """
     # Set styling
     plt.style.use("seaborn-darkgrid")
     plt.interactive(False)

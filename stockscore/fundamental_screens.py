@@ -4,17 +4,18 @@ from stockscore import utils
 # Needs updating
 def dividend_test(batch_data, stock_scores, dividends=None):
     """
-    :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
-    functions to set batch_data
-    :param stock_scores: Dictionary with stock symbols and corresponding scores
-    (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
-    :param dividends: Dictionary with all dividend information from IEX API (see get_dividends in utils
-    module for more info.
-    :return: Returns an updated stock_score dictionary. Make sure to set stock_score to the function
-    so that dividend_test() can return updated stock scores.
+    :param batch_data: List of concatenated symbol batches
+    :type batch_data: list
+    :param stock_scores: Pandas DataFrame with stock scores
+    :type stock_scores: Pandas DataFrame
+    :param dividends: Dictionary with all dividend information from IEX API
+    :type dividends: dict
+    :return: Updated stock_scores Pandas DataFrame
+    :rtype: Pandas DataFrame
     """
-    # Get data for screen
-    dividends = utils.get_dividends(batch_data) if dividends is None else dividends
+    dividends = (
+        utils.get_dividends(batch_data) if dividends is None else dividends
+    )  # Get data for screen
     for symbol in dividends:
         try:
             symbol_dividends = dividends[symbol]
@@ -31,14 +32,14 @@ def dividend_test(batch_data, stock_scores, dividends=None):
 
 def net_income_test(batch_data, stock_scores, financials=None):
     """
-    :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
-    functions to set batch_data
-    :param stock_scores: Dictionary with stock symbols and corresponding scores
-    (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
-    :param financials: Dictionary with all financial information from IEX API (see get_financials in utils
-    module for more info.
-    :return: Returns an updated stock_score dictionary. Make sure to set stock_score to the function
-    so that net_income_test() can return updated stock scores.
+    :param batch_data: List of concatenated symbols
+    :type batch_data: list
+    :param stock_scores: Pandas DataFrame with stock scores
+    :type stock_scores: Pandas DataFrame
+    :param financials: Dictionary with all financial information from IEX API
+    :type financials: dict
+    :return: Updated stock_scores Pandas DataFrame
+    :rtype: Pandas DataFrame
     """
     # Get data for screen
     financials = utils.get_financials(batch_data) if financials is None else financials
@@ -63,14 +64,14 @@ def net_income_test(batch_data, stock_scores, financials=None):
 
 def current_ratio_test(batch_data, stock_scores, financials=None):
     """
-    :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
-    functions to set batch_data
-    :param stock_scores: Dictionary with stock symbols and corresponding scores
-    (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
-    :param financials: Dictionary with all financial information from IEX API (see get_financials in utils
-    module for more info.
-    :return: Returns an updated stock_score dictionary. Make sure to set stock_score to the function
-    so that current_ratio() can return updated stock scores.
+    :param batch_data: List of concatenated symbols
+    :type batch_data: list
+    :param stock_scores: Pandas DataFrame with stock scores
+    :type stock_scores: Pandas DataFrame
+    :param financials: Dictionary with all financial information from IEX API
+    :type financials: dict
+    :return: Updated stock_scores Pandas DataFrame
+    :rtype: Pandas DataFrame
     """
     # Get data for screen
     financials = utils.get_financials(batch_data) if financials is None else financials
@@ -113,12 +114,13 @@ def current_ratio_test(batch_data, stock_scores, financials=None):
 def p_to_b_test(symbols, stock_scores, stats=None):
     """
     :param symbols: List of symbols
-    :param stock_scores: Dictionary with stock symbols and corresponding scores
-    (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
-    :param stats: Defaults as None, but can be set to value to speed up performance if running suite
-    or multiple tests at once.
-    :return: Returns updated stock_score dictionary. Make sure to set stock_score to the function
-    so that p_to_b_test() returns updated stock scores.
+    :type symbols: list
+    :param stock_scores: Pandas DataFrame with stock scores
+    :type stock_scores: Pandas DataFrame
+    :param stats: Pandas DataFrame with all key stats from IEX API
+    :type stats: Pandas DataFrame
+    :return: Updated stock_scores Pandas DataFrame
+    :rtype: Pandas DataFrame
     """
     # Get data for screen
     stats = utils.get_stats(symbols) if stats is None else stats
@@ -136,6 +138,18 @@ def p_to_b_test(symbols, stock_scores, stats=None):
 
 
 def pe_ratio_test(symbols, stock_scores, close=None, stats=None):
+    """
+    :param symbols: List of symbols
+    :type symbols: list
+    :param stock_scores: Pandas DataFrame with stock scores
+    :type stock_scores: Pandas DataFrame
+    :param close: Pandas DataFrame with closing prices of symbols
+    :type close: Pandas DataFrame
+    :param stats: Pandas DataFrame with all key stats provided by IEX API
+    :type stats: Pandas DataFrame
+    :return: Updated stock_scores Pandas DataFrame
+    :rtype: Pandas DataFrame
+    """
     # Get data for screen
     stats = utils.get_stats(symbols) if stats is None else stats
     close = utils.get_close(symbols) if close is None else close
@@ -168,20 +182,21 @@ def suite(
     """
     Runs all tests within fundamental_functions at once
     :param symbols: List of symbols
-    :param batch_data: List of concatenated symbols -- use get_symbols() and set_batches()
-    functions to set batch_data
-    :param stock_scores: Dictionary with stock symbols and corresponding scores
-    (ex: {'AAPL': 5, 'FB': 7, 'TSLA': 1, 'TJX': 12}
-    :param dividends: Dictionary with all dividend information from IEX API (see get_dividends in utils
-    module for more info.
-    :param financials: Dictionary with all financial information from IEX API (see get_financials in utils
-    module for more info.
-    :param stats: Dictionary with all stats information from IEX API (see get_stats in utils
-    module for more info.
-    :param close: Closing price DataFrame
-    :return: Returns an updated stock_score dictionary that runs all functions
-    in fundamental_functions module. Make sure to set stock_score to the function
-    so that suite() can return updated stock scores.
+    :type symbols: list
+    :param batch_data: List of concatenated symbols
+    :type batch_data: list
+    :param stock_scores: Pandas DataFrame with stock scores
+    :type stock_scores: Pandas DataFrame
+    :param dividends: Dictionary with all dividend information from IEX API
+    :type dividends: dict
+    :param financials: Dictionary with all financial information from IEX API
+    :type financials: dict
+    :param stats: Pandas DataFrame with all key stats from IEX API\
+    :type stats: Pandas DataFrame
+    :param close: Pandas DataFrame of all closing prices
+    :type close: Pandas DataFrame
+    :return: Updated stock_scores Pandas DataFrame
+    :rtype: Pandas DataFrame
     """
     stock_scores = dividend_test(batch_data, stock_scores, dividends=dividends)
     stock_scores = net_income_test(batch_data, stock_scores, financials=financials)

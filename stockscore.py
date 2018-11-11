@@ -1,8 +1,8 @@
-# Stock Score script created by Jack Moody 2018
-#
-# Other useful libraries that can be used:
-# import sys
-# import numpy as np
+"""
+Scores thousands of stocks and returns top stocks along with breakdown by score.
+Score is broken down into 3 categories: value, momentum, and growth. The sum of these
+3 scores gives the total score.
+"""
 
 from stockscore import utils
 from stockscore import technical_screens as tf
@@ -12,6 +12,12 @@ import time
 
 
 def score_stocks(num_stocks):
+    """
+    :param num_stocks: Number of top scores to return
+    :type num_stocks: int
+    :return: List of ordered tuples of the form (<stock ticker: str>, <score: int>)
+    :rtype: list
+    """
     print("Setting up stocks and scores...")
     symbols, stock_scores, batch_data = utils.total_setup()
 
