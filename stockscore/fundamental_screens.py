@@ -163,8 +163,23 @@ def pe_ratio_test(symbols, stock_scores, close=None, stats=None):
                 stock_scores.loc[symbol]["Value Score"] += 2
             elif 15 < pe_ratio < 30:
                 stock_scores.loc[symbol]["Value Score"] += 1
-        except (ZeroDivisionError, TypeError):
+        except (ZeroDivisionError, TypeError, KeyError):
             continue  # if earnings is zero or EPS is not available, go to next symbol
+
+    return stock_scores
+
+
+def profit_margin_test(symbols, stock_scores, stats=None):
+    stats = utils.get_stats(symbols) if stats is None else stats
+    for symbol, _ in stock_scores.iterrows():
+        try:
+            margin = stats.loc[symbol]["profitMargin"]
+            if margin > 20:
+                stock_scores.loc[symbol]["Value Score"] += 2
+            elif margin > 10:
+                stock_scores.loc[symbol]["Value Score"] += 1
+        except TypeError:
+            continue  # if profit margin is not recorded, go to next symbol
 
     return stock_scores
 
@@ -203,4 +218,5 @@ def suite(
     stock_scores = current_ratio_test(batch_data, stock_scores, financials=financials)
     stock_scores = p_to_b_test(symbols, stock_scores, stats=stats)
     stock_scores = pe_ratio_test(symbols, stock_scores, stats=stats, close=close)
+    stock_scores = profit_margin_test(symbols, stock_scores, stats=stats)
     return stock_scores
