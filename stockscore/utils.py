@@ -69,7 +69,6 @@ def get_responses(payloads):
         outputs = [r.json() for r in result]
     except AttributeError:
         outputs = []
-        pass
     return outputs
 
 
