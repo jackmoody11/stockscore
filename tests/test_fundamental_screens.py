@@ -14,6 +14,7 @@ def test_dividend_test_returns_scores():
 
 
 def test_dividend_test_not_all_zero():
+
     scores = utils.init_stock_scores(symbols)
     scores = fs.dividend_test(batch_data, scores)
     if all(scores.iloc[i]["Value Score"] == 0 for i in range(len(scores))):
@@ -29,6 +30,7 @@ def test_net_income_test_returns_scores():
 
 
 def test_net_income_test_not_all_zero():
+
     scores = utils.init_stock_scores(symbols)
     scores = fs.net_income_test(batch_data, scores, financials=financials)
     if all(scores.iloc[i]["Value Score"] == 0 for i in range(len(scores))):
@@ -43,7 +45,7 @@ def test_net_income_test_returns_aapl_with_pos_ni_for_all_years_given():
     """
     scores = utils.init_stock_scores(symbols)
     scores = fs.net_income_test(batch_data, scores, financials=financials)
-    if not (scores.loc["AAPL"]["Value Score"]):
+    if not scores.loc["AAPL"]["Value Score"]:
         raise AssertionError("AAPL was not given a positive score for net income")
 
 
@@ -58,6 +60,7 @@ def test_current_ratio_test_returns_scores():
 
 
 def test_current_ratio_test_not_all_zero():
+
     scores = utils.init_stock_scores(symbols)
     scores = fs.current_ratio_test(batch_data, scores, financials=financials)
     if all(scores.iloc[i]["Value Score"] == 0 for i in range(len(scores))):
@@ -65,6 +68,7 @@ def test_current_ratio_test_not_all_zero():
 
 
 def test_p_to_b_test_returns_scores():
+
     scores = utils.init_stock_scores(symbols)
     scores = fs.p_to_b_test(symbols, scores, stats=stats)
     if not (len(scores) >= 1000):
@@ -72,6 +76,7 @@ def test_p_to_b_test_returns_scores():
 
 
 def test_p_to_b_not_all_zero():
+
     scores = utils.init_stock_scores(symbols)
     scores = fs.p_to_b_test(symbols, scores, stats=stats)
     if all(scores.iloc[i]["Value Score"] == 0 for i in range(len(scores))):
@@ -87,13 +92,33 @@ def test_pe_ratio_test_returns_scores():
 
 
 def test_pe_ratio_test_not_all_zero():
+
     scores = utils.init_stock_scores(symbols)
     scores = fs.pe_ratio_test(symbols, scores, close=close, stats=stats)
     if all(scores.iloc[i]["Value Score"] == 0 for i in range(len(scores))):
         raise AssertionError("Price to earnings test returning all scores as zero")
 
 
+def test_profit_margin_returns_scores():
+
+    scores = utils.init_stock_scores(symbols)
+    scores = fs.profit_margin_test(symbols, scores, stats=stats)
+    if not (len(scores) >= 1000):
+        raise AssertionError(
+            "At least 1000 profit margin scores listed in stock scores"
+        )
+
+
+def test_profit_margin_not_all_zero():
+
+    scores = utils.init_stock_scores(symbols)
+    scores = fs.profit_margin_test(batch_data, scores, stats=stats)
+    if all(scores.iloc[i]["Value Score"] == 0 for i in range(len(scores))):
+        raise AssertionError("All scores returned as zero")
+
+
 def test_suite_returns_scores():
+
     scores = utils.init_stock_scores(symbols)
     scores = fs.suite(
         symbols,
@@ -108,6 +133,7 @@ def test_suite_returns_scores():
 
 
 def test_suite_not_all_zero():
+
     scores = utils.init_stock_scores(symbols)
     scores = fs.suite(
         symbols,
