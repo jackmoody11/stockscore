@@ -116,7 +116,7 @@ def get_close(symbols):
     """
     with Pool() as pool:
         return pd.concat(
-            pool.starmap(iex_get_stat, [[batch] for batch in split_symbols(symbols)])
+            pool.starmap(iex_get_close, [[batch] for batch in split_symbols(symbols)])
         )
 
 
