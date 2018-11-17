@@ -93,9 +93,9 @@ Terminal output:
 .. image:: /media/terminal_output.png
 
 
-Top 5 stocks output:
+Top 10 stocks output:
 
-.. image:: /media/top5_output.png
+.. image:: /media/StockScores.png
 
 
 Running the tests
