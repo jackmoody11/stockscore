@@ -4,7 +4,7 @@ import grequests
 import requests
 import pandas as pd
 import numpy as np
-from iexfinance import Stock
+from iexfinance import Stock, get_available_symbols
 from multiprocessing import Pool
 
 iex_url_base = "https://api.iextrading.com/1.0/"
@@ -15,7 +15,7 @@ def get_symbols():
     :return: Gets all symbols(tickers) from IEX API
     :rtype: list
     """
-    symbols_json = requests.get(iex_url_base + "ref-data/symbols").json()
+    symbols_json = get_available_symbols()
     symbols = [symbol["symbol"] for symbol in symbols_json if symbol["type"] == "cs"]
     return symbols
 
