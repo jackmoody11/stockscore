@@ -1,4 +1,5 @@
 from stockscore import utils
+import numpy as np
 
 
 def moving_avg_test(symbols, stock_scores, stats=None):
@@ -17,18 +18,11 @@ def moving_avg_test(symbols, stock_scores, stats=None):
     stats["perDiff"] = (
         (stats.day50MovingAvg - stats.day200MovingAvg) / stats.day200MovingAvg
     ) * 100
-    for symbol, _ in stock_scores.iterrows():
-        try:
-            pts = round(5 / (stats.loc[symbol]["perDiff"] + 1))
-            if 0 < stats.loc[symbol]["perDiff"] < 5:
-                stock_scores.loc[symbol]["Momentum Score"] += pts
-                # print(
-                #     f"{symbol} score went up by {pts} -- SMA 200 under SMA 50 by {per_diff}%"
-                # )
-
-        except ValueError:
-            continue
-
+    stats.loc[stats["perDiff"].isnull(), "perDiff"] = np.nan
+    stock_scores.loc[
+        stats["perDiff"].between(0, 5, inclusive=False),
+        ["Value Score", "Momentum Score"],
+    ] += 1
     return stock_scores
 
 
@@ -89,22 +83,12 @@ def trading_volume_test(symbols, stock_scores, volume=None):
     """
     if volume is None:
         volume = utils.get_volume(symbols)
-
-    for symbol, _ in volume.iterrows():
-        try:
-            latest_volume = volume.loc[symbol]["latestVolume"]
-            if latest_volume >= 100000:
-                stock_scores.loc[symbol]["Momentum Score"] += 1
-                stock_scores.loc[symbol]["Value Score"] += 1
-                # print(f'{symbol} score went up by {1} -- Volume over 100,000')
-            elif latest_volume >= 50000:
-                pass
-            else:
-                stock_scores.loc[symbol]["Momentum Score"] -= 1
-                stock_scores.loc[symbol]["Value Score"] -= 1
-        except (KeyError, TypeError, IndexError):
-            continue  # If no value, assume data is incomplete and do not penalize
-
+    stock_scores.loc[
+        (volume.latestVolume >= 100000), ["Value Score", "Momentum Score"]
+    ] += 1
+    stock_scores.loc[
+        (volume.latestVolume <= 50000), ["Value Score", "Momentum Score"]
+    ] -= 1
     return stock_scores
 
 
