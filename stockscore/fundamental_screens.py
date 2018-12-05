@@ -125,15 +125,9 @@ def p_to_b_test(symbols, stock_scores, stats=None):
     # Get data for screen
     stats = utils.get_stats(symbols) if stats is None else stats
     # Give score based on price/book ratio - criteria taken from Ben Graham's Intelligent Investor
-    for symbol, _ in stock_scores.iterrows():
-        try:
-            pts = 1
-            stock_scores.loc[symbol]["Value Score"] += (
-                pts if 0 < stats.loc[symbol]["priceToBook"] <= 1.2 else 0
-            )
-        except TypeError:
-            continue  # If price/book ratio is not given, skip to next symbol
-
+    stock_scores.loc[
+        (stats["priceToBook"] <= 1.2) & (stats["priceToBook"] > 0), ["Value Score"]
+    ] += 1
     return stock_scores
 
 
@@ -171,16 +165,8 @@ def pe_ratio_test(symbols, stock_scores, close=None, stats=None):
 
 def profit_margin_test(symbols, stock_scores, stats=None):
     stats = utils.get_stats(symbols) if stats is None else stats
-    for symbol, _ in stock_scores.iterrows():
-        try:
-            margin = stats.loc[symbol]["profitMargin"]
-            if margin > 20:
-                stock_scores.loc[symbol]["Value Score"] += 2
-            elif margin > 10:
-                stock_scores.loc[symbol]["Value Score"] += 1
-        except TypeError:
-            continue  # if profit margin is not recorded, go to next symbol
-
+    stock_scores.loc[stats["profitMargin"] > 10, "Value Score"] += 1
+    stock_scores.loc[stats["profitMargin"] > 20, "Value Score"] += 1
     return stock_scores
 
 
