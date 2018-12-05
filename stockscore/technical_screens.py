@@ -1,5 +1,4 @@
 from stockscore import utils
-import numpy as np
 
 
 def moving_avg_test(symbols, stock_scores, stats=None):
@@ -18,7 +17,6 @@ def moving_avg_test(symbols, stock_scores, stats=None):
     stats["perDiff"] = (
         (stats.day50MovingAvg - stats.day200MovingAvg) / stats.day200MovingAvg
     ) * 100
-    stats.loc[stats["perDiff"].isnull(), "perDiff"] = np.nan
     stock_scores.loc[
         stats["perDiff"].between(0, 5, inclusive=False),
         ["Value Score", "Momentum Score"],
