@@ -18,8 +18,7 @@ def moving_avg_test(symbols, stock_scores, stats=None):
         (stats.day50MovingAvg - stats.day200MovingAvg) / stats.day200MovingAvg
     ) * 100
     stock_scores.loc[
-        stats["perDiff"].between(0, 5, inclusive=False),
-        ["Value Score", "Momentum Score"],
+        stats.perDiff.between(0, 5, inclusive=False), ["Value Score", "Momentum Score"]
     ] += 1
     return stock_scores
 
@@ -48,7 +47,7 @@ def split_test(batch_data, stock_scores, splits=None, time="1y"):
                 # Stocks that split so that you get 7 stock for every 1 you own may indicate good future prospects
                 # They probably feel good about future prospects and want to allow more investors to invest in them
                 pts = num_splits
-                stock_scores.loc[symbol]["Momentum Score"] += pts
+                stock_scores.loc[symbol, ["Momentum Score", "Growth Score"]] += pts
                 # print(
                 #     f"{symbol} went up by {pts} -- split bullishly {num_splits} times in past {time}"
                 # )
@@ -57,7 +56,7 @@ def split_test(batch_data, stock_scores, splits=None, time="1y"):
                 # They may be worried about staying in the market
                 # and need to maintain some minimum price to keep trading
                 pts = sum(1 for i in range(num_splits) if split_ratios[i] > 1)
-                stock_scores.loc[symbol]["Momentum Score"] -= pts
+                stock_scores.loc[symbol, ["Momentum Score", "Growth Score"]] -= pts
                 # print(
                 #     f"{symbol} went down by {pts} -- split bearishly {pts} times in past {time}"
                 # )
@@ -82,10 +81,10 @@ def trading_volume_test(symbols, stock_scores, volume=None):
     if volume is None:
         volume = utils.get_volume(symbols)
     stock_scores.loc[
-        (volume.latestVolume >= 100000), ["Value Score", "Momentum Score"]
+        volume.latestVolume >= 100000, ["Value Score", "Momentum Score"]
     ] += 1
     stock_scores.loc[
-        (volume.latestVolume <= 50000), ["Value Score", "Momentum Score"]
+        volume.latestVolume <= 50000, ["Value Score", "Momentum Score"]
     ] -= 1
     return stock_scores
 
