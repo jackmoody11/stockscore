@@ -20,7 +20,7 @@ greenlet==0.4.13
 grequests==0.3.0
 identify==1.1.7
 idna==2.7
-iexfinance==0.3.4
+iexfinance==0.3.5
 imagesize==1.1.0
 Jinja2==2.10
 kiwisolver==1.0.1
