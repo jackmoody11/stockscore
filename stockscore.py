@@ -21,7 +21,7 @@ def score_stocks(num_stocks):
     print("Setting up stocks and scores...")
     symbols, stock_scores, batch_data = utils.total_setup()
 
-    print("Fetching data dictionaries...")
+    print("Fetching data...")
     volume, close, stats, financials, splits, dividends = (
         utils.get_volume(symbols),
         utils.get_close(symbols),
