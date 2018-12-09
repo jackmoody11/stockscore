@@ -16,16 +16,7 @@ def dividend_test(batch_data, stock_scores, dividends=None):
     dividends = (
         utils.get_dividends(batch_data) if dividends is None else dividends
     )  # Get data for screen
-    for symbol in dividends:
-        try:
-            symbol_dividends = dividends[symbol]
-            years = len(symbol_dividends) // 4
-            pts = years
-            stock_scores.loc[symbol][
-                "Value Score"
-            ] += pts  # Add numbers of years which dividends have been paid
-        except (KeyError, IndexError):
-            continue  # Skip to next stock if unable to get data
+    stock_scores["Value Score"] += dividends["count"] // 4
 
     return stock_scores
 
@@ -148,18 +139,12 @@ def pe_ratio_test(symbols, stock_scores, close=None, stats=None):
     stats = utils.get_stats(symbols) if stats is None else stats
     close = utils.get_close(symbols) if close is None else close
     # Give score based on price/earnings ratio
-    for symbol, _ in stock_scores.iterrows():
-        try:
-            ttm_eps = stats.loc[symbol]["ttmEPS"]
-            price = close.loc[symbol]["close"]
-            pe_ratio = price / ttm_eps
-            if 0 < pe_ratio <= 15:
-                stock_scores.loc[symbol]["Value Score"] += 2
-            elif 15 < pe_ratio < 30:
-                stock_scores.loc[symbol]["Value Score"] += 1
-        except (ZeroDivisionError, TypeError, KeyError):
-            continue  # if earnings is zero or EPS is not available, go to next symbol
-
+    stats.loc[(stats["ttmEPS"] > 0) & (close["close"] > 0), "peRatio"] = (
+        close[(stats["ttmEPS"] > 0) & (close["close"] > 0)]["close"]
+        / stats[(stats["ttmEPS"] > 0) & (close["close"] > 0)]["ttmEPS"]
+    )
+    stock_scores.loc[stats["peRatio"] <= 30, "Value Score"] += 1
+    stock_scores.loc[stats["peRatio"] <= 15, "Value Score"] += 1
     return stock_scores
 
 
