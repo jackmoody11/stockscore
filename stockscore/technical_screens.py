@@ -12,8 +12,7 @@ def moving_avg_test(symbols, stock_scores, stats=None):
     :return: Returns an updated stock_score Pandas DataFrame
     :rtype: Pandas DataFrame
     """
-    if stats is None:
-        stats = utils.get_stats(symbols)
+    stats = utils.get_stats(symbols) if stats is None else stats
     stats["perDiff"] = (
         (stats.day50MovingAvg - stats.day200MovingAvg) / stats.day200MovingAvg
     ) * 100
@@ -36,8 +35,7 @@ def split_test(batch_data, stock_scores, splits=None, time="1y"):
     :return: Returns updated stock_score Pandas DataFrame
     :rtype: Pandas DataFrame
     """
-    if splits is None:
-        splits = utils.get_splits(batch_data, time=time)
+    splits = utils.get_splits(batch_data, time=time) if splits is None else splits
     for symbol, _ in stock_scores.iterrows():
         try:
             symbol_splits = splits[symbol]
@@ -78,8 +76,7 @@ def trading_volume_test(symbols, stock_scores, volume=None):
     :return: Returns updated stock_scores Pandas DataFrame
     :rtype: Pandas DataFrame
     """
-    if volume is None:
-        volume = utils.get_volume(symbols)
+    volume = utils.get_volume(symbols) if volume is None else volume
     stock_scores.loc[
         volume.latestVolume >= 100000, ["Value Score", "Momentum Score"]
     ] += 1
