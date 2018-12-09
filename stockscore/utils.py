@@ -193,11 +193,19 @@ def get_dividends(batch_data, time="5y"):
         {"symbols": batch, "types": "dividends", "range": time} for batch in batch_data
     ]
     outputs = get_responses(payloads=payloads)
-    dividends = {
+    div_json = {
         symbol: outputs[outputs.index(batch_dict)][symbol]["dividends"]
         for batch_dict in outputs
         for symbol in batch_dict
     }
+    data = {
+        "count": [len(v) for _, v in div_json.items()],
+        "amount": [
+            [div_json[k][i]["amount"] for i in range(len(div_json[k]))]
+            for k, _ in div_json.items()
+        ],
+    }
+    dividends = pd.DataFrame(data=data, index=div_json.keys())
     return dividends
 
 
