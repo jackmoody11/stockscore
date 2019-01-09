@@ -16,7 +16,9 @@ def dividend_test(batch_data, stock_scores, dividends=None):
     dividends = (
         utils.get_dividends(batch_data) if dividends is None else dividends
     )  # Get data for screen
-    stock_scores["Value Score"] += dividends["count"] // 4
+    stock_scores["Value Score"] += min(
+        5, dividends["count"] // 4
+    )  # Account for monthly dividend stocks
 
     return stock_scores
 
