@@ -1,4 +1,4 @@
-from stockscore import utils
+import utils
 
 
 def moving_avg_test(symbols, stock_scores, stats=None):
@@ -43,7 +43,8 @@ def split_test(batch_data, stock_scores, splits=None, time="1y"):
             split_ratios = [symbol_splits[i]["ratio"] for i in range(num_splits)]
             if num_splits > 0 and all(split_ratios[i] < 1 for i in range(num_splits)):
                 # Stocks that split so that you get 7 stock for every 1 you own may indicate good future prospects
-                # They probably feel good about future prospects and want to allow more investors to invest in them
+                # They probably feel good about future prospects and want to allow more
+                # investors to invest in them
                 pts = num_splits
                 stock_scores.loc[symbol, ["Momentum Score", "Growth Score"]] += pts
                 # print(
