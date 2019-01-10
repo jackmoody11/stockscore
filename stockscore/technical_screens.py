@@ -1,4 +1,4 @@
-import utils
+from stockscore import utils
 
 
 def moving_avg_test(symbols, stock_scores, stats=None):
