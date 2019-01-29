@@ -1,0 +1,171 @@
+from stockscore.data import Stocks
+
+
+class Scores(Stocks):
+    def __init__(self, stocks=None):
+        super().__init__(stocks)
+        if self.scores is None:
+            self.init_scores()
+        self.get_stats()
+        self.get_volume()
+        self.get_splits()
+        self.get_financials()
+        self.get_dividends()
+        self.get_close()
+
+    def moving_avg_screen(self):
+
+        self.stats["perDiff"] = (
+            (self.stats.day50MovingAvg - self.stats.day200MovingAvg)
+            / self.stats.day200MovingAvg
+        ) * 100
+        self.scores.loc[
+            self.stats.perDiff.between(0, 5, inclusive=False), ["Momentum Score"]
+        ] += 1
+
+    def trading_volume_screen(self):
+
+        self.scores.loc[
+            self.volume.latestVolume >= 100000, ["Value Score", "Momentum Score"]
+        ] += 1
+        self.scores.loc[
+            self.volume.latestVolume <= 50000, ["Value Score", "Momentum Score"]
+        ] -= 1
+
+    def splits_screen(self, time="1y"):
+
+        self.splits = self.get_splits(time=time) if self.splits is None else self.splits
+        for symbol, _ in self.scores.iterrows():
+            try:
+                symbol_splits = self.splits[symbol]
+                num_splits = len(symbol_splits)
+                split_ratios = [symbol_splits[i]["ratio"] for i in range(num_splits)]
+                if num_splits > 0 and all(
+                    split_ratios[i] < 1 for i in range(num_splits)
+                ):
+                    # Stocks that split so that you get 7 stock for every 1 you own may indicate good future prospects
+                    # They probably feel good about future prospects and want to allow more
+                    # investors to invest in them
+                    pts = num_splits
+                    self.scores.loc[symbol, ["Momentum Score", "Growth Score"]] += pts
+                elif num_splits > 0:
+                    # Stocks that split so that you get 1 stock for every 7 you own may indicate poor future prospects
+                    # They may be worried about staying in the market
+                    # and need to maintain some minimum price to keep trading
+                    pts = sum(1 for i in range(num_splits) if split_ratios[i] > 1)
+                    self.scores.loc[symbol, ["Momentum Score", "Growth Score"]] -= pts
+            except (ValueError, KeyError):
+                continue
+
+    def net_income_test(self):
+        # Get data for screen
+        self.financials = (
+            self.get_financials() if self.financials is None else self.financials
+        )
+        # Give score based on net income results from the past year
+        for symbol in self.financials:
+            try:
+                symbol_financials = self.financials[symbol]["financials"]["financials"]
+                quarters = len(symbol_financials)
+                try:
+                    if all(
+                        symbol_financials[i]["netIncome"] > 0 for i in range(quarters)
+                    ):
+                        pts = quarters
+                        self.scores.loc[symbol][
+                            "Value Score"
+                        ] += pts  # positive net income for all quarters reporting
+                except (KeyError, TypeError):
+                    continue
+            except (KeyError, TypeError):
+                continue  # Skip to next stock if unable to get data
+
+    def current_ratio_test(self):
+        # Get data for screen
+        self.financials = (
+            self.get_financials() if self.financials is None else self.financials
+        )
+        # Give score based on current ratio (measure of ability to cover short term debt obligations
+        for symbol, _ in self.scores.iterrows():
+            try:
+                fin_base = self.financials[symbol]["financials"]["financials"][0]
+                current_assets = fin_base["currentAssets"]
+                current_debt = fin_base["currentDebt"]
+                try:
+                    current_ratio = current_assets / current_debt
+                    if current_ratio >= 1.5:
+                        self.scores.loc[symbol]["Value Score"] += 2
+                        # print(f"{symbol} score went up by 2 -- current ratio >= 1.5")
+                    elif current_ratio >= 1:
+                        self.scores.loc[symbol]["Value Score"] += 1
+                        # print(f"{symbol} score went up by 1 -- current ratio >= 1")
+                except ZeroDivisionError:
+                    if isinstance(current_assets, int or float) and current_assets > 0:
+                        self.scores.loc[symbol][
+                            "Value Score"
+                        ] += 1  # company has no short term obligations to pay
+                    continue  # If data is bad, skip to next stock
+                except TypeError:
+                    if (
+                        current_debt is None
+                        and current_assets is not None
+                        and current_assets > 0
+                    ):
+                        self.scores.loc[symbol][
+                            "Value Score"
+                        ] += 1  # company has no short term obligations to pay
+                    continue  # If data is bad, skip to next stock
+            except (KeyError, TypeError):
+                continue  # If current assets and current debt stats are not available, skip to next stock
+
+    def p_to_b_test(self):
+        # Get data for screen
+        self.stats = self.get_stats() if self.stats is None else self.stats
+        # Give score based on price/book ratio - criteria taken from Ben Graham's Intelligent Investor
+        self.scores.loc[
+            (self.stats["priceToBook"] <= 1.2) & (self.stats["priceToBook"] > 0),
+            ["Value Score"],
+        ] += 1
+
+    def pe_ratio_test(self):
+        # Get data for screen
+        self.stats = self.get_stats() if self.stats is None else self.stats
+        self.close = self.get_close() if self.close is None else self.close
+        # Give score based on price/earnings ratio
+        self.stats.loc[
+            (self.stats["ttmEPS"] > 0) & (self.close["close"] > 0), "peRatio"
+        ] = (
+            self.close[(self.stats["ttmEPS"] > 0) & (self.close["close"] > 0)]["close"]
+            / self.stats[(self.stats["ttmEPS"] > 0) & (self.close["close"] > 0)][
+                "ttmEPS"
+            ]
+        )
+        self.scores.loc[self.stats["peRatio"] <= 30, "Value Score"] += 1
+        self.scores.loc[self.stats["peRatio"] <= 15, "Value Score"] += 1
+
+    def profit_margin_test(self):
+        self.stats = self.get_stats() if self.stats is None else self.stats
+        self.scores.loc[self.stats["profitMargin"] > 10, "Value Score"] += 1
+        self.scores.loc[self.stats["profitMargin"] > 20, "Value Score"] += 1
+
+    # Needs updating
+    def dividend_test(self):
+        dividends = (
+            self.get_dividends() if self.dividends is None else self.dividends
+        )  # Get data for screen
+        self.scores.loc[:, "Value Score"] += dividends["count"] // 4
+        # Need to account for monthly dividend stocks (add max function to exclude
+        # monthly dividend payers from being disproportionately rewarded
+
+    def score(self):
+        self.moving_avg_screen()
+        self.trading_volume_screen()
+        self.splits_screen()
+        self.net_income_test()
+        self.current_ratio_test()
+        self.p_to_b_test()
+        self.pe_ratio_test()
+        self.profit_margin_test()
+
+        _scores = ["Value Score", "Growth Score", "Momentum Score"]
+        self.scores["Score"] = sum([self.scores[_score] for _score in _scores])
