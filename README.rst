@@ -109,10 +109,16 @@ All tests can be run by simply running
 from the command line.
 
 
-In order to run a specific test (like test_fundamental_functions.py), run
+In order to run a specific test file (like test_fundamental_functions.py), run
 ::
 
     pytest tests/test_fundamental_functions.py
+
+
+To run a specific test (like "test_dividend_test_returns_scores" in test_fundamental_screens.py), run
+::
+
+    pytest tests/test_fundamental_screens.py -k 'test_dividend_test_returns_scores'
 
 
 For more information on how to use pytest (like how to select a few tests),
