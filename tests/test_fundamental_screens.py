@@ -2,7 +2,7 @@ from stockscore.scores import Scores
 from stockscore.data import get_symbols
 
 stocks = get_symbols()
-stock_scores = Scores(stocks).scores
+stock_scores = Scores(stocks)
 
 
 def test_dividend_test_returns_scores():
