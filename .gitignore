@@ -6,3 +6,4 @@ __pycache__/
 venv/
 stockScore/oneoff.py
 .DS_Store
+.vscode/
