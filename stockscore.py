@@ -4,17 +4,34 @@ Score is broken down into 3 categories: value, momentum, and growth. The sum of 
 3 scores gives the total score.
 """
 
-from stockscore.data import Stocks, get_symbols
+from stockscore.data import get_symbols
 from stockscore.scores import Scores
 from stockscore.graph import plot_top
 import time
 
 
-def score_stocks():
+def return_top(scores, metric, x):
+    """
+    :param scores: Pandas DataFrame with scores
+    :type scores: Pandas DataFrame
+    :param metric: String value for what score is desired ("Growth Score", "Value Score", "Momentum Score", "Score")
+    :type metric: str
+    :param x: Integer number of top stocks to return
+    :type x: int
+    :return: return top x number of stocks by score as Pandas DataFrame
+    :rtype: Pandas DataFrame
+    """
+    return scores.nlargest(x, [metric])
+
+
+def score_stocks(num_stocks):
+    print("Fetching symbols...")
     symbols = get_symbols()
-    stks = Stocks(symbols)
-    stock_scores = Scores(stks.stocks).scores
-    return stock_scores
+    print("Fetching data...")
+    score_obj = Scores(symbols)
+    print("Scoring...")
+    score_obj.score()
+    return return_top(score_obj.scores, "Score", num_stocks)
 
 
 # Run stock screening
@@ -24,7 +41,7 @@ if __name__ == "__main__":
     # Choose number of top stocks you want to see
     stock_count = 10
     # Run screens to find top stocks
-    top = score_stocks()
+    top = score_stocks(stock_count)
     stocks = list(top.index)
     print(f"The top {stock_count} stocks are {stocks}")
     # End timer
