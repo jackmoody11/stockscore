@@ -34,57 +34,44 @@ Getting Started
 ~~~~~~~~~~~~~~~
 
 To clone this repository, run the following:
-
 ::
 
     git clone https://github.com/jackmoody11/stockscore
 
-It's nice to have virtualenv installed
-
+If you don't already have virtualenv on your machine, go ahead and install it
 ::
 
    pip install virtualenv
 
 Change working directory to project folder
-
 ::
 
     cd my/path/to/stockscore
 
 Create a virtual environment
-For Mac users:
 ::
 
-    python3 -m virtualenv env 
-
-For Windows users:
-::
-    
-    py -m virtualenv env # for Windows users
+    python3 -m virtualenv env # for Mac/Linux
+    py -m virtualenv env # for Windows
 
 
 Make a virtual environment with :code:`python3 -m venv my-env`.
 Then, in order to activate the virtual environment run the following:
 
-For Mac users:
-
 ::
 
-    source my-env/bin/activate
+    source my-env/bin/activate # for Mac/Linux
+    .\my-env\Scripts\activate # for Windows
 
-For Windows users:
-
-::
-
-    .\my-env\Scripts\activate
-
-Then use :code:`pip install -r requirements.txt` to install required modules.
+Then :code:`pip install -r requirements.txt` to install required modules.
 
 Run the program!
 ----------------
-To make sure that everything is working, while in the working directory of the stockScore project, run :code:`python3 stock_score.py`.
+To make sure that everything is working, while in the working directory of the stockScore project, run :code:`python3 stockscore.py`.
 
-*Note*: Make sure you are using :code:`python3`, because older versions of python do not support f strings.
+*Note*: Make sure you are using :code:`python3`.
+This project does not support versions below Python 3.6 since it uses f strings.
+This may change in the future to allow for earlier versions of Python to run.
 
 Here is an example output of what you can expect to see when you run the program:
 
@@ -105,9 +92,6 @@ All tests can be run by simply running
 ::
 
     pytest
-
-from the command line.
-
 
 In order to run a specific test file (like test_fundamental_functions.py), run
 ::
@@ -136,7 +120,7 @@ This project is very simple to deploy to a live system. To change which tests yo
 Built With
 ----------
 
-Python 3 and some great third party modules (see `requirements.txt`_ for more details).
+Python 3 and some great third party modules (see `requirements.txt`_ for full list).
 
 Contributing
 ------------
