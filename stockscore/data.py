@@ -189,7 +189,7 @@ class Stocks:
         )
 
 
-def return_top(scores, metric, x):
+def return_top(scores, metric, x=None):
     """
     :param scores: pandas data frame with scores
     :type scores: pandas data frame
@@ -200,8 +200,10 @@ def return_top(scores, metric, x):
     :return: top x number of stocks by score as pandas data frame
     :rtype: pandas data frame
     """
-    top = scores.nlargest(x, [metric])
-    return top
+    if x is not None:
+        return scores.nlargest(x, [metric])
+    else:
+        return scores.nlargest(len(scores), [metric])
 
 
 def soup_it(url):
