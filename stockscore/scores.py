@@ -6,15 +6,11 @@ class Scores(Stocks):
         super().__init__(stocks)
         if self.scores is None:
             self.init_scores()
-        self.get_stats()
-        self.get_volume()
-        self.get_splits()
-        self.get_financials()
-        self.get_dividends()
-        self.get_close()
 
     def moving_avg_screen(self):
 
+        if self.stats is None:
+            self.get_stats()
         self.stats["perDiff"] = (
             (self.stats.day50MovingAvg - self.stats.day200MovingAvg)
             / self.stats.day200MovingAvg
@@ -25,6 +21,8 @@ class Scores(Stocks):
 
     def trading_volume_screen(self):
 
+        if self.volume is None:
+            self.get_volume()
         self.scores.loc[
             self.volume.latestVolume >= 100000, ["Value Score", "Momentum Score"]
         ] += 1
@@ -34,6 +32,8 @@ class Scores(Stocks):
 
     def splits_screen(self, time="1y"):
 
+        if self.splits is None:
+            self.get_splits()
         self.splits = self.get_splits(time=time) if self.splits is None else self.splits
         for symbol, _ in self.scores.iterrows():
             try:
@@ -59,6 +59,8 @@ class Scores(Stocks):
 
     def net_income_test(self):
         # Get data for screen
+        if self.financials is None:
+            self.get_financials()
         self.financials = (
             self.get_financials() if self.financials is None else self.financials
         )
@@ -82,9 +84,8 @@ class Scores(Stocks):
 
     def current_ratio_test(self):
         # Get data for screen
-        self.financials = (
-            self.get_financials() if self.financials is None else self.financials
-        )
+        if self.financials is None:
+            self.get_financials()
         # Give score based on current ratio (measure of ability to cover short term debt obligations
         for symbol, _ in self.scores.iterrows():
             try:
@@ -120,7 +121,8 @@ class Scores(Stocks):
 
     def p_to_b_test(self):
         # Get data for screen
-        self.stats = self.get_stats() if self.stats is None else self.stats
+        if self.stats is None:
+            self.get_stats()
         # Give score based on price/book ratio - criteria taken from Ben Graham's Intelligent Investor
         self.scores.loc[
             (self.stats["priceToBook"] <= 1.2) & (self.stats["priceToBook"] > 0),
@@ -129,8 +131,10 @@ class Scores(Stocks):
 
     def pe_ratio_test(self):
         # Get data for screen
-        self.stats = self.get_stats() if self.stats is None else self.stats
-        self.close = self.get_close() if self.close is None else self.close
+        if self.stats is None:
+            self.get_stats()
+        if self.close is None:
+            self.get_close()
         # Give score based on price/earnings ratio
         self.stats.loc[
             (self.stats["ttmEPS"] > 0) & (self.close["close"] > 0), "peRatio"
@@ -144,15 +148,16 @@ class Scores(Stocks):
         self.scores.loc[self.stats["peRatio"] <= 15, "Value Score"] += 1
 
     def profit_margin_test(self):
-        self.stats = self.get_stats() if self.stats is None else self.stats
+        if self.stats is None:
+            self.get_stats()
         self.scores.loc[self.stats["profitMargin"] > 10, "Value Score"] += 1
         self.scores.loc[self.stats["profitMargin"] > 20, "Value Score"] += 1
 
     # Needs updating
     def dividend_test(self):
-        dividends = (
-            self.get_dividends() if self.dividends is None else self.dividends
-        )  # Get data for screen
+        if self.dividends is None:
+            self.get_dividends()
+        # Get data for screen
         self.scores.loc[:, "Value Score"] += dividends["count"] // 4
         # Need to account for monthly dividend stocks (add max function to exclude
         # monthly dividend payers from being disproportionately rewarded
