@@ -4,6 +4,6 @@ __pycache__/
 .pytest_cache/
 .idea/
 venv/
-stockScore/oneoff.py
+stockscore/oneoff.py
 .DS_Store
 .vscode/
