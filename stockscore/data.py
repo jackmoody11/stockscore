@@ -28,9 +28,12 @@ class Stocks:
         """
         self.stocks = stocks
         self.batches = [self.stocks[i : i + 99] for i in range(0, len(self.stocks), 99)]
-        self.string_batches = [
-            ",".join(stocks[i : i + 99]) for i in range(0, len(self.stocks), 99)
-        ]
+        if stocks:
+            self.string_batches = [
+                ",".join(stocks[i : i + 99]) for i in range(0, len(self.stocks), 99)
+            ]
+        else:
+            self.string_batches = []
         self.scores = None
         self.stats = None
         self.close = None
