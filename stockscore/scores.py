@@ -24,7 +24,7 @@ class Scores(Stocks):
         if self.volume is None:
             self.get_volume()
         self.scores.loc[
-            self.volume.latestVolume >= 100000, ["Value Score", "Momentum Score"]
+            self.volume.latestVolume >= 100_000, ["Value Score", "Momentum Score"]
         ] += 1
         self.scores.loc[
             self.volume.latestVolume <= 50000, ["Value Score", "Momentum Score"]
@@ -57,7 +57,7 @@ class Scores(Stocks):
             except (ValueError, KeyError):
                 continue
 
-    def net_income_test(self):
+    def net_income_screen(self):
         # Get data for screen
         if self.financials is None:
             self.get_financials()
@@ -82,7 +82,7 @@ class Scores(Stocks):
             except (KeyError, TypeError):
                 continue  # Skip to next stock if unable to get data
 
-    def current_ratio_test(self):
+    def current_ratio_screen(self):
         # Get data for screen
         if self.financials is None:
             self.get_financials()
@@ -119,7 +119,7 @@ class Scores(Stocks):
             except (KeyError, TypeError):
                 continue  # If current assets and current debt stats are not available, skip to next stock
 
-    def p_to_b_test(self):
+    def p_to_b_screen(self):
         # Get data for screen
         if self.stats is None:
             self.get_stats()
@@ -129,7 +129,7 @@ class Scores(Stocks):
             ["Value Score"],
         ] += 1
 
-    def pe_ratio_test(self):
+    def pe_ratio_screen(self):
         # Get data for screen
         if self.stats is None:
             self.get_stats()
@@ -147,18 +147,18 @@ class Scores(Stocks):
         self.scores.loc[self.stats["peRatio"] <= 30, "Value Score"] += 1
         self.scores.loc[self.stats["peRatio"] <= 15, "Value Score"] += 1
 
-    def profit_margin_test(self):
+    def profit_margin_screen(self):
         if self.stats is None:
             self.get_stats()
         self.scores.loc[self.stats["profitMargin"] > 10, "Value Score"] += 1
         self.scores.loc[self.stats["profitMargin"] > 20, "Value Score"] += 1
 
     # Needs updating
-    def dividend_test(self):
+    def dividend_screen(self):
         if self.dividends is None:
             self.get_dividends()
         # Get data for screen
-        self.scores.loc[:, "Value Score"] += dividends["count"] // 4
+        self.scores.loc[:, "Value Score"] += self.dividends["count"] // 4
         # Need to account for monthly dividend stocks (add max function to exclude
         # monthly dividend payers from being disproportionately rewarded
 
@@ -166,11 +166,11 @@ class Scores(Stocks):
         self.moving_avg_screen()
         self.trading_volume_screen()
         self.splits_screen()
-        self.net_income_test()
-        self.current_ratio_test()
-        self.p_to_b_test()
-        self.pe_ratio_test()
-        self.profit_margin_test()
+        self.net_income_screen()
+        self.current_ratio_screen()
+        self.p_to_b_screen()
+        self.pe_ratio_screen()
+        self.profit_margin_screen()
 
         _scores = ["Value Score", "Growth Score", "Momentum Score"]
         self.scores["Score"] = sum([self.scores[_score] for _score in _scores])

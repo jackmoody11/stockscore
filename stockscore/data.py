@@ -172,7 +172,10 @@ class Stocks:
                 for symbol in batch_dict
             }
             data = {
-                "count": [len(v) for _, v in div_json.items()],
+                "count": [
+                    len(v) if all(isinstance(i["amount"], (float)) for i in v) else 0
+                    for _, v in div_json.items()
+                ],
                 "amount": [
                     [div_json[k][i]["amount"] for i in range(len(div_json[k]))]
                     for k, _ in div_json.items()
