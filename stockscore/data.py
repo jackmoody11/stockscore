@@ -33,7 +33,7 @@ class Stocks:
                 ",".join(stocks[i : i + 99]) for i in range(0, len(self.stocks), 99)
             ]
         else:
-            self.string_batches = []
+            raise "At least one stock ticker must be given."
         self.scores = None
         self.stats = None
         self.close = None
@@ -49,67 +49,60 @@ class Stocks:
         """
         :param batch: list of up to 100 symbols
         :type batch: list
-        :return: pandas data frame with key stats
-        :rtype: pandas data frame
+        :return: pandas DataFrame with key stats
+        :rtype: pandas DataFrame
         """
         return iexfinance.Stock(batch, output_format="pandas").get_key_stats().T
 
     def get_stats(self):
         """
-        :return: pandas data frame with stats
-        :rtype: pandas data frame
+        :return: pandas DataFrame with stats
+        :rtype: pandas DataFrame
         """
-        if not self.stats:
-            with Pool() as pool:
-                self.stats = pd.concat(
-                    pool.starmap(self.iex_get_stat, [[batch] for batch in self.batches])
-                )
+        with Pool() as pool:
+            self.stats = pd.concat(
+                pool.starmap(self.iex_get_stat, [[batch] for batch in self.batches])
+            )
 
     @staticmethod
     def iex_get_close(batch):
         """
         :param batch: List of up to 100 symbols
         :type batch: list
-        :return: pandas data frame with closing prices
-        :rtype: pandas data frame
+        :return: pandas DataFrame with closing prices
+        :rtype: pandas DataFrame
         """
         return iexfinance.Stock(batch, output_format="pandas").get_close()
 
     def get_close(self):
         """
-        :return: pandas data frame with closing prices
-        :rtype: pandas data frame
+        :return: pandas DataFrame with closing prices
+        :rtype: pandas DataFrame
         """
-        if not self.close:
-            with Pool() as pool:
-                self.close = pd.concat(
-                    pool.starmap(
-                        self.iex_get_close, [[batch] for batch in self.batches]
-                    )
-                )
+        with Pool() as pool:
+            self.close = pd.concat(
+                pool.starmap(self.iex_get_close, [[batch] for batch in self.batches])
+            )
 
     @staticmethod
     def iex_get_volume(batch):
         """
         :param batch: List of up to 100 symbols
         :type batch: list
-        :return: pandas data frame with volumes of symbols
-        :rtype: pandas data frame
+        :return: pandas DataFrame with volumes of symbols
+        :rtype: pandas DataFrame
         """
         return iexfinance.Stock(batch, output_format="pandas").get_volume()
 
     def get_volume(self):
         """
-        :return: pandas data frame with volumes of symbols
-        :rtype: pandas data frame
+        :return: pandas DataFrame with volumes of symbols
+        :rtype: pandas DataFrame
         """
-        if not self.volume:
-            with Pool() as pool:
-                self.volume = pd.concat(
-                    pool.starmap(
-                        self.iex_get_volume, [[batch] for batch in self.batches]
-                    )
-                )
+        with Pool() as pool:
+            self.volume = pd.concat(
+                pool.starmap(self.iex_get_volume, [[batch] for batch in self.batches])
+            )
 
     @staticmethod
     def get_responses(payloads):
@@ -133,55 +126,51 @@ class Stocks:
         :return: dictionary with financial information for stocks
         :rtype: dict
         """
-        if not self.financials:
-            payloads = [
-                {"symbols": batch, "types": "financials"}
-                for batch in self.string_batches
-            ]
-            outputs = self.get_responses(payloads=payloads)
-            financials = {
-                symbol: outputs[outputs.index(batch_dict)][symbol]
-                for batch_dict in outputs
-                for symbol in batch_dict
-            }
-            self.financials = financials
+        payloads = [
+            {"symbols": batch, "types": "financials"} for batch in self.string_batches
+        ]
+        outputs = self.get_responses(payloads=payloads)
+        financials = {
+            symbol: outputs[outputs.index(batch_dict)][symbol]
+            for batch_dict in outputs
+            for symbol in batch_dict
+        }
+        self.financials = financials
 
     def get_splits(self, time="1y"):
-        if not self.splits:
-            payloads = [
-                {"symbols": batch, "types": "splits", "range": time}
-                for batch in self.string_batches
-            ]
-            outputs = self.get_responses(payloads=payloads)
-            self.splits = {
-                symbol: outputs[outputs.index(batch_dict)][symbol]["splits"]
-                for batch_dict in outputs
-                for symbol in batch_dict
-            }
+        payloads = [
+            {"symbols": batch, "types": "splits", "range": time}
+            for batch in self.string_batches
+        ]
+        outputs = self.get_responses(payloads=payloads)
+        self.splits = {
+            symbol: outputs[outputs.index(batch_dict)][symbol]["splits"]
+            for batch_dict in outputs
+            for symbol in batch_dict
+        }
 
     def get_dividends(self, time="5y"):
-        if not self.dividends:
-            payloads = [
-                {"symbols": batch, "types": "dividends", "range": time}
-                for batch in self.string_batches
-            ]
-            outputs = self.get_responses(payloads=payloads)
-            div_json = {
-                symbol: outputs[outputs.index(batch_dict)][symbol]["dividends"]
-                for batch_dict in outputs
-                for symbol in batch_dict
-            }
-            data = {
-                "count": [
-                    len(v) if all(isinstance(i["amount"], (float)) for i in v) else 0
-                    for _, v in div_json.items()
-                ],
-                "amount": [
-                    [div_json[k][i]["amount"] for i in range(len(div_json[k]))]
-                    for k, _ in div_json.items()
-                ],
-            }
-            self.dividends = pd.DataFrame(data=data, index=div_json.keys())
+        payloads = [
+            {"symbols": batch, "types": "dividends", "range": time}
+            for batch in self.string_batches
+        ]
+        outputs = self.get_responses(payloads=payloads)
+        div_json = {
+            symbol: outputs[outputs.index(batch_dict)][symbol]["dividends"]
+            for batch_dict in outputs
+            for symbol in batch_dict
+        }
+        data = {
+            "count": [
+                len(v) if all(isinstance(i["amount"], (float)) for i in v) else 0
+                for _, v in div_json.items()
+            ],
+            "amount": [
+                [div_json[k][i]["amount"] for i in range(len(div_json[k]))]
+                for k, _ in div_json.items()
+            ],
+        }
+        self.dividends = pd.DataFrame(data=data, index=div_json.keys())
 
     def init_scores(self):
         columns = ["Score", "Value Score", "Growth Score", "Momentum Score"]
@@ -194,28 +183,16 @@ class Stocks:
 
 def return_top(scores, metric, x=None):
     """
-    :param scores: pandas data frame with scores
-    :type scores: pandas data frame
+    :param scores: pandas DataFrame with scores
+    :type scores: pandas DataFrame
     :param metric: string value for what score is desired ("Growth Score", "Value Score", "Momentum Score", "Score")
     :type metric: str
     :param x: integer number of top stocks to return
     :type x: int
-    :return: top x number of stocks by score as pandas data frame
-    :rtype: pandas data frame
+    :return: top x number of stocks by score as pandas DataFrame
+    :rtype: pandas DataFrame
     """
     if x is not None:
         return scores.nlargest(x, [metric])
     else:
         return scores.nlargest(len(scores), [metric])
-
-
-def soup_it(url):
-    """
-    :param url: give url for HTML code to be copied
-    :type url: str
-    :return: parsed HTML code (to strip info from)
-    :rtype: BeautifulSoup object
-    """
-    page = requests.get(url).text.encode("utf-8").decode("ascii", "ignore")
-    soup = BeautifulSoup(page, "html.parser")
-    return soup
