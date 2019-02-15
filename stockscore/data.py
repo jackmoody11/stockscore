@@ -1,5 +1,4 @@
 # Modules
-from bs4 import BeautifulSoup
 import grequests
 import requests
 import pandas as pd
