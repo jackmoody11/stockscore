@@ -25,9 +25,7 @@ def test_dividend_test_returns_scores():
     stock_scores.init_scores()
     stock_scores.dividend_screen()
     if not len(stock_scores.scores) == len(symbols):
-        raise AssertionError(
-            "At least 1000 dividend scores are not listed in stock scores"
-        )
+        raise AssertionError("Number of scores should equal number of symbols")
 
 
 def test_net_income_test_returns_scores():
@@ -35,7 +33,7 @@ def test_net_income_test_returns_scores():
     stock_scores.init_scores()
     stock_scores.net_income_screen()
     if not len(stock_scores.scores) == len(symbols):
-        raise AssertionError("At least 1000 net income scores listed in stock scores")
+        raise AssertionError("Number of scores should equal number of symbols")
 
 
 def test_net_income_test_returns_aapl_with_pos_ni_for_all_years_given():
@@ -55,9 +53,7 @@ def test_current_ratio_test_returns_scores():
     stock_scores.init_scores()
     stock_scores.current_ratio_screen()
     if not len(stock_scores.scores) == len(symbols):
-        raise AssertionError(
-            "At least 1000 current ratio scores listed in stock scores"
-        )
+        raise AssertionError("Number of scores should equal number of symbols")
 
 
 def test_p_to_b_test_returns_scores():
@@ -65,7 +61,7 @@ def test_p_to_b_test_returns_scores():
     stock_scores.init_scores()
     stock_scores.current_ratio_screen()
     if not len(stock_scores.scores) == len(symbols):
-        raise AssertionError("At least 1000 scores for price/book test")
+        raise AssertionError("Number of scores should equal number of symbols")
 
 
 def test_pe_ratio_test_returns_scores():
@@ -73,7 +69,7 @@ def test_pe_ratio_test_returns_scores():
     stock_scores.init_scores()
     stock_scores.pe_ratio_screen()
     if not len(stock_scores.scores) == len(symbols):
-        raise AssertionError("Length of stock scores doesn't match number of symbols")
+        raise AssertionError("Number of scores should equal number of symbols")
 
 
 def test_profit_margin_returns_scores():
@@ -81,7 +77,7 @@ def test_profit_margin_returns_scores():
     stock_scores.init_scores()
     stock_scores.profit_margin_screen()
     if not len(stock_scores.scores) == len(symbols):
-        raise AssertionError("Length of stock scores doesn't match number of symbols")
+        raise AssertionError("Number of scores should equal number of symbols")
 
 
 def test_suite_returns_scores():
@@ -89,7 +85,7 @@ def test_suite_returns_scores():
     stock_scores.init_scores()
     stock_scores.score()
     if not len(stock_scores.scores) == len(symbols):
-        raise AssertionError("Length of stock scores doesn't match number of symbols")
+        raise AssertionError("Number of scores should equal number of symbols")
 
 
 def test_moving_avg_returns_scores():
@@ -97,7 +93,7 @@ def test_moving_avg_returns_scores():
     stock_scores.init_scores()
     stock_scores.moving_avg_screen()
     if not len(stock_scores.scores) == len(symbols):
-        raise AssertionError("Length of stock scores doesn't match number of symbols")
+        raise AssertionError("Number of scores should equal number of symbols")
 
 
 def test_splits_returns_scores():
@@ -105,11 +101,11 @@ def test_splits_returns_scores():
     stock_scores.init_scores()
     stock_scores.splits_screen()
     if not len(stock_scores.scores) == len(symbols):
-        raise AssertionError("Length of stock scores doesn't match number of symbols")
+        raise AssertionError("Number of scores should equal number of symbols")
 
 
 def test_trading_volume_test_returns_scores():
     stock_scores.init_scores()
     stock_scores.trading_volume_screen()
     if not len(stock_scores.scores) == len(symbols):
-        raise AssertionError("Length of stock scores doesn't match number of symbols")
+        raise AssertionError("Number of scores should equal number of symbols")
