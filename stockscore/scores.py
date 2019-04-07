@@ -12,11 +12,11 @@ class Scores(Stocks):
         if self.stats is None:
             self.get_stats()
         self.stats["perDiff"] = (
-            (self.stats.day50MovingAvg - self.stats.day200MovingAvg)
-            / self.stats.day200MovingAvg
+            (self.stats["day50MovingAvg"] - self.stats["day200MovingAvg"])
+            / self.stats["day200MovingAvg"]
         ) * 100
         self.scores.loc[
-            self.stats.perDiff.between(0, 5, inclusive=False), ["Momentum Score"]
+            self.stats["perDiff"].between(0, 5, inclusive=False), ["Momentum Score"]
         ] += 1
 
     def trading_volume_screen(self):
@@ -24,10 +24,10 @@ class Scores(Stocks):
         if self.volume is None:
             self.get_volume()
         self.scores.loc[
-            self.volume.latestVolume >= 100_000, ["Value Score", "Momentum Score"]
+            self.volume["latestVolume"] >= 100_000, ["Value Score", "Momentum Score"]
         ] += 1
         self.scores.loc[
-            self.volume.latestVolume <= 50000, ["Value Score", "Momentum Score"]
+            self.volume["latestVolume"] <= 50000, ["Value Score", "Momentum Score"]
         ] -= 1
 
     def splits_screen(self, time="1y"):
