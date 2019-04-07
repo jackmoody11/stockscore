@@ -2,8 +2,16 @@
 *.pyc
 __pycache__/
 .pytest_cache/
+
+# IDE specific
 .idea/
-venv/
-stockscore/oneoff.py
-.DS_Store
 .vscode/
+
+# Virtual environment
+venv/
+
+# Scratch files
+stockscore/oneoff.py
+
+# Mac specific
+.DS_Store
