@@ -52,7 +52,7 @@ Create a virtual environment
 
 Activate the virtual environment. See the docs_ for help.
 
-Then :code:`pip install -r requirements.txt` to install required modules.
+Then :code:`make init` to install required modules.
 
 Run the program!
 ----------------
