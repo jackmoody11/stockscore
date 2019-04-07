@@ -38,10 +38,6 @@ To clone this repository, run the following:
 
     git clone https://github.com/jackmoody11/stockscore
 
-If you don't already have virtualenv on your machine, go ahead and install it
-::
-
-   pip install virtualenv
 
 Change working directory to project folder
 ::
@@ -51,17 +47,10 @@ Change working directory to project folder
 Create a virtual environment
 ::
 
-    python3 -m virtualenv env # for Mac/Linux
-    py -m virtualenv env # for Windows
+    python3 -m venv env
 
 
-Make a virtual environment with :code:`python3 -m venv my-env`.
-Then, in order to activate the virtual environment run the following:
-
-::
-
-    source my-env/bin/activate # for Mac/Linux
-    .\my-env\Scripts\activate # for Windows
+Activate the virtual environment. See the docs_ for help.
 
 Then :code:`pip install -r requirements.txt` to install required modules.
 
@@ -154,6 +143,7 @@ Notes
 
 
 .. _here: https://docs.python.org/3/installing/
+.. _docs: https://docs.python.org/3/library/venv.html
 .. _look here: https://pytestguide.readthedocs.io/en/latest/
 .. _Dropwizard: http://www.dropwizard.io/1.0.2/docs/
 .. _Maven: https://maven.apache.org/
