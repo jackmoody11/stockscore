@@ -4,10 +4,14 @@ plt.rcdefaults()
 
 
 def plot_top(df):
-    """
-    :param df: Stock score Pandas DataFrame
-    :type df: Pandas DataFrame
-    :return: Matplotlib plot with stocks and scores (broken down by score id)
+    """Plot stocks based on total score.
+
+    Args:
+      df(pandas.DataFrame): Stock score pandas.DataFrame
+
+    Returns:
+      Matplotlib plot with stocks and scores (broken down by score id)
+
     """
     # Set styling
     plt.style.use("seaborn-darkgrid")

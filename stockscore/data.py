@@ -122,8 +122,12 @@ class Stocks:
 
     def get_financials(self):
         """
-        :return: dictionary with financial information for stocks
-        :rtype: dict
+
+        Args:
+
+        Returns:
+          dict: dictionary with financial information for stocks
+
         """
         payloads = [
             {"symbols": batch, "types": "financials"} for batch in self.string_batches
@@ -137,6 +141,14 @@ class Stocks:
         self.financials = financials
 
     def get_splits(self, time="1y"):
+        """
+
+        Args:
+          time:  (Default value = "1y")
+
+        Returns:
+
+        """
         payloads = [
             {"symbols": batch, "types": "splits", "range": time}
             for batch in self.string_batches
@@ -149,6 +161,14 @@ class Stocks:
         }
 
     def get_dividends(self, time="5y"):
+        """
+
+        Args:
+          time:  (Default value = "5y")
+
+        Returns:
+
+        """
         payloads = [
             {"symbols": batch, "types": "dividends", "range": time}
             for batch in self.string_batches

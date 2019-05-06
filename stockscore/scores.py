@@ -2,13 +2,14 @@ from stockscore.data import Stocks
 
 
 class Scores(Stocks):
+    """ """
     def __init__(self, stocks=None):
         super().__init__(stocks)
         if self.scores is None:
             self.init_scores()
 
     def moving_avg_screen(self):
-
+        """Test percent diff in 50 day SMA and 200 day SMA. """
         if self.stats is None:
             self.get_stats()
         self.stats["perDiff"] = (
@@ -20,7 +21,7 @@ class Scores(Stocks):
         ] += 1
 
     def trading_volume_screen(self):
-
+        """Test volume of stock for liquidity. """
         if self.volume is None:
             self.get_volume()
         self.scores.loc[
@@ -31,6 +32,16 @@ class Scores(Stocks):
         ] -= 1
 
     def splits_screen(self, time="1y"):
+        """Test for stock splits in the past.
+
+        Args:
+          time:  (Default value = "1y")
+              Amount of time to test for splits. Choose from 
+              # finish this...
+
+        Returns:
+
+        """
 
         if self.splits is None:
             self.get_splits()
@@ -58,6 +69,7 @@ class Scores(Stocks):
                 continue
 
     def net_income_screen(self):
+        """Test for net income over the past quarters. """
         # Get data for screen
         if self.financials is None:
             self.get_financials()
@@ -83,6 +95,7 @@ class Scores(Stocks):
                 continue  # Skip to next stock if unable to get data
 
     def current_ratio_screen(self):
+        """Test if current ratio is in some range. """
         # Get data for screen
         if self.financials is None:
             self.get_financials()
@@ -120,6 +133,7 @@ class Scores(Stocks):
                 continue  # If current assets and current debt stats are not available, skip to next stock
 
     def p_to_b_screen(self):
+        """Test if price/book is in range. """
         # Get data for screen
         if self.stats is None:
             self.get_stats()
@@ -130,6 +144,7 @@ class Scores(Stocks):
         ] += 1
 
     def pe_ratio_screen(self):
+        """Test if price/earnings is in range. """
         # Get data for screen
         if self.stats is None:
             self.get_stats()
@@ -148,6 +163,7 @@ class Scores(Stocks):
         self.scores.loc[self.stats["peRatio"] <= 15, "Value Score"] += 1
 
     def profit_margin_screen(self):
+        """Check if profit margin is in range. """
         if self.stats is None:
             self.get_stats()
         self.scores.loc[self.stats["profitMargin"] > 10, "Value Score"] += 1
@@ -155,6 +171,7 @@ class Scores(Stocks):
 
     # Needs updating
     def dividend_screen(self):
+        """Check if dividends paid over past quarters """
         if self.dividends is None:
             self.get_dividends()
         # Get data for screen
@@ -163,6 +180,7 @@ class Scores(Stocks):
         # monthly dividend payers from being disproportionately rewarded
 
     def score(self):
+        """Run all screens. """
         self.moving_avg_screen()
         self.trading_volume_screen()
         self.splits_screen()
