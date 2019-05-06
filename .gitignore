@@ -15,3 +15,5 @@ stockscore/oneoff.py
 
 # Mac specific
 .DS_Store
+
+docs/build
