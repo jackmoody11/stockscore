@@ -9,7 +9,11 @@ Dependencies
 
 stockscore relies on:
 
-\# Need to update!!!
+- grequests
+- iexfinance
+- matplotlib
+- pandas
+- requests
 
 Installation
 ------------
@@ -30,18 +34,17 @@ or
 
 .. code:: bash
 
-     $ git clone https://github.com/jackmoody11/stockscore.git
-     $ cd stockscore
-     $ pip install .
+    $ git clone https://github.com/jackmoody11/stockscore.git
+    $ cd stockscore
+    $ pip install .
 
 **Note:**
 
-The use of
-`virtualenv <http://docs.python-guide.org/en/latest/dev/virtualenvs/>`__
-is recommended as below:
+The use of virtual environments is recommended as below. 
+Using `virtualenv` may cause problems due to a `known conflict<https://matplotlib.org/faq/virtualenv_faq.html>`__ 
+with `matplotlib`.
 
 .. code:: bash
 
-    $ pip install virtualenv
-    $ virtualenv env
-    $ source env/bin/activate
+    $ python3 -m venv myenv
+    $ source myvenv/bin/activate

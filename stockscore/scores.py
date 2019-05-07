@@ -2,7 +2,7 @@ from stockscore.data import Stocks
 
 
 class Scores(Stocks):
-    """ """
+    """Scores for stocks. """
     def __init__(self, stocks=None):
         super().__init__(stocks)
         if self.scores is None:
@@ -132,7 +132,7 @@ class Scores(Stocks):
             except (KeyError, TypeError):
                 continue  # If current assets and current debt stats are not available, skip to next stock
 
-    def p_to_b_screen(self):
+    def pb_ratio_screen(self):
         """Test if price/book is in range. """
         # Get data for screen
         if self.stats is None:
