@@ -22,7 +22,6 @@ env:
 
 install:
   - pip install -qq flake8
-  - pip install flake8-rst
   - if [[ $DOCBUILD ]]; then
       pip install doctr sphinx sphinx_rtd_theme ipython matplotlib;
     fi

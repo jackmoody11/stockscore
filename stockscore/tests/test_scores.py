@@ -63,6 +63,7 @@ def test_p_to_b_test_returns_scores():
     if not len(stock_scores.scores) == len(symbols):
         raise AssertionError("Number of scores should equal number of symbols")
 
+
 @pytest.mark.skip(reason="Change in API: close data needs to be fixed")
 def test_pe_ratio_test_returns_scores():
     stock_scores.init_scores()
@@ -76,6 +77,7 @@ def test_profit_margin_returns_scores():
     stock_scores.profit_margin_screen()
     if not len(stock_scores.scores) == len(symbols):
         raise AssertionError("Number of scores should equal number of symbols")
+
 
 @pytest.mark.skip(reason="Change in API: volume and close data needs to be fixed")
 def test_suite_returns_scores():
@@ -97,6 +99,7 @@ def test_splits_returns_scores():
     stock_scores.splits_screen()
     if not len(stock_scores.scores) == len(symbols):
         raise AssertionError("Number of scores should equal number of symbols")
+
 
 @pytest.mark.skip(reason="Change in API: volume data needs to be fixed")
 def test_trading_volume_test_returns_scores():

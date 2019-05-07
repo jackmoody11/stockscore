@@ -1,10 +1,8 @@
 # Modules
 import grequests
-import requests
 import pandas as pd
 import numpy as np
 from iexfinance.stocks import Stock
-from iexfinance.refdata import get_symbols
 from multiprocessing import Pool
 iex_url_base = "https://api.iextrading.com/1.0/"
 
@@ -14,7 +12,8 @@ def return_top(scores, metric, x=None):
 
     Args:
       scores(pandas.DataFrame): pandas.DataFrame with scores
-      metric(str): string value for what score is desired ("Growth Score", "Value Score", "Momentum Score", "Score")
+      metric(str): string value for what score is desired
+      ("Growth Score", "Value Score", "Momentum Score", "Score")
       x(int, optional): integer number of top stocks to return (Default value = None)
 
     Returns:
