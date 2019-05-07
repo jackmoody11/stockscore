@@ -25,5 +25,5 @@ def plot_top(df):
     # Plot labels
     plt.ylabel("Score")
     plt.xlabel("Tickers")
-    plt.title(f"Top {len(df)} Stock Scores")
+    plt.title("Top {num} Stock Scores".format(num=len(df)))
     plt.show(block=True)

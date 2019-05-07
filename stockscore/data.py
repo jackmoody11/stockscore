@@ -161,7 +161,7 @@ class Stocks:
           list: list of dictionaries with data from JSON responses
 
         """
-        batch_url = f"{iex_url_base}stock/market/batch?"
+        batch_url = "{base}stock/market/batch?".format(base=iex_url_base)
         rs = (grequests.get(batch_url, params=payload) for payload in payloads)
         result = grequests.map(rs)
         try:

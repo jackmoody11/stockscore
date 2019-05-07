@@ -27,7 +27,7 @@ class Scores(Stocks):
         if self.volume is None:
             self.get_volume()
         self.scores.loc[
-            self.volume["latestVolume"] >= 100_000, [
+            self.volume["latestVolume"] >= 10**5, [
                 "Value Score", "Momentum Score"]
         ] += 1
         self.scores.loc[
@@ -121,10 +121,8 @@ class Scores(Stocks):
                     current_ratio = current_assets / current_debt
                     if current_ratio >= 1.5:
                         self.scores.loc[symbol]["Value Score"] += 2
-                        # print(f"{symbol} score went up by 2 -- current ratio >= 1.5")
                     elif current_ratio >= 1:
                         self.scores.loc[symbol]["Value Score"] += 1
-                        # print(f"{symbol} score went up by 1 -- current ratio >= 1")
                 except ZeroDivisionError:
                     if isinstance(current_assets, int or float) and current_assets > 0:
                         self.scores.loc[symbol][
