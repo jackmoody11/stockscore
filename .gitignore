@@ -7,6 +7,12 @@ __pycache__/
 .idea/
 .vscode/
 
+#PyPi
+.eggs
+dist/
+stockscore.egg-info/
+build
+
 # Virtual environment
 venv/
 
