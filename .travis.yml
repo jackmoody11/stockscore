@@ -1,16 +1,45 @@
+sudo: false
+
 language: python
-python:
-  - "3.6"
-#  - "3.7" Will not include 3.7 support for now
-# earlier versions not supported by black
-# command to install dependencies
-# Current workaround for running Python 3.7 tests
-# sudo: required
-# dist: xenial
+
+matrix: 
+  include:
+    - python: 3.5
+      dist: trusty
+    - python: 3.6
+      dist: trusty
+      env: DOCBUILD=true
+    - python: 3.7
+      dist: xenial
+      sudo: true
+
+env:
+      global:
+        # Doctr deploy key for jackmoody11/stockscore
+        - secure: "MgSSDvTut3VcakoiK39VneLt0cBVhifnrKaFFu8XiLR9WW2qU/83aYPMV2zw8yM0XyU3IECFnAJWKCRr1bQGlhUS66Xlb/9zp5Yec1kVcU8GBY21r2k9YnkuFPYrgmdHrm5ChajQNJZ/nN8xgBstTIDdBIwtDn5rh3igcnHaAnm4BeEDlVnYqMsCa5VD0DlCPXZvDeqxjokMlb5NEn0La48k/oShYc+sa6gFfgUaLmPnE8b9EC0M4W2qq0jD4XmbGFyasN0LbSGs9vIOXooQybSTDyfEzGSySdRbU6mJO3rfVHL95Ewn0Sc6DRe0JVx11KKa0AXnUKXYD3u4HJ9tXn2KuWDmKPgSfMcjO6yKSR8vecvsdHXxcZszGw9mLFrw0dDKVDUWVOFiSkGMf8ukv3O6+LGo4ZDOV/+a9Bu4HGVdbAulQBmmAuuIVQN2cLf12WcHpd8oiEanuCqpNLr/MnqiokBCab9jGOtxB1Dj6qvhsW/PxQj01kWcbLF6Rr9dxh2zCsrsMVLV+fsQekhsup377gKNztPSGv6/qQJUn4S0rXQYtt3E7eYGzR/uDmhyHQQa4ZYSA6b4JQ6/X0R2WiB6wWdf7cOAeBeQ1/f5LsDRgsp2cI9dXydnv/9aKUVz1ZTgTFKiLxQqSqs5SG1GuOwqd1obU/oQtO2RwJE6oAg="
+
 install:
+  - pip install -qq flake8
+  - if [[ $DOCBUILD ]]; then
+      pip install doctr sphinx sphinx_rtd_theme ipython matplotlib;
+    fi
   - pip install -r requirements.txt
+
 script:
-  - pytest tests --runslow # or py.test for Python versions 3.5 and below
-os:
-  - linux
-# may add osx later if it works - currently having issues
+  - flake8 --version
+  - flake8 stockscore
+  - pytest stockscore/tests --runslow # or py.test for Python versions 3.5 and below
+
+after_success:
+  - |
+    if [[ $DOCBUILD ]]; then
+      cd docs
+      make html && make html
+      cd ..
+      doctr deploy devel --build-tags
+      if [[ -z ${TRAVIS_TAG} ]]; then
+        echo "Not a tagged build."
+      else
+        doctr deploy stable --build-tags
+      fi
+    fi

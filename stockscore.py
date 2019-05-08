@@ -43,9 +43,9 @@ if __name__ == "__main__":
     # Run screens to find top stocks
     top = score_stocks(stock_count)
     stocks = list(top.index)
-    print(f"The top {stock_count} stocks are {stocks}")
+    print("The top {stock_count} stocks are {stocks}".format(stock_count=stock_count, stocks=stocks))
     # End timer
     end = time.time()
-    print(f"That took {end - begin:.2f} seconds")
+    print("That took {time} seconds".format(time=end - begin))
     # Plot top stocks in bar chart
     plot_top(top)
