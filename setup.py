@@ -25,11 +25,12 @@ def find_version(*file_paths):
     raise RuntimeError("Unable to find version string.")
 
 
-def parse_requirements(filename):
-
-    with open(filename) as f:
-        required = f.read().splitlines()
-        return required
+def parse_requirements(*files):
+    required = []
+    for file in files:
+        with open(file) as f:
+            required.append(f.read().splitlines())
+    return required
 
 
 # Get the long description from the relevant file
@@ -98,6 +99,5 @@ setup(
     package_data={
         'stockscore': [],
     },
-
 
 )
