@@ -42,7 +42,7 @@ setup(
     version=find_version('stockscore', '__init__.py'),
     description="",
     long_description=long_description,
-
+    long_description_content_type='text/x-rst',
     # The project URL.
     url='https://github.com/jackmoody11/stockscore',
     download_url='https://github.com/jackmoody11/stockscore/releases',
