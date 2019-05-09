@@ -49,7 +49,6 @@ setup(
 
     # Author details
     author='Jack Moody',
-    author_email='jackmoodyjunk@gmail.com',
     test_suite='pytest',
 
     # Choose your license
