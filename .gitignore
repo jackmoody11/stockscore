@@ -13,13 +13,15 @@ dist/
 stockscore.egg-info/
 build
 
+# Coverage reports
+.coverage
+coverage.xml
+
 # Virtual environment
 venv/
-
-# Scratch files
-stockscore/oneoff.py
 
 # Mac specific
 .DS_Store
 
+# Doc buils
 docs/build
