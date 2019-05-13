@@ -12,6 +12,9 @@ Stock Score
 .. image:: https://travis-ci.com/jackmoody11/stockscore.svg?branch=master
     :target: https://travis-ci.com/jackmoody11/stockscore
 
+.. image:: https://codecov.io/gh/jackmoody11/stockscore/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/jackmoody11/stockscore
+
 .. image:: https://img.shields.io/github/license/mashape/apistatus.svg?style=popout
    :target: https://github.com/jackmoody11/stockscore/blob/master/LICENSE
 
