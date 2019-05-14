@@ -6,6 +6,7 @@ source = codecov
 exclude_lines =
     pragma: no cover
     def __repr__
+    def __str__
     if .debug:
     raise NotImplementedError
     if __name__ == .__main__.:
