@@ -26,6 +26,9 @@ def test_stocks_set():
     if not stocks.stocks == symbols:
         raise AssertionError("Stocks(symbols).stocks should equal symbols")
 
+def test_stocks_requires_symbols():
+    with pytest.raises(Exception):
+        Stocks()
 
 @pytest.mark.slow
 def test_get_stats():
@@ -118,3 +121,6 @@ def test_return_top():
         raise AssertionError("return_top should return pandas DataFrame.")
     if not top.index[0] == "FB":
         raise AssertionError("Top stock is not expected stock")
+    top_all = return_top(tscores, "Score")
+    if not len(top_all) == len(tscores):
+        raise AssertionError("All scores should be returned if no number is specified.")
