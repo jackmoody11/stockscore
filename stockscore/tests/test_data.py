@@ -26,9 +26,11 @@ def test_stocks_set():
     if not stocks.stocks == symbols:
         raise AssertionError("Stocks(symbols).stocks should equal symbols")
 
+
 def test_stocks_requires_symbols():
     with pytest.raises(Exception):
         Stocks()
+
 
 @pytest.mark.slow
 def test_get_stats():
