@@ -52,7 +52,7 @@ class Stocks:
         self.dividends = None
 
     def __str__(self):
-        return ('Stocks: {stocks}'
+        return ('Stocks: {stocks},'
                 'Batches: {batches}').format(**self.__dict__)
 
     def __repr__(self):
@@ -144,11 +144,13 @@ class Stocks:
           pandas.DataFrame: pandas.DataFrame with volumes of symbols
 
         """
-        with Pool() as pool:
-            self.volume = pd.concat(
-                pool.starmap(self.iex_get_volume, [
-                             [batch] for batch in self.batches])
-            )
+        dfs = map(self.iex_get_volume, [[batch] for batch in self.batches])
+        self.volume = pd.concat(dfs)
+        # with Pool() as pool:
+        #     self.volume = pd.concat(
+        #         pool.starmap(self.iex_get_volume, [
+        #                      [batch] for batch in self.batches])
+        #     )
 
     @staticmethod
     def get_responses(payloads):

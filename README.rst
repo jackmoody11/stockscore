@@ -15,6 +15,9 @@ Stock Score
 .. image:: https://img.shields.io/github/license/mashape/apistatus.svg?style=popout
    :target: https://github.com/jackmoody11/stockscore/blob/master/LICENSE
 
+.. image:: https://badge.fury.io/py/stockscore.svg
+    :target: https://badge.fury.io/py/stockscore
+
 Stock Score is a python script to score stocks based on specified
 criteria. The goal of this project is to provide a stock screening
 system for various types of stock classifications (growth, momentum, value, etc.).
