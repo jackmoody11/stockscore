@@ -1,6 +1,6 @@
 [run]
 branch = True
-source = codecov
+source=stockscore
 
 [report]
 exclude_lines =
@@ -15,3 +15,4 @@ omit =
     venv/*
     stockscore/tests/*
     setup.py
+    

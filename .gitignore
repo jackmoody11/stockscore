@@ -16,6 +16,7 @@ build
 # Coverage reports
 .coverage
 coverage.xml
+htmlcov
 
 # Virtual environment
 venv/
